@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+router.get('/formularioPersona', function(req, res, next) {
+    res.send('formularioPersona.pug');
+});
+
 module.exports = router;
