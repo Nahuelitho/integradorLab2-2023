@@ -1,12 +1,14 @@
-'use strict';
-
+const { Sequelize } = require("sequelize");
+const sequelize = new Sequelize("proyecto_prueba", "root", "", {
+    host: "localhost",
+    dialect: "mysql",
+    port: 3306,
+  });
 const { Model, DataTypes} = require('sequelize')
 
+ class Persona extends Model{} 
 
-module.exports = (sequelize, DataTypes)=>{
-/* class Persona extends Model{} */ 
-
-let persona = sequelize.define('persona', {
+    Persona.init({
     persona_id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -57,6 +59,9 @@ let persona = sequelize.define('persona', {
         type: DataTypes.STRING,
         allowNull: false
     }
-})
-return persona;
-}
+
+}, {
+    sequelize,
+    modelName: "Persona"
+});
+module.exports = Persona;

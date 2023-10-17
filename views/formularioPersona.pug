@@ -2,13 +2,14 @@ doctype html
 html
   head
     title Login
-    link(rel='stylesheet', href='/stylesheets/estiloLogin.css')
+    
+    script(src="./javascript/metodos.js")
   body
     div.container
       
-      form(action='/formularioPersona', method='post')
-        label(for='username') Nombre:
-        input(type='text', id='username', name='username', placeholder='Ingrese Nombre', required)
+      form(action="/persona", method="post", id="formulario")
+        label(for='nombre') Nombre:
+        input(type='text', id='nombre', name='nombre', placeholder='Ingrese Nombre', required)
         br
         br
         label(for='apellido') Apellido:
@@ -24,10 +25,7 @@ html
         br
         br
         label(for='sexo') Sexo:
-        
-        select(name="sexo")
-            option(value="masculino") masculino 
-            option(value="femenino") femenino
+        input(type='text', id='sexo', name='sexo', placeholder='Ingrese sexo', required)
         br
         br
         label(for='fechaNacimiento') Fecha de Nacimiento:
@@ -62,7 +60,8 @@ html
         input(type='password', id='password', name='password', placeholder='Ingrese Contraseña', required)
         br
         br
-        button(type='submit') Guardar
+        button(type='submit', id="btGuardar", onclick="obtenerPersona()") Guardar
         br
         br
 
+  
