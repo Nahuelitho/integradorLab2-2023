@@ -3,7 +3,7 @@ const app = require("./app/app");
 app.listen(3000, () => {
   console.log("Servidor en puerto 3000");
 });
-//conexion a base de datos
+//conexion a base de datos REVISAR
 const { Sequelize } = require("sequelize");
 const sequelize = new Sequelize("bd_proyectointegrador", "root", "", {
   host: "localhost",

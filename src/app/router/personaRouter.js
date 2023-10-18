@@ -1,7 +1,7 @@
 const router = require("express").Router();
 //ruteador para requerir a personas
 const path = require("path");
-const dir = path.resolve(path.join('src', 'model', 'persona.model'));  
+const dir = path.resolve(path.join('src', 'model', 'persona.model'));
 const Personas = require(dir);
 
 //metodos de persona
