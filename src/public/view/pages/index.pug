@@ -1,4 +1,21 @@
 extends ../layout/plantilla
 
 block contenido 
-    h1 Hola soy un index
+    div.container
+        p Filtros de Busqueda
+        form(action="/", method="get", id="formIndex")
+            label(for='filtroDni') Ingrese Dni:
+            input(type='text', id='filtroDni', name='filtroDni', placeholder='Ingrese Dni')
+            br
+            br 
+            label(for='filtroEmail') Ingrese Email:
+            input(type='text', id='filtroEmail', name='filtroEmail', placeholder='Ingrese Email')
+            br
+            br
+            label(for='filtroApellido') Ingrese Apellido:
+            input(type='text', id='filtroApellido', name='filtroApellido', placeholder='Ingrese Apellido')
+            br
+            br
+            button(type='submit', id="btBuscar") Buscar
+            br
+            br
