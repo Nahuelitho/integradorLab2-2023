@@ -13,10 +13,6 @@ const sequelize = new Sequelize("lab2prueba", "root", "", {
         defaultValue: DataTypes.UUIDV4,
         primaryKey : true
     },
-    matricula:{
-      type: DataTypes.INTEGER
-
-    },
     titulo:{
       type: DataTypes.STRING,
       allowNull: false

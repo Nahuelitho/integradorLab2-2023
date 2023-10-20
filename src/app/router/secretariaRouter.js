@@ -8,13 +8,17 @@ const Secretaria = require(dir);
 
 //obtener todas las secretarias.
 router.get("/", async (req, res) => {
-  /* const secretarias = await Secretaria.findAll(); */
+  const secretarias = await Secretaria.findAll();
+  res.status(200).json({
+    ok: true,
+    status: 200,
+    body: secretarias
+  });
 });
 //alta secretaria en bd con creacion de tabla de ser necesario
 router.post("/", async (req, res) => {
   await Secretaria.sync();
   const createSecretaria = await Secretaria.create({
-    matricula: req.body.matricula,
     titulo: req.body.titulo,
     fechaIngresoInstitucion: req.body.fechaIngresoInstitucion
   });
@@ -24,5 +28,9 @@ router.post("/", async (req, res) => {
     message: "Secretaria creada",
   });
 });
+
+/* router.post("/", async (req, res)=>{
+  await 
+}) */
 
 module.exports = router;
