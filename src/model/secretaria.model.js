@@ -1,4 +1,4 @@
-const {Sequelize, Model, DataTypes} = require('sequelize')
+const {Sequelize, Model, DataTypes} = require('sequelize');
 const sequelize = new Sequelize("lab2prueba", "root", "", {
     host: "localhost",
     dialect: "mysql",
@@ -7,15 +7,29 @@ const sequelize = new Sequelize("lab2prueba", "root", "", {
 
   class Secretaria extends Model{}
 
-  Tecnico.init({
+  Secretaria.init({
     secretariaId:{
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey : true
     },
+    matricula:{
+      type: DataTypes.INTEGER
+
+    },
+    titulo:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     fechaIngresoInstitucion: {
         type: DataTypes.DATE,
-    }
-  });
+        allowNull: false
+    },
+    
+  },
+  { sequelize, 
+    modelName: "Secretaria"
+  }
+  );
 
   module.exports = Secretaria;

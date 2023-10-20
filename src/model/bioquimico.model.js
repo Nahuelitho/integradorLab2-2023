@@ -22,6 +22,10 @@ Bioquimico.init({
         type: DataTypes.STRING,
         allowNull: false,
       }
-});
+},{
+  sequelize,
+  modelName: "Bioquimico"
+}
+);
 
 module.exports = Bioquimico;
