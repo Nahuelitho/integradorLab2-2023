@@ -6,7 +6,7 @@ const indexRouter = require("./router/indexRouter");
 const personaRouter = require("./router/personaRouter");
 const tecnicoRouter = require("./router/tecnicoRouter");
 const secretariaRouter = require("./router/secretariaRouter");
-
+const loginRouter = require("./router/loginRouter")
 
 //configuracion 
 app.set("views", "./src/public/view");
@@ -21,6 +21,6 @@ app.use('/', indexRouter);
 app.use('/persona', personaRouter);
 app.use('/tecnico', tecnicoRouter);
 app.use('/secretaria', secretariaRouter);
-
+app.use('/login', loginRouter);
 
 module.exports = app;

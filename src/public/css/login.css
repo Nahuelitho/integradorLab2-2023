@@ -1,0 +1,19 @@
+.container {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+    background-color: #bdbcbc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+.container h1{
+padding-left: 55px;
+}  
+.container input{
+    padding-left: 20%;
+    padding-right: 20% ;
+    background-color: #f5f5f5;
+    color: black;
+    }  
+  
