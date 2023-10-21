@@ -10,17 +10,20 @@ const Persona = require(dir);
   res.render("pages/personaFormulario");
   next();
 }); */
-router.get("/:dni", function filtro(){ async (req, res) => {
+// 3000:/persona/buscarpersona
+router.get("/buscarpersona", (req, res, next) => {
+  res.render("pages/index");
+  next();
+});
+// 3000:/persona/buscar/123123
+router.get("/buscar/:dni", async (req, res) => {
   const dni = req.params.dni;
-  const persona = await Persona.findOne({
-    where: { dni },
-  })};
-  /* res.status(200).json({
+  const persona = await Persona.findAll({ where: { dni: dni } });
+  res.status(200).json({
     ok: true,
     status: 200,
     body: persona,
-  }); */
-  res.send(persona)
+  })
 });
 //alta persona en bd con creacion de tabla de ser necesario
 router.post("/", async (req, res) => {
@@ -46,7 +49,7 @@ router.post("/", async (req, res) => {
     message: "Persona creada",
   });
 });
-router.put("/", async (req, res) => {});
+/* router.put("/", async (req, res) => {});
 router.patch("/", async (req, res) => {
   const dni = req.params.dni;
   const datosPersona = req.body;
@@ -73,6 +76,6 @@ router.patch("/", async (req, res) => {
   res.status(200).json({
     ok: true,
   })
-});
+}); */
 
 module.exports = router;
