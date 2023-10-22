@@ -17,10 +17,10 @@ router.get("/buscar", (req, res, next) => {
   next();
 });
 // 3000:/persona/buscar/123123
-router.get("/buscar/:dni",async (req, res) => {
+router.post("/buscar/",async (req, res) => {
   
-  const dni = req.params.dni;
-  var persona = await Persona.Persona.findAll({where: { dni: dni } });
+  const dni = req.body.dni;
+  var persona = await Persona.findAll({where: { dni: dni } });
   res.status(200).json({
     ok: true,
     status: 200,
