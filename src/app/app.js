@@ -8,6 +8,8 @@ const tecnicoRouter = require("./router/tecnicoRouter");
 const secretariaRouter = require("./router/secretariaRouter");
 const loginRouter = require("./router/loginRouter")
 const tablaRouter = require("./router/tablaRouter");
+const examenRouter = require("./router/examenRouter");
+const ordenRouter = require("./router/ordenRouter");
 
 //configuracion 
 app.set("views", "./src/public/view");
@@ -24,5 +26,7 @@ app.use('/tecnico', tecnicoRouter);
 app.use('/secretaria', secretariaRouter);
 app.use('/login', loginRouter);
 app.use('/tabla', tablaRouter);
+app.use('/examenes', examenRouter);
+app.use('/ordenTrabajo', ordenRouter);
 
 module.exports = app;
