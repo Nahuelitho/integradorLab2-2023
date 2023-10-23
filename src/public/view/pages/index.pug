@@ -3,9 +3,9 @@ extends ../layout/plantilla
 block contenido 
     div.container
         p Filtros de Busqueda
-        form(action="/buscar/", method="get", id="formIndex")
-            label(for='filtroDni') Ingrese Dni:
-            input(type='search', id='dni', name='dni', placeholder='Ingrese Dni')
+        form( method="post", id="formIndex")
+            label(for='dni') Ingrese Dni:
+            input(type='text/plain', id ="dni", name='dni')
             br
             br 
-            button(type='submit', id="btBuscar") Buscar
+            button(type="submit")  Buscar

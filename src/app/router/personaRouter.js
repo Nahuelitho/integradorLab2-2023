@@ -10,21 +10,27 @@ const Persona = require(dir);
   res.render("pages/personaFormulario");
   next();
 }); */
-// 3000:/persona/buscarpersona
-router.get("/buscarpersona", (req, res, next) => {
+// 3000:/persona/buscar
+
+router.get("/buscar", (req, res, next) => {
   res.render("pages/index");
   next();
 });
 // 3000:/persona/buscar/123123
-router.get("/buscar/:dni", async (req, res) => {
-  const dni = req.params.dni;
-  const persona = await Persona.findAll({ where: { dni: dni } });
+router.post("/buscar/",async (req, res) => {
+  
+  const dni = req.body.dni;
+  var persona = await Persona.findAll({where: { dni: dni } });
   res.status(200).json({
     ok: true,
     status: 200,
     body: persona,
-  })
+   
+  });
+  console.log(persona)
+  res.send();
 });
+
 //alta persona en bd con creacion de tabla de ser necesario
 router.post("/", async (req, res) => {
   await Persona.sync();
