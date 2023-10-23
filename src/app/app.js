@@ -7,6 +7,7 @@ const personaRouter = require("./router/personaRouter");
 const tecnicoRouter = require("./router/tecnicoRouter");
 const secretariaRouter = require("./router/secretariaRouter");
 const loginRouter = require("./router/loginRouter")
+const tablaRouter = require("./router/tablaRouter");
 
 //configuracion 
 app.set("views", "./src/public/view");
@@ -22,5 +23,6 @@ app.use('/persona', personaRouter);
 app.use('/tecnico', tecnicoRouter);
 app.use('/secretaria', secretariaRouter);
 app.use('/login', loginRouter);
+app.use('/tabla', tablaRouter);
 
 module.exports = app;
