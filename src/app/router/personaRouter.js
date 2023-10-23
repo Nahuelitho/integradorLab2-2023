@@ -6,11 +6,11 @@ const dir = path.resolve(path.join("src", "model", "persona.model"));
 const Persona = require(dir);
 
 //metodos de persona
-/* router.get("/", (req, res, next) => {
+router.get("/", (req, res, next) => {
   res.render("pages/personaFormulario");
   next();
-}); */
-// 3000:/persona/buscar
+}); 
+// 3000:/persona/buscar 
 
 router.get("/buscar", (req, res, next) => {
   res.render("pages/index");
