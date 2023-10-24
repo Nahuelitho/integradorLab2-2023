@@ -10,8 +10,7 @@ Persona.init({
     persona_id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey : true
-      
+      primaryKey : true      
     },
     nombre: {
       type: DataTypes.STRING,
