@@ -1,0 +1,33 @@
+extends ../layout/plantilla
+
+block contenido 
+    script. 
+        function llenar(#{`${persona}`}){
+            document.getElementById("nombre").innerHTML = persona.nombre
+            formPrueba.apellido.value = persona.apellido
+            formPrueba.dni.value = persona.dni
+        }
+    div.container
+        p Buscar
+        form( method="post", name="formPrueba")
+            if persona != null
+                label(for="nombre")
+                div
+                    p #{persona.nombre} 
+                br
+                br 
+                label(for="apellido")
+                input(type='text/plain', id ="apellido", name='apellido')
+                br
+                br 
+                label(for='dni') Ingrese Dni:
+                input(type='text/plain', id ="dni", name='dni')
+                br
+                br 
+            else 
+                label(for='dni') Ingrese Dni:
+                input(type='text/plain', id ="dni", name='dni')
+                br
+                br 
+                button(type="submit",  onclick=`llenar(${persona})`)  buscar
+    script(src="")
