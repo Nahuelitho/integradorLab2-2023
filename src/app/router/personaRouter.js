@@ -18,12 +18,15 @@ router.get("/buscar", (req, res, next) => {
   next();
 });
 // 3000:/persona/buscar/123123
-router.post("/buscar/",async (req, res, next) => {
+router.post("/buscar/",async (req, res) => {
   const dni = req.body.dni;
-  const persona = await Persona.findAll({where: { dni: dni} });
-  console.log(persona);  
+  const persona = await Persona.findOne({where: { dni: dni} });
+
   res.render("pages/formPrueba", {persona: persona})
-  next();
+
+  
+ 
+  
 });
 
 //alta persona en bd con creacion de tabla de ser necesario

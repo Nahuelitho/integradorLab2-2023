@@ -1,19 +1,18 @@
 extends ../layout/plantilla
 
 block contenido 
-    script. 
-        function llenar(#{`${persona}`}){
-            document.getElementById("nombre").innerHTML = persona.nombre
-            formPrueba.apellido.value = persona.apellido
-            formPrueba.dni.value = persona.dni
-        }
+    
     div.container
         p Buscar
-        form( method="post", name="formPrueba")
+         div    
             if persona != null
-                label(for="nombre")
-                div
-                    p #{persona.nombre} 
+                h1= persona.nombre
+        
+                
+       
+            
+            form( method="post", name="formPrueba")
+                h1= nombre
                 br
                 br 
                 label(for="apellido")
@@ -24,10 +23,7 @@ block contenido
                 input(type='text/plain', id ="dni", name='dni')
                 br
                 br 
-            else 
-                label(for='dni') Ingrese Dni:
-                input(type='text/plain', id ="dni", name='dni')
-                br
-                br 
-                button(type="submit",  onclick=`llenar(${persona})`)  buscar
+                button(type="submit") buscar
+                
     script(src="")
+    

@@ -1,10 +1,11 @@
+'use strict';
 const {Sequelize, Model, DataTypes} = require('sequelize')
 const sequelize = new Sequelize("lab2prueba", "root", "", {
     host: "localhost",
     dialect: "mysql",
     port: 3306,
   });
-class Persona extends Model{} 
+class Persona extends Model{ }
 
 Persona.init({
     persona_id: {
@@ -14,7 +15,7 @@ Persona.init({
     },
     nombre: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     apellido: {
       type: DataTypes.STRING,
@@ -71,6 +72,9 @@ Persona.init({
   {
     sequelize,
     modelName: "Persona"
-  });
+  }
+  );
+
+
   module.exports = Persona;
   
