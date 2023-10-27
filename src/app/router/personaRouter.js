@@ -17,7 +17,7 @@ router.get("/buscar", (req, res, next) => {
   res.render("pages/formPrueba");
   next();
 });
-// 3000:/persona/buscar/123123
+// 3000:/persona/buscar/
 router.post("/buscar/",async (req, res) => {
   const dni = req.body.dni;
   const persona = await Persona.findOne({where: { dni: dni} });
