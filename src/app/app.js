@@ -26,7 +26,7 @@ app.use('/tecnico', tecnicoRouter);
 app.use('/secretaria', secretariaRouter);
 app.use('/login', loginRouter);
 app.use('/tabla', tablaRouter);
-app.use('/examenes', examenRouter);
+app.use('/examen', examenRouter);
 app.use('/ordenTrabajo', ordenRouter);
 
 module.exports = app;

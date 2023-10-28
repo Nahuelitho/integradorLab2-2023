@@ -13,7 +13,7 @@ Examen.init({
       primaryKey : true
     },
     muestraId: {
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     nombre: {
