@@ -33,10 +33,23 @@ router.post("/", async (req, res, next) => {
     nombre: req.body.nombre,
     fechaEntregaResultado: req.body.fechaEntregaResultado,
   });
-  res.status(201).json({
+  res.status(200).send({message: 'Examen creado con exito!!!'})
+  next();
+});
+
+router.put("/Actualizar", async(req, res, next) => {
+  const examenId = req.body.examenId;
+  const body = req.body;
+  const actualizarExamen = await Examen.update({
+    muestraId: body.muestraId,
+    nombre: body.nombre,
+    fechaEntregaResultado: body.fechaEntregaResultado,
+  },
+  { where: {examenId: examenId}}
+  );
+   res.status(200).json({
     ok: true,
-    status: 201,
-    message: "Examen creado",
+    message: 'examen actualizado'
   });
   next();
 });

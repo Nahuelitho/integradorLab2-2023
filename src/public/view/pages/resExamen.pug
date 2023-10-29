@@ -19,13 +19,19 @@ block contenido
                     input(type='date', id='fechaEntregaResultado', name='fechaEntregaResultado', value=examen.fechaEntregaResultado)
                     br
                     br
-                    a(href="/cargaExamen") Volver a Examenes
+                    br
+                    br
+                    //falta desarrollar este botón
+                    //button(type="button", onclick="actualizarExamen()") Actualizar Examen 
+                    a(href="/examen") Volver a Examenes
                     br
                     br
 
             form(method="post", name="resExamen")
-                label(for='muestraId') Ingrese Id de Examen:
-                input(type='text/plain', id ="muestraId", name='muestraId')
+                label(for='examenId') Ingrese Id de Examen:
+                input(type='number', id ="examenId", name ="examenId")
                 br
                 br 
-                button(type="submit" ) Buscar Examen         
+                button(type="submit" ) Buscar Examen   
+                
+                      
