@@ -1,6 +1,6 @@
 const router = require("express").Router();
 //ruteador para requerir bioquimicos
-const Bioquimico = require('./models/bioquimico.model');
+const Bioquimico = require('../models/Bioquimico.model');
 
 //metodos de persona
 router.get("/", (req, res, next) => {

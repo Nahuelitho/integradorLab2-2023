@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { json } = require("express");
 //ruteador para requerir a personas
-const Persona = require('./models/Persona.model');
+const Persona = require('../models/Persona.model');
 
 //metodos de persona
 router.get("/", (req, res, next) => {

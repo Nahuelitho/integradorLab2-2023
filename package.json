@@ -2,10 +2,10 @@
   "name": "website",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app/app.js",
   "scripts": {
-    "dev": "nodemon src/servidor.js",
-    "start": "nodemon src/servidor.js"
+    "dev": "nodemon servidor.js",
+    "start": "nodemon servidor.js"
   },
   "keywords": [],
   "author": "",

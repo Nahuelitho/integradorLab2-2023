@@ -1,6 +1,6 @@
 const router = require("express").Router();
 //ruteador para requerir a personas
-const Muestra = require('../models/muestra.model');
+const Muestra = require('../models/Muestra.model');
 
 router.get("/", (req, res, next) => {
     res.render("pages/");

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 //ruteador para requerir a ordenes de trabajo
-const OrdenTrabajo = require("../models/ordenTrabajo.model");
+const OrdenTrabajo = require("../models/OrdenTrabajo.model");
 
 router.get("/", (req, res, next) => {
   res.render("pages/");
