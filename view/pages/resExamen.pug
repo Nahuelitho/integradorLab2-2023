@@ -2,8 +2,9 @@ extends ../layout/plantilla
 
 block contenido 
     
+    
     div.container 
-        p Buscar un examen por Id
+        p Buscar un examen por Id 
          div 
             if examen != null
                 form(action="/examen", method="post", id="cargaExamenForm")
