@@ -1,0 +1,21 @@
+header 
+    nav.navbar.navbar-expand-lg.bg-body-tertiary
+            .container-fluid
+                a.navbar-brand(href='login') Login
+                button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+                .collapse.navbar-collapse#navbarNav
+                    ul.navbar-nav
+                      li.nav-item
+                        a.nav-link(href='/persona') Paciente
+                      li.nav-item
+                        a.nav-link.active(aria-current='page', href='/') Home
+                      li.nav-item
+                        a.nav-link(href='/tabla') Tabla
+                      li.nav-item
+                        a.nav-link(href='/ordenTrabajo') Orden de Trabajo
+                      li.nav-item
+                        a.nav-link(href='/examenes') Examenes
+                      //Recordatorio para no olvidar desactivar botones cdo es necesario
+                      //li.nav-item
+                        //a.nav-link.disabled(aria-disabled='true') Disabled

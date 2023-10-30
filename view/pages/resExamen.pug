@@ -1,0 +1,37 @@
+extends ../layout/plantilla 
+
+block contenido 
+    
+    div.container 
+        p Buscar un examen por Id
+         div 
+            if examen != null
+                form(action="/examen", method="post", id="cargaExamenForm")
+                    label(for='muestraId') Id Muestra:
+                    input(type='number', id='muestraId', name='muestraId', value=examen.muestraId)
+                    br
+                    br
+                    label(for='nombre') Nombre de examen:
+                    input(type='text', id='nombre', name='nombre', value=examen.nombre)
+                    br
+                    br
+                    label(for='fechaEntregaResultado') Fecha entrega resultados:
+                    input(type='date', id='fechaEntregaResultado', name='fechaEntregaResultado', value=examen.fechaEntregaResultado)
+                    br
+                    br
+                    br
+                    br
+                    //falta desarrollar este botón
+                    //button(type="button", onclick="actualizarExamen()") Actualizar Examen 
+                    a(href="/examen") Volver a Examenes
+                    br
+                    br
+
+            form(method="post", name="resExamen")
+                label(for='examenId') Ingrese Id de Examen:
+                input(type='number', id ="examenId", name ="examenId")
+                br
+                br 
+                button(type="submit" ) Buscar Examen   
+                
+                      
