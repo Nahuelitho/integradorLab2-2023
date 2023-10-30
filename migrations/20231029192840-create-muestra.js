@@ -2,42 +2,35 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("resultado", {
+    await queryInterface.createTable("muestra", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      idOrdenTrabajo: {
+      idPaciente: {
         type: Sequelize.INTEGER,
         references: {
-          model: "OrdenTrabajo.model",
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
-      },
-      idBioquimico: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Bioquimico.model",
+          model: { tableName: "paciente" },
           key: "id",
         },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
+        allowNull: false,
       },
-      idMedicoSolicitante: {
+      idExamen: {
         type: Sequelize.INTEGER,
         references: {
-          model: "MedicoSolicitante.model",
+          model: { tableName: "examen" },
           key: "id",
         },
-        onUpdate: "CASCADE",
         onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+        allowNull: false,
       },
-      estadoAprobado: {
-        type: Sequelize.BOOLEAN,
+      fechaHoraRecoleccion: {
+        type: Sequelize.DATE,
       },
       createdAt: {
         allowNull: false,
@@ -50,6 +43,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("resultado");
+    await queryInterface.dropTable("muestra");
   },
 };

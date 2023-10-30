@@ -2,33 +2,38 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("muestra", {
+    await queryInterface.createTable("determinacion", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      idPaciente: {
+      cantidad: {
+        type: Sequelize.DOUBLE,
+      },
+      medida: {
+        type: Sequelize.STRING,
+      },
+      idResultado: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Paciente.model",
+          model: { tableName: "resultado" },
           key: "id",
         },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
+        allowNull: false,
       },
-      idExamen: {
+      idReferencia: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Examen.model",
+          model: { tableName: "referencia" },
           key: "id",
         },
-        onDelete: "CASCADE",
         onUpdate: "CASCADE",
-      },
-      fechaHoraRecoleccion: {
-        type: Sequelize.DATE,
+        onDelete: "CASCADE",
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -41,6 +46,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("muestra");
+    await queryInterface.dropTable("determinacion");
   },
 };

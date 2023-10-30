@@ -2,36 +2,45 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("determinacion", {
+    await queryInterface.createTable("resultado", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      cantidad: {
-        type: Sequelize.DOUBLE,
-      },
-      medida: {
-        type: Sequelize.STRING,
-      },
-      idResultado: {
+      idOrdenTrabajo: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Resultado.model",
-          key: "id",
-        },
-        onDelete: "CASCADE",
-        onUpdate: "CASCADE",
-      },
-      idReferencia: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Referencia.model",
+          model: { tableName: "ordenTrabajo" },
           key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
+        allowNull: false,
+      },
+      idBioquimico: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: { tableName: "bioquimico" },
+          key: "id",
+        },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+        allowNull: false,
+      },
+      idMedicoSolicitante: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: { tableName: "medicoSolicitante" },
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+        allowNull: false,
+      },
+      estadoAprobado: {
+        type: Sequelize.BOOLEAN,
       },
       createdAt: {
         allowNull: false,
@@ -44,6 +53,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("determinacion");
+    await queryInterface.dropTable("resultado");
   },
 };

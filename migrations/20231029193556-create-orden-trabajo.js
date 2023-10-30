@@ -12,20 +12,22 @@ module.exports = {
       idPaciente: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Paciente.model",
+          model: { tableName: "paciente" },
           key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
+        allowNull: false,
       },
       idExamen: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Examen.model",
+          model: { tableName: "examen" },
           key: "id",
         },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
+        allowNull: false,
       },
       diagnostico: {
         type: Sequelize.STRING,
@@ -45,11 +47,12 @@ module.exports = {
       idMedicoSolicitante: {
         type: Sequelize.INTEGER,
         references: {
-          model: "MedicoSolicitante.model",
+          model: { tableName: "medicoSolicitante" },
           key: "id",
         },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

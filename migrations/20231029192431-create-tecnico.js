@@ -12,11 +12,12 @@ module.exports = {
       idPersona: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Persona.model",
+          model: { tableName: "persona" },
           key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
+        allowNull: false,
       },
       titulo: {
         type: Sequelize.STRING,

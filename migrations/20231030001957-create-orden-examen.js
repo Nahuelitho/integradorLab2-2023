@@ -12,20 +12,22 @@ module.exports = {
       idExamen: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Examen.model",
+          model: { tableName: "examen" },
           key: "id",
         },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
+        allowNull: false,
       },
       idOrdenTrabajo: {
         type: Sequelize.INTEGER,
         references: {
-          model: "CASCADE",
+          model: { tableName: "ordenTrabajo" },
           key: "id",
         },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
