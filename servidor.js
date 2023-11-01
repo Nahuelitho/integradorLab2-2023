@@ -1,9 +1,13 @@
 //conexion  del servidor
 const app = require("./app/app");
-const { Sequelize } = require("sequelize");
+
+
 //start server
 app.listen(3000, async () => {
+
+  
   console.log("Servidor en puerto 3000");
+
  
 });
 

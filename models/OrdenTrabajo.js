@@ -9,17 +9,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // belongs to
-      OrdenTrabajo.belongsTo(models.Paciente.model, {
+      OrdenTrabajo.belongsTo(models.Paciente, {
         foreignKey: "id",
         target_key: "idPaciente",
       });
-      OrdenTrabajo.belongsTo(models.MedicoSolicitante.model, {
+      OrdenTrabajo.belongsTo(models.MedicoSolicitante, {
         foreignKey: "id",
         target_key: "idMedicoSolicitante",
       });
 
       // has
-      OrdenTrabajo.hasMany(models.Orden_Examen.model, {
+      OrdenTrabajo.hasMany(models.Orden_Examen, {
         foreignKey: "idOrdenTrabajo",
       });
     }
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "OrdenTrabajo.model",
+      modelName: "OrdenTrabajo",
       tableName: "ordenTrabajo",
     }
   );

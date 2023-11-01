@@ -1,7 +1,7 @@
 const router = require("express").Router();
 //ruteador para requerir secretarias
 
-const Secretaria = require('../models/Secretaria.model');
+const Secretaria = require('../models/Secretaria');
 
 //metodos de secretaria:
 

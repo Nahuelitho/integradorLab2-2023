@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       //has
-      Resultado.hasMany(models.Determinacion.model, {
+      Resultado.hasMany(models.Determinacion, {
         foreignKey: "idResultado",
       });
     }
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Resultado.model",
+      modelName: "Resultado",
       tableName: "resultado",
     }
   );

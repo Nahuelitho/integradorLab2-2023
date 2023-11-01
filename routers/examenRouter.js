@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { json } = require("express");
 //ruteador para requerir a examenes
-const Examen = require('../models/Examen.model');
+const Examen = require('../models/Examen');
 
 //carga formulario de examenes vacio
 router.get("/", (req, res, next) => {

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 //ruteador para requerir tecnicos
-const Tecnico = require('../models/Tecnico.model');
+const Tecnico = require('../models/Tecnico');
 
 //metodos de persona
 router.get("/", (req, res, next) => {

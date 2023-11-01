@@ -8,7 +8,7 @@ const secretariaRouter = require("../routers/secretariaRouter");
 const loginRouter = require("../routers/loginRouter")
 const tablaRouter = require("../routers/tablaRouter");
 const examenRouter = require("../routers/examenRouter");
-const ordenRouter = require("../routers/ordenRouter");
+const ordenRouter = require("../routers/ordenTrabajoRouter");
 
 //configuracion 
 app.set("views", "./view");

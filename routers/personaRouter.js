@@ -1,7 +1,9 @@
 const router = require("express").Router();
 const { json } = require("express");
 //ruteador para requerir a personas
-const Persona = require('../models/Persona.model');
+const Persona = require('../models/Persona');
+
+
 
 //metodos de persona
 router.get("/", (req, res, next) => {
@@ -24,7 +26,7 @@ router.post("/buscar", async (req, res) => {
 
 //alta persona en bd con creacion de tabla de ser necesario
 router.post("/", async (req, res, next) => {
-  await Persona.sync();
+  
   const createPersona = await Persona.create({
     nombre: req.body.nombre,
     apellido: req.body.apellido,

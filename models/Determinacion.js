@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // Belongs to
-      Determinacion.belongsTo(models.Resultado.model, {
+      Determinacion.belongsTo(models.Resultado, {
         foreignKey: "id",
         target_key: "idResultado",
       });
-      Determinacion.belongsTo(models.Referencia.model, {
+      Determinacion.belongsTo(models.Referencia, {
         foreignKey: "id",
         target_key: "idReferencia",
       });
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Determinacion.model",
+      modelName: "Determinacion",
       tableName: "determinacion",
     }
   );

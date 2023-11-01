@@ -62,7 +62,8 @@ block contenido
                     button(type='submit', id="btGuardar") Guardar
                     br
                     br
-        
+            
+               
                 
        
             
@@ -72,7 +73,12 @@ block contenido
                 input(type='text/plain', id ="Buscardni", name='dni')
                 br
                 br 
-                button(type="submit" ) Buscar
+                div(class="row text-center")
+                    div(class="col")
+                        button(type="submit", form="formPrueba" ) Buscar
+                    div(class="col text-center")
+                        a(href="http://localhost:3000/persona") 
+                            button(type="button") Agregar Paciente
                 
     script(src="")
     

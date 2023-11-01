@@ -1,6 +1,8 @@
 "use strict";
-const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
+var { Model, Sequelize, DataTypes} = require("sequelize");
+const {sequelize} = require("./index")
+
+
   class Persona extends Model {
     /**
      * Helper method for defining associations.
@@ -8,17 +10,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      
-      Persona.hasOne(models.Bioquimico.model, {
+      Persona.hasOne(models.Bioquimico, {
         foreignKey: "idPersona",
       });
-      Persona.hasOne(models.Paciente.model, {
+      Persona.hasOne(models.Paciente, {
         foreignKey: "idPersona",
       });
-      Persona.hasOne(models.Secretaria.model, {
+      Persona.hasOne(models.Secretaria, {
         foreignKey: "idPersona",
       });
-      Persona.hasOne(models.Tecnico.model, {
+      Persona.hasOne(models.Tecnico, {
         foreignKey: "idPersona",
       });
     }
@@ -29,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       apellido: DataTypes.STRING,
       dni: DataTypes.STRING,
       email: DataTypes.STRING,
+      fechaNacimiento: DataTypes.DATE,
       sexo: DataTypes.STRING,
       domicilio: DataTypes.STRING,
       provincia: DataTypes.STRING,
@@ -40,9 +42,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Persona.model",
+      modelName: "Persona",
       tableName: "persona"
     }
   );
-  return Persona;
-};
+  module.exports = Persona;
+
+ 
+
