@@ -22,13 +22,13 @@ block contenido
             
             br
             label(for='selectorSexo', style="display: block") Sexo:
-            select(id="selectorSexo", required)
+            select(form = "formulario", name="sexo", id="selectorSexo", required)
                 option(value="Masculino") Masculino
                 option(value="Femenino")  Femenino
             
             br
             label(for='fechaNacimiento') Fecha de Nacimiento:
-            input(type='date', id='fechaNacimiento', name='fechaNacimiento',placeholder='Ingresefecha     de Nacimiento', required)
+            input(type='date', form="formulario",  id='fechaNacimiento', name='fechaNacimiento', required)
             
             br
             label(for='domicilio') Domicilio:
@@ -39,14 +39,14 @@ block contenido
                div(class="row")
                     div(class="col")
                         label(for="selectorProvincia", style="display: block") Provincia:
-                        select(id="selectorProvincia", required)
+                        select(form = "formulario", name="provincia" id="selectorProvincia", required)
                             option(value="San Luis") San Luis
                             option(value="Mendoza") Mendoza
                             option(value="Cordoba") Cordoba   
                         br
                     div(class="col")
                         label(for="selectorLocalidad", style="display: block") Localidad:
-                        select(id="selectorLocalidad", required)
+                        select(form = "formulario", name = "localidad", id="selectorLocalidad", required)
                             option(value="San Luis") San Luis
                             option(value="La Toma") La Toma  
                         br
