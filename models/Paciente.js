@@ -1,38 +1,43 @@
 "use strict";
-const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
-  class Paciente extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // belongs to
-      Paciente.belongsTo(models.Persona, {
-        foreignKey: "id",
-        target_key: "idPersona",
-      });
+const { Model, Sequelize, DataTypes } = require("sequelize");
+const config = require(__dirname + "/../config/config.json")["development"];
+const sequelize = new Sequelize(
+  config.database,
+  config.username,
+  config.password,
+  config
+);
+class Paciente extends Model {
+  /**
+   * Helper method for defining associations.
+   * This method is not a part of Sequelize lifecycle.
+   * The `models/index` file will call this method automatically.
+   */
+  static associate(models) {
+    // belongs to
+    Paciente.belongsTo(models.Persona, {
+      foreignKey: "id",
+      target_key: "idPersona",
+    });
 
-      // has
-      Paciente.hasMany(models.Muestra, {
-        foreignKey: "idPaciente",
-      });
-      Paciente.hasMany(models.OrdenTrabajo, {
-        foreignKey: "idPaciente",
-      });
-    }
+    // has
+    Paciente.hasMany(models.Muestra, {
+      foreignKey: "idPaciente",
+    });
+    Paciente.hasMany(models.OrdenTrabajo, {
+      foreignKey: "idPaciente",
+    });
   }
-  Paciente.init(
-    {
-      idPersona: DataTypes.INTEGER,
-      embarazada: DataTypes.BOOLEAN,
-    },
-    {
-      sequelize,
-      modelName: "Paciente",
-      tableName: "paciente",
-    }
-  );
-  return Paciente;
-};
+}
+Paciente.init(
+  {
+    idPersona: DataTypes.INTEGER,
+    embarazada: DataTypes.BOOLEAN,
+  },
+  {
+    sequelize,
+    modelName: "Paciente",
+    tableName: "paciente",
+  }
+);
+module.exports = Paciente;

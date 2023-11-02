@@ -1,7 +1,9 @@
 "use strict";
-var { Model, Sequelize, DataTypes} = require("sequelize");
-const {sequelize} = require("./index")
-
+/* const { Model, Sequelize, DataTypes} = require("sequelize");
+const {sequelize} = require("./index") */
+const {Model, Sequelize, DataTypes} = require('sequelize')
+const config = require(__dirname + '/../config/config.json')['development'];
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
   class Persona extends Model {
     /**
@@ -46,7 +48,9 @@ const {sequelize} = require("./index")
       tableName: "persona"
     }
   );
+
   module.exports = Persona;
+
 
  
 

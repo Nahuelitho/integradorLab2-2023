@@ -9,7 +9,7 @@ router.get("/", (req, res, next) => {
 });
 //alta bioquimico en bd con creacion de tabla de ser necesario
 router.post("/", async (req, res) => {
-  await Bioquimico.sync();
+ 
   const createBioquimico = await Bioquimico.create({
     titulo: req.body.titulo,
     especialidad: req.body.especialidad,
