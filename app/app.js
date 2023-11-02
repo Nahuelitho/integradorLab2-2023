@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 //pasar por aca las rutas nuevas para aplicarle los middlewares (obtener datos de formularios o tratamiento
 //de datos)
 
+app.use('/', loginRouter);
 app.use('/persona', personaRouter);
 app.use('/tecnico', tecnicoRouter);
 app.use('/secretaria', secretariaRouter);
