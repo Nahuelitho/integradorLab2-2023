@@ -16,8 +16,9 @@ class Referencia extends Model {
   static associate(models) {
     // belongs to
     // Has
-    Referencia.hasMany(models.Determinacion, {
-      foreignKey: "idReferencia",
+    Referencia.belongsTo(models.Determinacion, {
+      foreignKey: "id",
+      target_key: "idDeterminacion",
     });
   }
 }
@@ -29,6 +30,7 @@ Referencia.init(
     embarazo: DataTypes.BOOLEAN,
     valMin: DataTypes.DOUBLE,
     valMax: DataTypes.DOUBLE,
+    idDeterminacion: DataTypes.INTEGER,
   },
   {
     sequelize,

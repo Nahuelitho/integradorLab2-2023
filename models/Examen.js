@@ -21,6 +21,9 @@ class Examen extends Model {
     Examen.hasMany(models.Orden_Examen, {
       foreignKey: "idExamen",
     });
+    Examen.hasMany(models.Determinacion, {
+      foreignKey: "idExamen",
+    });
   }
 }
 Examen.init(

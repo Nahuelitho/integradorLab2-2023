@@ -19,10 +19,13 @@ class Determinacion extends Model {
       foreignKey: "id",
       target_key: "idResultado",
     });
-    Determinacion.belongsTo(models.Referencia, {
-      foreignKey: "id",
-      target_key: "idReferencia",
+    Determinacion.hasMany(models.Referencia, {
+      foreignKey: "idDeterminacion",
     });
+    Determinacion.belongsTo(models.Examen, {
+      foreignKey: "id",
+      target_key: "idExamen"
+    })
   }
 }
 Determinacion.init(
@@ -31,6 +34,7 @@ Determinacion.init(
     medida: DataTypes.STRING,
     idResultado: DataTypes.INTEGER,
     idReferencia: DataTypes.INTEGER,
+    idExamen: DataTypes.INTEGER,
   },
   {
     sequelize,
