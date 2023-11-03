@@ -1,36 +1,37 @@
 extends ../layout/plantilla
 block contenido
     link(rel="stylesheet", href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css")
-    br
-      div(class="container") 
-      h3 Pacientes 
+    
+    div(class="container", id="tablaPacientes") 
+      h3(style="text-align: center") Pacientes 
       div(class="row")
         div(class="col")
-        
-          table#miTabla(display='block')
+        if personas != null
+          table(id="miTabla",class="table table-striped", display='block')
             thead
               tr
                 th Nombre
-                th Edad
-            tbody
-              tr
-                td Juan
-                td 30
-              tr
-                td Maria
-                td 25
-              tr
-                td Jose
-                td 41
-              tr
-                td Eduardo
-                td 34    
+                th Apellido
+                th DNI 
+                th email
+                th Provincia 
+                th Direccion
+            tbody(id="tablaBody")
+              each persona in personas 
+              
+                  tr
+                    td= `${persona.nombre}`  
+                    td= `${persona.apellido}`  
+                    td= `${persona.dni}`  
+                    td= `${persona.email}`  
+                    td= `${persona.provincia}`  
+                    td= `${persona.domicilio}`  
+                  
+        else 
+            h2(style="text-align: center") No se encontraron pacientes cargados.
         //- Más filas aquí
-    script(src="https://code.jquery.com/jquery-3.6.0.min.js")
-    script(src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js")
-    script.
-      $(document).ready(function() {
-        $('#miTabla').DataTable({
-          
-        });
-      });
+    script(src="https://code.jquery.com/jquery-3.7.0.js")
+    script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
+    //script(src="../js/llenarTablaPacientes.js")
+    
+    

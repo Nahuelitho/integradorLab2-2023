@@ -7,7 +7,16 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+#tablaPacientes{
+  width: auto;
+    margin: 0 auto;
+    margin-top: 70px;
+    padding: 20px;
+    background-color: #bdbcbc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 
+}
 .container input{
     padding-left: 20%;
     padding-right: 20% ;

@@ -15,6 +15,13 @@ router.get("/buscar", (req, res, next) => {
   res.render("pages/formPrueba");
   next();
 });
+//lista todos los pacientes en una tabla persona/pacientes
+router.get("/pacientes", async(req, res, next)=>{
+  const personas = await Persona.findAll();
+  res.render("pages/tabla", { personas: personas })
+  next();
+
+});
 
 // 3000:/persona/buscar/
 router.post("/buscar", async (req, res) => {
