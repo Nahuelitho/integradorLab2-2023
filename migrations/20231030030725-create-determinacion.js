@@ -35,6 +35,17 @@ module.exports = {
         onDelete: "CASCADE",
         allowNull: false,
       },
+      idExamen: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: { tableName: "examen" },
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+        allowNull: false,
+      },
+    
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
