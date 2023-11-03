@@ -17,7 +17,7 @@ router.get("/buscar", (req, res, next) => {
 //busca un examen por examenId
 router.post("/buscar/", async (req, res, next) => {
   const examenId = req.body.examenId;
-  const examen = await Examen.findOne({ where: {examenId: examenId}});
+  const examen = await Examen.findOne({ where: {id: examenId}});
   res.render("pages/resExamen", {examen: examen});
   next();
 });

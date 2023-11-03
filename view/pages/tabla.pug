@@ -2,24 +2,29 @@ extends ../layout/plantilla
 block contenido
     link(rel="stylesheet", href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css")
     br
-    table#miTabla(display='block')
-      thead
-        tr
-          th Nombre
-          th Edad
-      tbody
-        tr
-          td Juan
-          td 30
-        tr
-          td Maria
-          td 25
-        tr
-          td Jose
-          td 41
-        tr
-          td Eduardo
-          td 34    
+      div(class="container") 
+      h3 Pacientes 
+      div(class="row")
+        div(class="col")
+        
+          table#miTabla(display='block')
+            thead
+              tr
+                th Nombre
+                th Edad
+            tbody
+              tr
+                td Juan
+                td 30
+              tr
+                td Maria
+                td 25
+              tr
+                td Jose
+                td 41
+              tr
+                td Eduardo
+                td 34    
         //- Más filas aquí
     script(src="https://code.jquery.com/jquery-3.6.0.min.js")
     script(src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js")
