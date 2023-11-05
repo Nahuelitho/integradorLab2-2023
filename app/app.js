@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const estilos = __dirname.replace("app", "public");
 var bodyParser = require('body-parser');
-const personaRouter = require("../routers/personaRouter");
+const pacienteRouter = require("../routers/pacienteRouter");
 const tecnicoRouter = require("../routers/tecnicoRouter");
 const secretariaRouter = require("../routers/secretariaRouter");
 const loginRouter = require("../routers/loginRouter")
@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 //de datos)
 
 app.use('/', loginRouter);
-app.use('/persona', personaRouter);
+app.use('/paciente', pacienteRouter);
 app.use('/tecnico', tecnicoRouter);
 app.use('/secretaria', secretariaRouter);
 app.use('/login', loginRouter);

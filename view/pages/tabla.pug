@@ -6,39 +6,95 @@ block contenido
       h3(style="text-align: center") Pacientes 
       div(class="row")
         div(class="col")
-        if personas != null
-          table(id="miTabla",class="table table-striped", display='block')
-            thead
-              tr
-                th Nombre
-                th Apellido
-                th DNI 
-                th email
-                th Provincia 
-                th Direccion
-            tbody(id="tablaBody")
-              each persona in personas 
+          if personas != null
+            table(id="miTabla",class="table table-striped", display='block')
+              thead
+                tr
+                  th Nombre
+                  th Apellido
+                  th DNI 
+                  th email
+                  th Provincia 
+                  th Direccion
+              tbody(id="tablaBody")
+                each persona in personas 
+                
+                    tr
+                      td= `${persona.nombre}`  
+                      td= `${persona.apellido}`  
+                      td= `${persona.dni}`  
+                      td= `${persona.email}`  
+                      td= `${persona.provincia}`  
+                      td= `${persona.domicilio}`  
+                    
+          else 
+              h2(style="text-align: center") No se encontraron pacientes cargados.
+        div(class="col", style="content-align: center")
+          h1 Datos Paciente: 
+          form(method="post", id="formulario")
+            div(class="contenido-formulario")
+              .row
+                label(for='nombre') Nombre:
+                input(type='text', id='nombre', size=12, name='nombre', placeholder='Nombre', required)
               
-                  tr
-                    td= `${persona.nombre}`  
-                    td= `${persona.apellido}`  
-                    td= `${persona.dni}`  
-                    td= `${persona.email}`  
-                    td= `${persona.provincia}`  
-                    td= `${persona.domicilio}`  
-                  
-        else 
-            h2(style="text-align: center") No se encontraron pacientes cargados.
+              .row
+                label(for='apellido') Apellido:
+                input(type='text', id='apellido', name='apellido', placeholder='Ingrese Apellido', required)
+              
+              .row
+                label(for="dni") DNI:
+                input(type='text', id='dni', name='dni', placeholder='Ingrese DNI', required)
+                
+              .row
+                label(for='email') Mail:
+                input(type='email', id='email', name='email', placeholder='Ingrese mail', required)
+                
+              .row 
+                label(for='selectorSexo') Sexo:
+                select(form = "formulario", style="width: 50%", name="sexo", id="selectorSexo", required)
+                    option(value="Masculino") Masculino
+                    option(value="Femenino")  Femenino
+                
+              .row
+                label(for='fechaNacimiento') Fecha de Nacimiento:
+                input(type='date', form="formulario",  id='fechaNacimiento', name='fechaNacimiento', required)
+                
+              .row
+                label(for='domicilio') Domicilio:
+                input(type='text', id='domicilio', name='domicilio', placeholder='Ingrese Domicilio', required)
+                
+              .row
+                label(for='selectorProvincia') Provincia:
+                select(form = "formulario",style="width: 50%", name="selectorProvincia" id="selectorProvincia", required)
+                    option(value="San Luis") San Luis
+                    option(value="Mendoza") Mendoza
+                    option(value="Cordoba") Cordoba
+              .row   
+                label(for="selectorLocalidad") Localidad:
+                select(form = "formulario", style="width: 50%" name = "localidad", id="selectorLocalidad", required)
+                    option(value="San Luis") San Luis
+                    option(value="La Toma") La Toma  
+              .row          
+                label(for='obraSocial') Obra social:
+                input(type='obraSocial', id='obraSocial', name='obraSocial', placeholder='Ingrese Obra Social', required)
+                
+              .row  
+                label(for='numeroAfiliado') Numero de Afiliado:
+                input(type='numeroAfiliado', id='numeroAfiliado', name='numeroAfiliado', placeholder='Ingrese Numero de Afiliado', required)
         //- Más filas aquí
     script(src="https://code.jquery.com/jquery-3.7.0.js")
     script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
-    //script(src="../js/llenarTablaPacientes.js")
+    script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
+    script(src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js")
+    
     script.
       $(document).ready(function() {
           $('#miTabla').DataTable({
+            "select": true,
             "language": {
               "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json" 
-            }
+            },
+            
             
           });
         });

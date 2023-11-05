@@ -42,7 +42,7 @@ router.put("/Actualizar", async(req, res, next) => {
     nombre: body.nombre,
     fechaEntregaResultado: body.fechaEntregaResultado,
   },
-  { where: {examenId: examenId}}
+  { where: {id: examenId}}
   );
    res.status(200).json({
     ok: true,

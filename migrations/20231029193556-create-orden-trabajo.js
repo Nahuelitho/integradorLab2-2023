@@ -31,18 +31,23 @@ module.exports = {
       },
       diagnostico: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       estado: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       fechaCreacion: {
         type: Sequelize.DATEONLY,
+        allowNull: false,
       },
       fechaEstimada: {
         type: Sequelize.DATEONLY,
+        allowNull: false,
       },
       fechaCambioEstado: {
         type: Sequelize.DATEONLY,
+        allowNull: false,
       },
       idMedicoSolicitante: {
         type: Sequelize.INTEGER,

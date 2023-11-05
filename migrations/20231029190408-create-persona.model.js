@@ -11,42 +11,58 @@ module.exports = {
       },
       nombre: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       apellido: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       dni: {
         type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
       },
       email: {
         type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
       },
-      fechaNacimiento:{
+      fechaNacimiento: {
         type: Sequelize.DATEONLY,
+        allowNull: false,
       },
       sexo: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       domicilio: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       provincia: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       localidad: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       obraSocial: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       numeroAfiliado: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       user: {
         type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
       },
       password: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

@@ -21,6 +21,7 @@ module.exports = {
       },
       embarazada: {
         type: Sequelize.BOOLEAN,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

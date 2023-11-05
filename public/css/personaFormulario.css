@@ -17,11 +17,20 @@
     border-radius: 5px;
 
 }
+label{
+  text-align: left;
+
+}
+
+.contenido-formulario{
+  padding: 25px;
+ 
+}
 .container input{
-    padding-left: 20%;
-    padding-right: 20% ;
+    text-align: center;
     background-color: #f5f5f5;
     color: black;
+    width: 40%;
     }  
 body{
     background-color: bisque!important;

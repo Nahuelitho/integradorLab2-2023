@@ -25,7 +25,11 @@ Resultado.init(
     idOrdenTrabajo: DataTypes.INTEGER,
     idBioquimico: DataTypes.INTEGER,
     idMedicoSolicitante: DataTypes.INTEGER,
-    estadoAprobado: DataTypes.BOOLEAN,
+    estadoAprobado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+      
   },
   {
     sequelize,

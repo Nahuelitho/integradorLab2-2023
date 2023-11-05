@@ -4,7 +4,7 @@ block contenido
     link(rel='stylesheet', type='text/css', href='css/personaFormulario.css') 
     div.container
         
-        form(action="/persona", method="post", id="formulario")
+        form(method="post", id="formulario")
             label(for='nombre') Nombre:
             input(type='text', id='nombre', name='nombre', placeholder='Ingrese Nombre', required)
             
@@ -66,15 +66,17 @@ block contenido
             input(type='password', id='password', name='password', placeholder='Ingrese Contraseña', required)
             
             br
-            select(id="selectorTipoPersona", required)
-                option(value="Paciente") Paciente
-                option(value="Tecnico") Tecnico 
-                option(value="Bioquimico") Bioquimico
-                option(value="Secretaria") Secretaria    
+            div(id="adicional")
+            select(id="selectorTipoPersona",name="selectPersona", onchange="elegir(this)" required)
+                option(disabled selected) Elija Rol
+                option(value="paciente") Paciente
+                option(value="tecnico") Tecnico 
+                option(value="bioquimico") Bioquimico
+                option(value="secretaria") Secretaria
             
             button(type='submit', id="btGuardar") Guardar
             br
             br
-    script(src="")
+    script(src="../js/script.js")
         
     

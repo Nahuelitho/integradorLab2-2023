@@ -33,7 +33,6 @@ Determinacion.init(
     cantidad: DataTypes.DOUBLE,
     medida: DataTypes.STRING,
     idResultado: DataTypes.INTEGER,
-    idReferencia: DataTypes.INTEGER,
     idExamen: DataTypes.INTEGER,
   },
   {

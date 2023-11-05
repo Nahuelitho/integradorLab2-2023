@@ -32,7 +32,10 @@ class Paciente extends Model {
 Paciente.init(
   {
     idPersona: DataTypes.INTEGER,
-    embarazada: DataTypes.BOOLEAN,
+    embarazada: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   {
     sequelize,

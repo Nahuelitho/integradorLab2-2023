@@ -21,9 +21,11 @@ module.exports = {
       },
       titulo: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       fechaIngreso: {
         type: Sequelize.DATEONLY,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

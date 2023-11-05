@@ -1,12 +1,12 @@
 extends ../layout/plantilla
 
 block contenido 
-    
+    script(src="../js/pruebaScript.js")
     div.container
         p Buscar
          div    
             if persona != null
-                form(action="/persona", method="post", id="formulario")
+                form(action="/persona/actualizar" method="post" id="formulario")
                     label(for='nombre') Nombre:
                     input(type='text', id='nombre', name='nombre', value=persona.nombre)
                     br
@@ -70,12 +70,12 @@ block contenido
             form( method="post", name="formPrueba", action="/persona/buscar")
                
                 label(for='dni') Ingrese Dni:
-                input(type='text/plain', id ="Buscardni", name='dni')
+                input(type='text/plain', id ="dniBuscar", name='dniBuscar')
                 br
                 br 
                 div(class="row text-center")
                     div(class="col")
-                        button(type="submit", form="formPrueba" ) Buscar
+                        button(type="submit" ) Buscar
                     div(class="col text-center")
                         a(href="http://localhost:3000/persona") 
                             button(type="button") Agregar Paciente

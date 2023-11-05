@@ -11,9 +11,11 @@ module.exports = {
       },
       cantidad: {
         type: Sequelize.DOUBLE,
+        allowNull: false,
       },
       medida: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       idResultado: {
         type: Sequelize.INTEGER,
@@ -23,16 +25,6 @@ module.exports = {
         },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
-        allowNull: false,
-      },
-      idReferencia: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: { tableName: "referencia" },
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
         allowNull: false,
       },
       idExamen: {
@@ -45,7 +37,7 @@ module.exports = {
         onDelete: "CASCADE",
         allowNull: false,
       },
-    
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

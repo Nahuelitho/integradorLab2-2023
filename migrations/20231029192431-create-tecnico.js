@@ -21,12 +21,15 @@ module.exports = {
       },
       titulo: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       matricula: {
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       fechaIngreso: {
         type: Sequelize.DATEONLY,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

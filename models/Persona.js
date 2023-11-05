@@ -30,7 +30,10 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
     {
       nombre: DataTypes.STRING,
       apellido: DataTypes.STRING,
-      dni: DataTypes.STRING,
+      dni:{ 
+        type: DataTypes.STRING,
+        unique: true,
+        },
       email: DataTypes.STRING,
       fechaNacimiento: DataTypes.DATE,
       sexo: DataTypes.STRING,

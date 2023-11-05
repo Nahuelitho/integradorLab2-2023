@@ -31,6 +31,7 @@ module.exports = {
       },
       fechaHoraRecoleccion: {
         type: Sequelize.DATE,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
