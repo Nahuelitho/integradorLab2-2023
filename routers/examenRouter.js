@@ -30,7 +30,7 @@ router.post("/", async (req, res, next) => {
     nombre: req.body.nombre,
     fechaEntregaResultado: req.body.fechaEntregaResultado,
   });
-  res.status(200).send({message: 'Examen creado con exito!!!'})
+  res.render("pages/cargaExamen");
   next();
 });
 
@@ -44,10 +44,7 @@ router.put("/Actualizar", async(req, res, next) => {
   },
   { where: {id: examenId}}
   );
-   res.status(200).json({
-    ok: true,
-    message: 'examen actualizado'
-  });
+  res.status(200).send({message: 'Examen creado con exito!!!'})
   next();
 });
 

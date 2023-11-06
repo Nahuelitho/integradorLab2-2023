@@ -34,6 +34,10 @@ Determinacion.init(
     medida: DataTypes.STRING,
     idResultado: DataTypes.INTEGER,
     idExamen: DataTypes.INTEGER,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    }
   },
   {
     sequelize,

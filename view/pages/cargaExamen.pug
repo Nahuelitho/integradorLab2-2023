@@ -3,7 +3,6 @@ extends ../layout/plantilla
 block contenido 
     link(rel='stylesheet', type='text/css', href='../css/personaFormulario.css')
     div.container 
-    
         form(action="/examen", method="post", id="cargaExamenForm")
             label(for='muestraId') Id Muestra:
             br
@@ -26,3 +25,11 @@ block contenido
             a(href="/examen/buscar") Buscar un Examen
             br
             br
+            a(href="/determinacion") Cargar una Determinación
+            br
+            br
+            a(href="/referencia") Cargar una Referencia
+            br
+            br
+            a(href="/muestra") Cargar una Muestra
+

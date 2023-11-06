@@ -30,6 +30,10 @@ Muestra.init(
     idPaciente: DataTypes.INTEGER,
     idExamen: DataTypes.INTEGER,
     fechaHoraRecoleccion: DataTypes.DATE,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    }
   },
   {
     sequelize,

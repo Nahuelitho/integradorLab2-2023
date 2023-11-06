@@ -24,12 +24,19 @@ class Examen extends Model {
     Examen.hasMany(models.Determinacion, {
       foreignKey: "idExamen",
     });
+    Examen.hasMany(models.Muestra, {
+      foreignKey: "idExamen",
+    });
   }
 }
 Examen.init(
   {
     nombre: DataTypes.STRING,
     fechaEntregaResultado: DataTypes.DATEONLY,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      values: true,
+    }
   },
   {
     sequelize,

@@ -9,6 +9,7 @@ const loginRouter = require("../routers/loginRouter")
 const tablaRouter = require("../routers/tablaRouter");
 const examenRouter = require("../routers/examenRouter");
 const ordenRouter = require("../routers/ordenTrabajoRouter");
+const determinacionRouter = require("../routers/determinacionRouter");
 
 //configuracion 
 app.set("views", "./view");
@@ -28,5 +29,6 @@ app.use('/login', loginRouter);
 app.use('/tabla', tablaRouter);
 app.use('/examen', examenRouter);
 app.use('/ordenTrabajo', ordenRouter);
+app.use('/determinacion', determinacionRouter);
 
 module.exports = app;

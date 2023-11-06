@@ -31,6 +31,10 @@ Referencia.init(
     valMin: DataTypes.DOUBLE,
     valMax: DataTypes.DOUBLE,
     idDeterminacion: DataTypes.INTEGER,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    }
   },
   {
     sequelize,

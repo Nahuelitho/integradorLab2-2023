@@ -1,0 +1,37 @@
+extends ../layout/plantilla 
+
+block contenido 
+    link(rel='stylesheet', type='text/css', href='../css/personaFormulario.css')
+    div.container
+        form(action="/determinacion", method="post", id="cargaDeterminacionForm")
+        label(for='cantidad') Ingrese cantidad:
+        br
+        input(type='number', id='cantidad', name='cantidad', placeholder='Ingrese cantidad', required)
+        br
+        br
+        label(for='medida') Ingrese medida:
+        br
+        input(type='text', id='medida', name='medida', placeholder='Ingrese medida', required)
+        br
+        br
+        label(for='idResultado') Ingrese id Resultado:
+        br
+        input(type='number', id='idResultado', name='idResultado', placeholder='Ingrese id Resultado', required)
+        br
+        br
+        label(for='idReferencia') Ingrese id Referencia:
+        br
+        input(type='number', id='idReferencia', name='idReferencia', placeholder='Ingrese id Referencia', required)
+        br
+        br
+        label(for='idExamen') Ingrese id Examen:
+        br
+        input(type='number', id='idExamen', name='idExamen', placeholder='Ingrese id Examen', required)
+        br
+        br
+        button(type='submit', id="btGuardarDeterminacion") Guardar Determinacion
+        br
+        br
+        a(href="/examen") Volver a Examenes
+        br
+        br

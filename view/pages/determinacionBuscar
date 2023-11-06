@@ -1,0 +1,44 @@
+extends ../layout/plantilla 
+
+block contenido 
+    
+    
+    div.container 
+        p Buscar un examen por Id 
+         div 
+            if determinacion != null
+                form(action="/determinacion", method="post", id="buscarDeterminacionForm")
+                    label(for='cantidad') Ingrese cantidad:
+                    br
+                    input(type='number', id='cantidad', name='cantidad', value=determinacion.cantidad)
+                    br
+                    br
+                    label(for='medida') Ingrese medida:
+                    br
+                    input(type='text', id='medida', name='medida', value=determinacion.medida)
+                    br
+                    br
+                    label(for='idResultado') Ingrese id Resultado:
+                    br
+                    input(type='number', id='idResultado', name='idResultado', value=determinacion.idResultado)
+                    br
+                    br
+                    label(for='idReferencia') Ingrese id Referencia:
+                    br
+                    input(type='number', id='idReferencia', name='idReferencia', value=determinacion.idReferencia)
+                    br
+                    br
+                    label(for='idExamen') Ingrese id Examen:
+                    br
+                    input(type='number', id='idExamen', name='idExamen', value=determinacion.idExamen)
+                    br
+                    br 
+                    a(href="/examen") Volver a Examenes
+                    br
+                    br
+            form(method="post", name="determinacionBuscar", action="/determinacion/buscar")
+                label(for='determinacionId') Ingrese Id de Determinacion:
+                input(type='number', id ="determinacionId", name ="determinacionId")
+                br
+                br 
+                button(type="submit" ) Buscar Determinacion 
