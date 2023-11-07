@@ -3,7 +3,7 @@ const { json } = require("express");
 //ruteador para requerir a personas
 const Persona = require('../models/Persona');
 const Paciente = require('../models/Paciente');
-
+const bcrypt = require('bcryptjs');
 
 
 //metodos de Paciente
@@ -21,6 +21,7 @@ router.get("/pacientes", async(req, res, next)=>{
 });
 ///crear, primero crea la persona y luego le asigna el id de esa persona al  Paciente (idPersona)
 router.post("/", async (req, res, next)=>{
+  const hashedPassword = await bcrypt.hash(req.body.password, 5); 
   const persona = await Persona.create({
     nombre: req.body.nombre,
     apellido: req.body.apellido,
@@ -34,16 +35,17 @@ router.post("/", async (req, res, next)=>{
     obraSocial: req.body.obraSocial,
     numeroAfiliado: req.body.numeroAfiliado,
     user: req.body.user,
-    password: req.body.password,
+    password: hashedPassword,
   });
   const paciente = await Paciente.create({
     idPersona: persona.id,
     embarazada: req.body.embarazada,
   });
-  res.status(200).json({
+  res.redirect('/login');
+  /*res.status(200).json({
     ok: true,
     message: 'Paciente creado!!'
-  })
+  })*/
   next();
 })
 

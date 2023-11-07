@@ -4,8 +4,8 @@ block contenido
     div.container
       h1 Iniciar sesión
       form(action='/login', method='post')
-        label(for='username') Usuario:
-        input(type='text', id='username', name='username', placeholder='Ingrese su usuario', required)
+        label(for='user') Usuario:
+        input(type='text', id='user', name='user', placeholder='Ingrese su usuario', required)
         br
         br
         label(for='password') Contraseña:
@@ -15,8 +15,8 @@ block contenido
         button(type='submit') Ingresar
         br
         br
-      a(href="/crearCuenta") Crear una cuenta
+      a(href="/paciente") Crear una cuenta
       br
       br
-      a(href="/olvideContraseña") Olvidaste la contraseña?
+      //a(href="/olvideContraseña") Olvidaste la contraseña?
     br
