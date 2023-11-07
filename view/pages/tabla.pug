@@ -1,103 +1,112 @@
 extends ../layout/plantilla
 block contenido
     link(rel="stylesheet", href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css")
+    link(rel="stylesheet", href="../css/TablaPacientes.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css",integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+     crossorigin="anonymous" referrerpolicy="no-referrer")
     
     div(class="container", id="tablaPacientes") 
       h3(style="text-align: center") Pacientes 
-      div(class="row")
+      div(class="row", )
         div(class="col")
-          if personas != null
-            table(id="miTabla",class="table table-striped", display='block')
-              thead
-                tr
-                  th Nombre
-                  th Apellido
-                  th DNI 
-                  th email
-                  th Provincia 
-                  th Direccion
-              tbody(id="tablaBody")
-                each persona in personas 
-                
+            if personas != null
+              table(id="miTabla",class="table table-striped")
+                thead
                     tr
-                      td= `${persona.nombre}`  
-                      td= `${persona.apellido}`  
-                      td= `${persona.dni}`  
-                      td= `${persona.email}`  
-                      td= `${persona.provincia}`  
-                      td= `${persona.domicilio}`  
-                    
-          else 
-              h2(style="text-align: center") No se encontraron pacientes cargados.
-        div(class="col", style="content-align: center")
-          h1 Datos Paciente: 
-          form(method="post", id="formulario")
-            div(class="contenido-formulario")
-              .row
+                      th(class="centered") Nombre
+                      th(class="centered") Apellido
+                      th(class="centered") DNI 
+                      th(class="centered") email
+                      th(class="centered") Provincia 
+                      th(class="centered") Direccion
+                      th(class="centered") Actualizar
+                      th(class="centered") Eliminar
+                tbody
+                  each persona in personas 
+                  
+                    tr
+                      td(class="centered")= `${persona.nombre}`  
+                      td(class="centered")= `${persona.apellido}`  
+                      td(class="centered")= `${persona.dni}`  
+                      td(class="centered")= `${persona.email}`  
+                      td(class="centered")= `${persona.provincia}`  
+                      td(class="centered")= `${persona.domicilio}`
+                      td(class="centered")
+                        form( method="get", action=`/paciente/actualizar/${persona.dni}`)
+                          button(type="submit", value="editar" class="editar btn btn-primary") editar
+                          
+                      td(class="centered")
+                        button(type="button", id="butonBorrar" class="borrar btn btn-danger") borrar
+                          
+            
+            else 
+                h2(style="text-align: center") No se encontraron pacientes cargados.
+    div(class="position-absolute w-100 top translate", id="modal")
+      h1 Datos Paciente: 
+      form(method="post", class="form-control w-50", id="formularioTabla")
+        div(class="container", style="width: 100%")
+          div(class="row")
+            div(class="col")
+              div(class="form-control w-35")
                 label(for='nombre') Nombre:
-                input(type='text', id='nombre', size=12, name='nombre', placeholder='Nombre', required)
+                input(type='text', id='nombre',class="form-control", size=12, name='nombre', placeholder='Nombre', required)
               
-              .row
+              div(class="form-control w-35")
                 label(for='apellido') Apellido:
-                input(type='text', id='apellido', name='apellido', placeholder='Ingrese Apellido', required)
+                input(type='text', id='apellido',class="form-control", name='apellido', placeholder='Ingrese Apellido', required)
               
-              .row
+              div(class="form-control")
                 label(for="dni") DNI:
-                input(type='text', id='dni', name='dni', placeholder='Ingrese DNI', required)
+                input(type='text', id='dni',class="form-control", name='dni', placeholder='Ingrese DNI', required)
                 
-              .row
+              div(class="form-control")
                 label(for='email') Mail:
-                input(type='email', id='email', name='email', placeholder='Ingrese mail', required)
+                input(type='email', id='email',class="form-control", name='email', placeholder='Ingrese mail', required)
                 
-              .row 
+              div(class="form-control")
                 label(for='selectorSexo') Sexo:
-                select(form = "formulario", style="width: 50%", name="sexo", id="selectorSexo", required)
+                select(form = "formulario",class="form-control", style="width: 50%", name="sexo", id="selectorSexo", required)
                     option(value="Masculino") Masculino
                     option(value="Femenino")  Femenino
-                
-              .row
+              div(class="form-control")
                 label(for='fechaNacimiento') Fecha de Nacimiento:
-                input(type='date', form="formulario",  id='fechaNacimiento', name='fechaNacimiento', required)
-                
-              .row
+                input(type='date', form="formulario",class="form-control",  id='fechaNacimiento', name='fechaNacimiento', required)
+            div(class="col")   
+              div(class="form-control")
                 label(for='domicilio') Domicilio:
-                input(type='text', id='domicilio', name='domicilio', placeholder='Ingrese Domicilio', required)
+                input(type='text', id='domicilio',class="form-control", name='domicilio', placeholder='Ingrese Domicilio', required)
                 
-              .row
+              div(class="form-control")
                 label(for='selectorProvincia') Provincia:
-                select(form = "formulario",style="width: 50%", name="selectorProvincia" id="selectorProvincia", required)
+                select(form = "formulario",class="form-control",style="width: 50%", name="selectorProvincia" id="selectorProvincia", required)
                     option(value="San Luis") San Luis
                     option(value="Mendoza") Mendoza
                     option(value="Cordoba") Cordoba
-              .row   
+              div(class="form-control") 
                 label(for="selectorLocalidad") Localidad:
-                select(form = "formulario", style="width: 50%" name = "localidad", id="selectorLocalidad", required)
+                select(form = "formulario",class="form-control", style="width: 50%" name = "localidad", id="selectorLocalidad", required)
                     option(value="San Luis") San Luis
                     option(value="La Toma") La Toma  
-              .row          
+              div(class="form-control")         
                 label(for='obraSocial') Obra social:
-                input(type='obraSocial', id='obraSocial', name='obraSocial', placeholder='Ingrese Obra Social', required)
-                
-              .row  
+                input(type='obraSocial',class="form-control" id='obraSocial', name='obraSocial', placeholder='Ingrese Obra Social', required)         
+              div(class="form-control")  
                 label(for='numeroAfiliado') Numero de Afiliado:
-                input(type='numeroAfiliado', id='numeroAfiliado', name='numeroAfiliado', placeholder='Ingrese Numero de Afiliado', required)
-        //- Más filas aquí
+                input(type='numeroAfiliado',class="form-control" id='numeroAfiliado', name='numeroAfiliado', placeholder='Ingrese Numero de Afiliado', required)
+              div(class="form-control")
+                label(for="embarazada") Embarazo:
+                input(id="embarazada", name="embarazada" type="checkbox", value= 1)
+                button(id="guardar",type='submit') guardar
+          //- button(onclick="ocultar('ocultable')") ocultar tabla
+          //- Más filas aquí
     script(src="https://code.jquery.com/jquery-3.7.0.js")
     script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
     script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
     script(src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js")
+    script(src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js")
+    script(src="../js/iniciarDataTable.js")
     
-    script.
-      $(document).ready(function() {
-          $('#miTabla').DataTable({
-            "select": true,
-            "language": {
-              "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json" 
-            },
-            
-            
-          });
-        });
+   
     
     
     

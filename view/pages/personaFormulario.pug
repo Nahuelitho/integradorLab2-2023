@@ -1,82 +1,71 @@
 extends ../layout/plantilla 
 
 block contenido 
-    link(rel='stylesheet', type='text/css', href='css/personaFormulario.css') 
-    div.container
-        
-        form(method="post", id="formulario")
-            label(for='nombre') Nombre:
-            input(type='text', id='nombre', name='nombre', placeholder='Ingrese Nombre', required)
+    body()
+        div.container
             
-            br
-            label(for='apellido') Apellido:
-            input(type='text', id='apellido', name='apellido', placeholder='Ingrese Apellido', required)
-            
-            br
-            label(for="dni") DNI:
-            input(type='text', id='dni', name='dni', placeholder='Ingrese DNI', required)
-            
-            br
-            label(for='email') Mail:
-            input(type='email', id='email', name='email', placeholder='Ingrese mail', required)
-            
-            br
-            label(for='selectorSexo', style="display: block") Sexo:
-            select(form = "formulario", name="sexo", id="selectorSexo", required)
-                option(value="Masculino") Masculino
-                option(value="Femenino")  Femenino
-            
-            br
-            label(for='fechaNacimiento') Fecha de Nacimiento:
-            input(type='date', form="formulario",  id='fechaNacimiento', name='fechaNacimiento', required)
-            
-            br
-            label(for='domicilio') Domicilio:
-            input(type='text', id='domicilio', name='domicilio', placeholder='Ingrese Domicilio', required)
-            
-            br
-            div
-               div(class="row")
-                    div(class="col")
-                        label(for="selectorProvincia", style="display: block") Provincia:
-                        select(form = "formulario", name="provincia" id="selectorProvincia", required)
-                            option(value="San Luis") San Luis
-                            option(value="Mendoza") Mendoza
-                            option(value="Cordoba") Cordoba   
-                        br
-                    div(class="col")
-                        label(for="selectorLocalidad", style="display: block") Localidad:
-                        select(form = "formulario", name = "localidad", id="selectorLocalidad", required)
-                            option(value="San Luis") San Luis
-                            option(value="La Toma") La Toma  
-                        br
-            label(for='obraSocial') Obra social:
-            input(type='obraSocial', id='obraSocial', name='obraSocial', placeholder='Ingrese Obra Social', required)
-            
-            br
-            label(for='numeroAfiliado') Numero de Afiliado:
-            input(type='numeroAfiliado', id='numeroAfiliado', name='numeroAfiliado', placeholder='Ingrese Numero de Afiliado', required)
-            
-            br
-            label(for='user') Nombre de usuario:
-            input(type='text', id='user', name='user', placeholder='Ingrese  Usuario', required)
-            
-            br
-            label(for='password') Contraseña:
-            input(type='password', id='password', name='password', placeholder='Ingrese Contraseña', required)
-            
-            br
-            div(id="adicional")
-            select(id="selectorTipoPersona",name="selectPersona", onchange="elegir(this)" required)
-                option(disabled selected) Elija Rol
-                option(value="paciente") Paciente
-                option(value="tecnico") Tecnico 
-                option(value="bioquimico") Bioquimico
-                option(value="secretaria") Secretaria
-            
-            button(type='submit', id="btGuardar") Guardar
-            br
-            br
-    script(src="../js/script.js")
-        
-    
+            form(method="post", id="formulario", action="")
+                label(for='nombre') Nombre:
+                input(type='text', id='nombre', name='nombre', ,value=persona.nombre)
+                
+                br
+                label(for='apellido') Apellido:
+                input(type='text', id='apellido', name='apellido', value=persona.apellido)
+                
+                br
+                label(for="dni") DNI:
+                input(type='text', id='dni', name='dni', value=persona.dni)
+                
+                br
+                label(for='email') Mail:
+                input(type='email', id='email', name='email',  value=persona.email)
+                
+                br
+                input(type='text', form="formulario",  id='sexo', name='sexo', value=persona.sexo)
+                label(for='selectorSexo', style="display: block") Sexo:
+                select(form = "formulario", name="sexo", id="selectorSexo", required)
+                    option(value="Masculino", id="Masculino") Masculino
+                    option(value="Femenino", id="Femenino")  Femenino
+                
+                br
+                label(for='fechaNac') Fecha de Nacimiento:
+                input(type='text', form="formulario",  id='sexo', name='fechaNac', value=persona.fechaNacimiento)
+                input(type='date', form="formulario",  id='fechaNacimiento', name='fechaNacimiento', required)
+                
+                br
+                label(for='domicilio') Domicilio:
+                input(type='text', id='domicilio', name='domicilio', value=persona.domicilio)
+                
+                br
+                div
+                div(class="row")
+                        div(class="col")
+                            label(for="prov", style="display: block") Provincia:
+                            input(type='text', form="formulario",  id='prov', name='prov', value=persona.provincia)
+                            select(form = "formulario", name="provincia" id="selectorProvincia", required)
+                                option(value="San Luis") San Luis
+                                option(value="Mendoza") Mendoza
+                                option(value="Cordoba") Cordoba   
+                            br
+                        div(class="col")
+                            label(for="loc", style="display: block") Localidad:
+                            input(type='text', form="formulario",  id='loc', name='loco', value=persona.localidad)
+                            select(form = "formulario", name = "localidad", id="selectorLocalidad", required)
+                                option(value="San Luis") San Luis
+                                option(value="La Toma") La Toma  
+                            br
+                label(for='obraSocial') Obra social:
+                input(type='obraSocial', id='obraSocial', name='obraSocial',value=persona.obraSocial)
+                
+                br
+                label(for='numeroAfiliado') Numero de Afiliado:
+                input(type='numeroAfiliado', id='numeroAfiliado', name='numeroAfiliado',value=persona.numeroAfiliado)
+                
+                br
+                label(for='user') Nombre de usuario:
+                input(type='text', id='user', name='user',  value=persona.user)
+                
+                button(type='submit', id="btGuardar") Guardar
+                br
+                br
+       

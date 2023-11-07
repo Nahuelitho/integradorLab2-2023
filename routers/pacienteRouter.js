@@ -76,14 +76,16 @@ router.post("/", async (req, res, next)=>{
   next();
 }); */
 
-router.get("/actualizar", (req, res, next)=>{
-  res.render("pages/formPrueba");
+router.get("/actualizar/:dni", async(req, res, next)=>{
+  const dni = req.params.dni;
+  const persona = await Persona.findOne({ where: {dni: dni}})
+  res.render("pages/personaFormulario", {persona: persona});
   next();
 })
 
 //persona/actualizar url
-router.post("/actualizar", async (req, res, next) => {
-  const dni = req.body.dni;
+router.post("/actualizar/:dni", async (req, res, next) => {
+  const dni = req.params.dni;
   const data= req.body;
   const actualizarPersona = await Persona.update(
     {
@@ -106,20 +108,16 @@ router.post("/actualizar", async (req, res, next) => {
     }
   );
   
-  res.status(200).json({
-    ok: true,
-    message: 'persona actualizada',
-    body: actualizarPersona
-  });
+  res.send(alert('Paciente Actualizado con Exito!!'))
   next();
 });
 
 // 3000:/persona/buscar/   solo a modo ejemplo esto lo hace la tabla
 router.post("/buscar", async (req, res) => {
   const dni = req.body.dniBuscar;
-  const persona = await Persona.findOne({ where: { dni: dni } });
+  const personaEditable = await Persona.findOne({ where: { dni: dni } });
 
-  res.render("pages/formPrueba", { persona: persona });
+  res.render("pages/tabla", { persona: personaEditable });
 });
 
 
