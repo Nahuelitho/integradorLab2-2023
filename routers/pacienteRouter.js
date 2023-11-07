@@ -79,7 +79,7 @@ router.post("/", async (req, res, next)=>{
 router.get("/actualizar/:dni", async(req, res, next)=>{
   const dni = req.params.dni;
   const persona = await Persona.findOne({ where: {dni: dni}})
-  res.render("pages/personaFormulario", {persona: persona});
+  res.render("pages/pacienteFormulario", {persona: persona});
   next();
 })
 
