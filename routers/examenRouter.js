@@ -29,6 +29,7 @@ router.post("/", async (req, res, next) => {
     muestraId: req.body.muestraId,
     nombre: req.body.nombre,
     fechaEntregaResultado: req.body.fechaEntregaResultado,
+    estado: req.body.estado,
   });
   res.render("pages/cargaExamen");
   next();
@@ -41,10 +42,11 @@ router.put("/Actualizar", async(req, res, next) => {
     muestraId: body.muestraId,
     nombre: body.nombre,
     fechaEntregaResultado: body.fechaEntregaResultado,
+    estado: body.estado,
   },
   { where: {id: examenId}}
   );
-  res.status(200).send({message: 'Examen creado con exito!!!'})
+  res.render("pages/cargaExamen");
   next();
 });
 

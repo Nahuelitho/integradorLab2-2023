@@ -10,6 +10,8 @@ const tablaRouter = require("../routers/tablaRouter");
 const examenRouter = require("../routers/examenRouter");
 const ordenRouter = require("../routers/ordenTrabajoRouter");
 const determinacionRouter = require("../routers/determinacionRouter");
+const muestraRouter = require("../routers/muestraRouter");
+const referenciaRouter = require("../routers/referenciaRouter");
 
 //configuracion 
 app.set("views", "./view");
@@ -30,5 +32,7 @@ app.use('/tabla', tablaRouter);
 app.use('/examen', examenRouter);
 app.use('/ordenTrabajo', ordenRouter);
 app.use('/determinacion', determinacionRouter);
+app.use('/muestra', muestraRouter);
+app.use('/referencia', referenciaRouter);
 
 module.exports = app;

@@ -8,11 +8,7 @@ const sequelize = new Sequelize(
   config
 );
 class Referencia extends Model {
-  /**
-   * Helper method for defining associations.
-   * This method is not a part of Sequelize lifecycle.
-   * The `models/index` file will call this method automatically.
-   */
+  
   static associate(models) {
     // belongs to
     // Has
@@ -31,10 +27,6 @@ Referencia.init(
     valMin: DataTypes.DOUBLE,
     valMax: DataTypes.DOUBLE,
     idDeterminacion: DataTypes.INTEGER,
-    estado: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-    }
   },
   {
     sequelize,

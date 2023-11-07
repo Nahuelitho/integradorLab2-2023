@@ -8,11 +8,7 @@ const sequelize = new Sequelize(
   config
 );
 class Examen extends Model {
-  /**
-   * Helper method for defining associations.
-   * This method is not a part of Sequelize lifecycle.
-   * The `models/index` file will call this method automatically.
-   */
+  
   static associate(models) {
     // Has
     Examen.hasMany(models.Muestra, {
@@ -33,10 +29,6 @@ Examen.init(
   {
     nombre: DataTypes.STRING,
     fechaEntregaResultado: DataTypes.DATEONLY,
-    estado: {
-      type: DataTypes.BOOLEAN,
-      values: true,
-    }
   },
   {
     sequelize,

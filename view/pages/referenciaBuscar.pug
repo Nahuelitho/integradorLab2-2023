@@ -1,0 +1,52 @@
+extends ../layout/plantilla 
+
+block contenido 
+    
+    
+    div.container 
+        p Buscar una referencia por Id 
+         div
+            if referencia != null 
+                form(action="/referencia", method="post", id="buscarReferenciaForm")
+                    label(for='edadMin') Edad Minima:
+                    br
+                    input(type='number', id='edadMin', name='edadMin', value=referencia.edadMin)
+                    br
+                    br
+                    label(for='edadMax') Edad Maxima:
+                    br
+                    input(type='number', id='edadMax', name='edadMax', value=referencia.edadMax)
+                    br
+                    br
+                    label(for='selectorSexo', style="display: block") Sexo:
+                    select(form = "formulario", name="sexo", id="selectorSexo", value=referencia.selectorSexo)
+                        option(value="Masculino") Masculino
+                        option(value="Femenino")  Femenino
+                    
+                    br
+                    br
+                    label(for='selectorEmb', style="display: block") Embarazo:
+                    select(form = "formulario", name="embarazo", id="selectorEmb", value=referencia.selectorEmb)
+                        option(value="Si") Si
+                        option(value="No") No
+                    br
+                    br 
+                    label(for='valMin') Valor Minimo:
+                    br
+                    input(type='number', id='valMin', name='valMin', value=referencia.valMin)
+                    br
+                    br
+                    label(for='valMax') Valor Maximo:
+                    br
+                    input(type='number', id='valMax', name='valMax', value=referencia.valMax)
+                    br
+                    br
+                    a(href="/examen") Volver a Examenes
+                    br
+                    br
+            form(method="post", name="referenciabuscar", action="/referencia/buscar")
+                label(for='referenciaId') Ingrese Id de Referencia:
+                input(type='number', id ="referenciaId", name ="referenciaId")
+                br
+                br 
+                button(type="submit" ) Buscar Referencia       

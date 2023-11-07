@@ -15,10 +15,10 @@ router.get("/buscar", (req, res, next) => {
 });
 
 //busca una determinacion por Id
-router.post("/determinacionBuscar/", async (req, res, next) => {
+router.post("/buscar/", async (req, res, next) => {
     const id = req.body.id;
     const determinacion = await Determinacion.findOne({ where: {id: id}});
-    res.render("pages/", {determinacion: determinacion});
+    res.render("pages/determinacionBuscar", {determinacion: determinacion});
     next();
   });
 
@@ -32,8 +32,24 @@ router.post("/", async (req, res, next) => {
       idReferencia: req.body.idReferencia,
       idExamen: req.body.idExamen,
     });
-    res.status(200).send({message: 'Determinacion creada con exito!!!'})
+    res.render("pages/determinacionBuscar");
     next();
   });
+  //actualizar Determinacion
+  router.put("/actualizar", async(req, res, next) => {
+    const determinacionId = req.body.id;
+    const body = req.body;
+    const actualizarDeterminacion = await Determinacion.update({
+      cantidad: body.cantidad,
+      medida: body.medida,
+      idResultado: body.idResultado,
+      idReferencia: body.idReferencia,
+      idExamen: body.idExamen,
+    },
+    {where: {id: determinacionId}}
+    );
+    res.render("pages/determinacion");
+    next();
+  })
 
   module.exports = router;

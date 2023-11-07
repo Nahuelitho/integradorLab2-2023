@@ -1,51 +1,41 @@
 extends ../layout/plantilla 
 
 block contenido 
-    link(rel='stylesheet', type='text/css', href='../css/personaFormulario.css')
+    
     div.container
     form(action="/referencia", method="post", id="cargaReferenciaForm")
         label(for='edadMin') Ingrese edad minima:
         br
         input(type='number', id='edadMin', name='edadMin', placeholder='Ingrese edad minima', required)
         br
-        br
         label(for='edadMax') Ingrese edad maxima:
         br
         input(type='number', id='edadMax', name='edadMax', placeholder='Ingrese edad maxima', required)
-        br
         br
         label(for='selectorSexo', style="display: block") Sexo:
             select(form = "formulario", name="sexo", id="selectorSexo", required)
                 option(value="Masculino") Masculino
                 option(value="Femenino")  Femenino
             
-            br
+        br
         label(for='selectorEmbarazo', style="display: block") Sexo:
             select(form = "formulario", name="embarazo", id="selectorEmbarazo", required)
                 option(value="Si") Si
                 option(value="No") No
             
-            br
+        br
         label(for='valMin') Ingrese valor minimo:
         br
         input(type='number', id='valMin', name='valMin', placeholder='Ingrese valor minimo', required)
-        br
         br
         label(for='valMax') Ingrese valor maximo:
         br
         input(type='number', id='valMax', name='valMax', placeholder='Ingrese valor maximo', required)
         br
-        br
-        label(for='idDeterminacion') Ingrese Id Determinación:
-        br
-        input(type='number', id='idDeterminacion', name='idDeterminacion', placeholder='Ingrese Id Determinación', required)
-        br
         br 
         button(type='submit', id="btGuardarReferencia") Guardar Referencia 
         br
-        br
         a(href="/determinacion/buscar") Buscar una Determinacion
-        br
         br
         a(href="/examen") Volver a Examenes
         br

@@ -1,0 +1,34 @@
+extends ../layout/plantilla 
+
+block contenido 
+    
+    
+    div.container 
+        p Buscar una Muestra por Id 
+         div
+         if muestra != null 
+            form(action="/muestra", method="post", id="muestraBuscarForm")
+            label(for='idPaciente') Ingrese Id Paciente:
+            br
+            input(type='number', id='idPaciente', name='idPaciente', value=muestra.idPaciente)
+            br
+            br
+            label(for='idExamen') Ingrese Id Examen:
+            br
+            input(type='number', id='idExamen', name='idExamen', value=muestra.idExamen)
+            br
+            br
+            label(for='fechaHoraRecoleccion') Ingrese Fecha Recoleccion:
+            br
+            input(type='number', id='fechaHoraRecoleccion', name='fechaHoraRecoleccion', value=muestra.fechaHoraRecoleccion)
+            br
+            br
+            a(href="/examen") Volver a Examenes
+            br
+            br
+        form(method="post", name="muestrabuscar", action="/muestra/buscar")
+                label(for='muestraId') Ingrese Id de Muestra:
+                input(type='number', id ="muestraId", name ="muestraId")
+                br
+                br 
+                button(type="submit" ) Buscar Muestra

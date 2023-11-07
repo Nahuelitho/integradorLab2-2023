@@ -3,6 +3,7 @@ extends ../layout/plantilla
 block contenido 
     link(rel='stylesheet', type='text/css', href='../css/personaFormulario.css')
     div.container
+        h3 Cargar una determinacion
         form(action="/determinacion", method="post", id="cargaDeterminacionForm")
         label(for='cantidad') Ingrese cantidad:
         br

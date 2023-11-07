@@ -8,10 +8,6 @@ block contenido
          div 
             if examen != null
                 form(action="/examen", method="post", id="cargaExamenForm")
-                    label(for='muestraId') Id Muestra:
-                    input(type='number', id='muestraId', name='muestraId', value=examen.muestraId)
-                    br
-                    br
                     label(for='nombre') Nombre de examen:
                     input(type='text', id='nombre', name='nombre', value=examen.nombre)
                     br

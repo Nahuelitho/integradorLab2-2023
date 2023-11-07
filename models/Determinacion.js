@@ -8,11 +8,7 @@ const sequelize = new Sequelize(
   config
 );
 class Determinacion extends Model {
-  /**
-   * Helper method for defining associations.
-   * This method is not a part of Sequelize lifecycle.
-   * The `models/index` file will call this method automatically.
-   */
+  
   static associate(models) {
     // Belongs to
     Determinacion.belongsTo(models.Resultado, {
@@ -34,10 +30,6 @@ Determinacion.init(
     medida: DataTypes.STRING,
     idResultado: DataTypes.INTEGER,
     idExamen: DataTypes.INTEGER,
-    estado: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-    }
   },
   {
     sequelize,
