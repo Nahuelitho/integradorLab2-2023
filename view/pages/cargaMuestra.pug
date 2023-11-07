@@ -1,0 +1,31 @@
+extends ../layout/plantilla 
+
+block contenido 
+    link(rel='stylesheet', type='text/css', href='../css/personaFormulario.css')
+    div.container
+        h3 Cargar una Muestra
+        form(action="/muestra", method="post", id="cargaMuestraForm")
+            label(for='idPaciente') Ingrese Id Paciente:
+            br
+            input(type='number', id='idPaciente', name='idPaciente', placeholder='Ingrese Id de Paciente', required)
+            br
+            br
+            label(for='idExamen') Ingrese Id Examen:
+            br
+            input(type='number', id='idExamen', name='idExamen', placeholder='Ingrese Id de Examen', required)
+            br
+            br
+            label(for='fechaHoraRecoleccion') Ingrese Fecha Recoleccion:
+            br
+            input(type='date', id='fechaHoraRecoleccion', name='fechaHoraRecoleccion', placeholder='Ingrese Fecha Recoleccion', required)
+            br
+            br
+            button(type='submit', id="btGuardarMuestra") Guardar Muestra
+            br
+            br
+            a(href="/muestra/buscar") Buscar una Muestra
+            br
+            br
+            a(href="/examen") Volver a Examenes
+            br
+            br

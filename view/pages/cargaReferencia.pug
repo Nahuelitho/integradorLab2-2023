@@ -1,0 +1,49 @@
+extends ../layout/plantilla 
+
+block contenido 
+    link(rel='stylesheet', type='text/css', href='../css/personaFormulario.css')
+    div.container
+        h3 Cargar una Referencia 
+        form(action="/referencia", method="post", id="cargaReferenciaForm")
+            label(for='edadMin') Edad Minima:
+            br
+            input(type='number', id='edadMin', name='edadMin', placeholder='Ingrese Edad Minima', required)
+            br
+            br
+            label(for='edadMax') Edad Maxima:
+            br
+            input(type='number', id='edadMax', name='edadMax', placeholder='Ingrese Edad Maxima', required)
+            br
+            br
+            label(for='selectorSexo', style="display: block") Sexo:
+            select(form = "formulario", name="sexo", id="selectorSexo", required)
+                option(value="Masculino") Masculino
+                option(value="Femenino")  Femenino
+            
+            br
+            br
+            label(for='selectorEmb', style="display: block") Embarazo:
+            select(form = "formulario", name="embarazo", id="selectorEmb", required)
+                option(value="Si") Si
+                option(value="No") No
+            br
+            br 
+            label(for='valMin') Valor Minimo:
+            br
+            input(type='number', id='valMin', name='valMin', placeholder='Ingrese valor Minimo', required)
+            br
+            br
+            label(for='valMax') Valor Maximo:
+            br
+            input(type='number', id='valMax', name='valMax', placeholder='Ingrese valor Maximo', required)
+            br
+            br
+            button(type='submit', id="btGuardarReferencia") Guardar Referencia
+            br
+            br
+            a(href="/referencia/buscar") Buscar una referencia
+            br
+            br
+            a(href="/examen") Volver a Examenes
+            br
+            br

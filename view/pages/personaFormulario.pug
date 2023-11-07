@@ -1,0 +1,96 @@
+extends ../layout/plantilla 
+
+block contenido 
+    link(rel='stylesheet', type='text/css', href='css/personaFormulario.css') 
+    div.container
+        
+        form(method="post", id="formulario")
+            label(for='nombre') Nombre:
+            input(type='text', id='nombre', name='nombre', placeholder='Ingrese Nombre', required)
+            
+            br
+            label(for='apellido') Apellido:
+            input(type='text', id='apellido', name='apellido', placeholder='Ingrese Apellido', required)
+            
+            br
+            label(for="dni") DNI:
+            input(type='text', id='dni', name='dni', placeholder='Ingrese DNI', required)
+            
+            br
+            label(for='email') Mail:
+            input(type='email', id='email', name='email', placeholder='Ingrese mail', required)
+            
+            br
+            label(for='selectorSexo', style="display: block") Sexo:
+            select(form = "formulario", name="sexo", id="selectorSexo", required)
+                option(value="Masculino") Masculino
+                option(value="Femenino")  Femenino
+            
+            br
+            label(for='fechaNacimiento') Fecha de Nacimiento:
+            input(type='date', form="formulario",  id='fechaNacimiento', name='fechaNacimiento', required)
+            
+            br
+            label(for='domicilio') Domicilio:
+            input(type='text', id='domicilio', name='domicilio', placeholder='Ingrese Domicilio', required)
+            
+            br
+            div
+               div(class="row")
+                    div(class="col")
+                        label(for="selectorProvincia", style="display: block") Provincia:
+                        select(form = "formulario", name="provincia" id="selectorProvincia", required)
+                            option(value="Buenos Aires") Buenos Aires
+                            option(value="Catamarca") Catamarca   
+                            option(value="Chaco") Chaco   
+                            option(value="Chubut") Chubut   
+                            option(value="Cordoba") Cordoba   
+                            option(value="Corrientes") Corrientes   
+                            option(value="Entre Rios") Entre Rios
+                            option(value="San Luis") San Luis
+                            option(value="Mendoza") Mendoza   
+                        br
+                    div(class="col")
+                        label(for="selectorLocalidad", style="display: block") Localidad:
+                        select(form = "formulario", name = "localidad", id="selectorLocalidad", required)
+                            option(value="Ayacucho") Ayacucho
+                            option(value="Belgrano") Belgrano 
+                            option(value="Chacabuco") Chacabuco  
+                            option(value="Pringles") Pringles  
+                            option(value="Pedernera") Pedernera
+                            option(value="Dupuy") Dupuy  
+                            option(value="Pueyrredon") Pueyrredon  
+                            option(value="Junin") Junin  
+                            option(value="San Martin") San Martin  
+                            option(value="Capital") Capital  
+                        br
+            label(for='obraSocial') Obra social:
+            input(type='obraSocial', id='obraSocial', name='obraSocial', placeholder='Ingrese Obra Social', required)
+            
+            br
+            label(for='numeroAfiliado') Numero de Afiliado:
+            input(type='numeroAfiliado', id='numeroAfiliado', name='numeroAfiliado', placeholder='Ingrese Numero de Afiliado', required)
+            
+            br
+            label(for='user') Nombre de usuario:
+            input(type='text', id='user', name='user', placeholder='Ingrese  Usuario', required)
+            
+            br
+            label(for='password') Contraseña:
+            input(type='password', id='password', name='password', placeholder='Ingrese Contraseña', required)
+            
+            br
+            div(id="adicional")
+            select(id="selectorTipoPersona",name="selectPersona", onchange="elegir(this)" required)
+                option(disabled selected) Elija Rol
+                option(value="paciente") Paciente
+                option(value="tecnico") Tecnico 
+                option(value="bioquimico") Bioquimico
+                option(value="secretaria") Secretaria
+            
+            button(type='submit', id="btGuardar") Guardar
+            br
+            br
+    script(src="../js/script.js")
+        
+    
