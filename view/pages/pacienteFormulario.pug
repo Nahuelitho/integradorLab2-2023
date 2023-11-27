@@ -5,8 +5,9 @@ block contenido
         div.container
             
             form(method="post", id="formulario", action="")
+                h1 Actualizar Paciente:
                 label(for='nombre') Nombre:
-                input(type='text', id='nombre', name='nombre', ,value=persona.nombre)
+                input(type='text', id='nombre', name='nombre', value=persona.nombre)
                 
                 br
                 label(for='apellido') Apellido:
@@ -19,18 +20,32 @@ block contenido
                 br
                 label(for='email') Mail:
                 input(type='email', id='email', name='email',  value=persona.email)
-                
                 br
-                input(type='text', form="formulario",  id='sexo', name='sexo', value=persona.sexo)
+                
                 label(for='selectorSexo', style="display: block") Sexo:
-                select(form = "formulario", name="sexo", id="selectorSexo", required)
-                    option(value="Masculino", id="Masculino") Masculino
-                    option(value="Femenino", id="Femenino")  Femenino
                 
+                    select(form = "formulario", name="sexo", id="selectorSexo", required)
+                        if `${persona.sexo}` == 'Masculino'
+                            option(value="Masculino", id="Masculino", selected) Masculino
+                            option(value="Femenino", id="Femenino")  Femenino
+                        else
+                            option(value="Femenino", id="Femenino", selected)  Femenino
+                            option(value="Masculino", id="Masculino") Masculino
                 br
+                label(for="embarazoSi", style="display: block") Embarazada:
+                    if `${paciente.embarazada}` == 'true'
+                        label(for="") Si
+                            input(type="radio",form="formulario", id="embarazada" name="embar", checked, value=1)
+                        label(for="") No 
+                            input(type="radio",form="formulario",  id="embarazada" name="embar", value=0)  
+                    else 
+                        label(for="") Si
+                            input(type="radio",form="formulario", id="embarazada" name="embar", value=1) 
+                        label(for="") No 
+                            input(type="radio",form="formulario", id="embarazada" name="embar",checked, value=0)
+                        
                 label(for='fechaNac') Fecha de Nacimiento:
-                input(type='text', form="formulario",  id='sexo', name='fechaNac', value=persona.fechaNacimiento)
-                input(type='date', form="formulario",  id='fechaNacimiento', name='fechaNacimiento', required)
+                input(type='date', form="formulario",  id='fechaNacimiento', name='fechaNacimiento', value=persona.fechaNacimiento)
                 
                 br
                 label(for='domicilio') Domicilio:
@@ -41,7 +56,7 @@ block contenido
                 div(class="row")
                         div(class="col")
                             label(for="prov", style="display: block") Provincia:
-                            input(type='text', form="formulario",  id='prov', name='prov', value=persona.provincia)
+                            input(type='text', form="formulario",  id='prov', name='prov', value=persona.provincia, disabled)
                             select(form = "formulario", name="provincia" id="selectorProvincia", required)
                                 option(value="San Luis") San Luis
                                 option(value="Mendoza") Mendoza
@@ -49,7 +64,7 @@ block contenido
                             br
                         div(class="col")
                             label(for="loc", style="display: block") Localidad:
-                            input(type='text', form="formulario",  id='loc', name='loco', value=persona.localidad)
+                            input(type='text', form="formulario",  id='loc', name='loc', value=persona.localidad, disabled)
                             select(form = "formulario", name = "localidad", id="selectorLocalidad", required)
                                 option(value="San Luis") San Luis
                                 option(value="La Toma") La Toma  
@@ -68,4 +83,3 @@ block contenido
                 button(type='submit', id="btGuardar") Guardar
                 br
                 br
-       

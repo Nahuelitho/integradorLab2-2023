@@ -5,6 +5,7 @@ block contenido
     div.container
         
         form(method="post", id="formulario")
+            
             label(for='nombre') Nombre:
             input(type='text', id='nombre', name='nombre', placeholder='Ingrese Nombre', required)
             
@@ -25,15 +26,18 @@ block contenido
             select(form = "formulario", name="sexo", id="selectorSexo", required)
                 option(value="Masculino") Masculino
                 option(value="Femenino")  Femenino
-            
             br
+            label( style="display: block") Embarazada:
+                br
+                label(for="embarazada") Si
+                    input(type="checkbox", id="embarazada", value=1) 
+             
             label(for='fechaNacimiento') Fecha de Nacimiento:
             input(type='date', form="formulario",  id='fechaNacimiento', name='fechaNacimiento', required)
             
             br
             label(for='domicilio') Domicilio:
             input(type='text', id='domicilio', name='domicilio', placeholder='Ingrese Domicilio', required)
-            
             br
             div
                div(class="row")
@@ -80,14 +84,6 @@ block contenido
             input(type='password', id='password', name='password', placeholder='Ingrese Contraseña', required)
             
             br
-            div(id="adicional")
-            select(id="selectorTipoPersona",name="selectPersona", onchange="elegir(this)" required)
-                option(disabled selected) Elija Rol
-                option(value="paciente") Paciente
-                option(value="tecnico") Tecnico 
-                option(value="bioquimico") Bioquimico
-                option(value="secretaria") Secretaria
-            
             button(type='submit', id="btGuardar") Guardar
             br
             br

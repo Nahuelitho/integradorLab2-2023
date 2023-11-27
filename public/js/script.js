@@ -1,29 +1,4 @@
 
-var selMas = document.getElementById("Masculino");
-
-var selFem = document.getElementById("Femenino");
-
-
-function seleccionarSexo(){
-  var sex = document.getElementById("Masculino").value
-    console.log(sex)
-    if(persona.sexo == selMas.value){
-        selMas.setAttribute("selected", "")
-    }else {
-        selFem.setAttribute("selected", "")
-
-    }
-  }
-seleccionarSexo();
-
-
-
-
-
-
-
-
-
 // reescribe la ruta del formulario a la que es enviada la informacion con el attributo action.
 
   function elegir(selector){
