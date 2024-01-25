@@ -11,12 +11,6 @@ router.get("/", (req, res, next) => {
   next();
 });
 
-//lista todos los pacientes en una tabla persona/pacientes
-router.get("/pacientes", async (req, res, next) => {
-  const personas = await Persona.findAll();
-  res.render("pages/tabla", { personas: personas });
-  next();
-});
 ///crear, primero crea la persona y luego le asigna el id de esa persona al  Paciente (idPersona)
 router.post("/", async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 5);
@@ -24,6 +18,7 @@ router.post("/", async (req, res, next) => {
     nombre: req.body.nombre,
     apellido: req.body.apellido,
     dni: req.body.dni,
+    telefono: req.body.telefono,
     email: req.body.email,
     sexo: req.body.sexo,
     fechaNacimiento: req.body.fechaNacimiento,
@@ -47,34 +42,23 @@ router.post("/", async (req, res, next) => {
   next();
 });
 
-//alta persona en bd con creacion de tabla de ser necesario
-/* router.post("/", async (req, res, next) => {
+//lista todos los pacientes en una tabla persona/pacientes
+router.get("/pacientes", async (req, res, next) => {
+  const pacientes = await Paciente.findAll();
+  var idPacientes =[];
+  pacientes.forEach(function(paciente){
+    idPacientes.push(paciente.idPersona)
+  })
+  const personas = await Persona.findAll({
+    where: {
+      id: idPacientes
+    }
+  });
   
-  const createPersona = await Persona.create({
-    nombre: req.body.nombre,
-    apellido: req.body.apellido,
-    dni: req.body.dni,
-    email: req.body.email,
-    fechaNacimiento: req.body.fechaNacimiento,
-    sexo: req.body.sexo,
-    domicilio: req.body.domicilio,
-    provincia: req.body.provincia,
-    localidad: req.body.localidad,
-    obraSocial: req.body.obraSocial,
-    numeroAfiliado: req.body.numeroAfiliado,
-    user: req.body.user,
-    password: req.body.password,
-  });
-  res.status(201).json({
-    ok: true,
-
-    status: 201,
-
-    message: "Persona creada",
-  });
+  res.render("pages/tabla", { personas: personas });
   next();
-}); */
-
+});
+//obtiene y muestra el paciente a actualizar
 router.get("/actualizar/:dni", async (req, res, next) => {
   const dni = req.params.dni;
   const persona = await Persona.findOne({ where: { dni: dni } });
@@ -86,17 +70,17 @@ router.get("/actualizar/:dni", async (req, res, next) => {
   next();
 });
 
-//persona/actualizar url
+//persona/actualizar url ejecuta la actualizacion por DNI
 router.post("/actualizar/:dni", async (req, res, next) => {
   const dni = req.params.dni;
   const data = req.body;
   const persona = await Persona.findOne({ where: { dni: dni } });
-
   await Persona.update(
     {
       nombre: data.nombre,
       apellido: data.apellido,
       dni: data.dni,
+      telefono: data.telefono,
       email: data.email,
       fechaNacimiento: data.fechaNacimiento,
       sexo: data.sexo,
@@ -112,16 +96,16 @@ router.post("/actualizar/:dni", async (req, res, next) => {
       where: { dni: dni },
     }
   );
-  const paciente = await Paciente.update(
+  await Paciente.update(
     {
       embarazada: data.embar,
     },
     {
-      where: {idPersona: persona.id}
+      where: { idPersona: persona.id },
     }
   );
 
-  res.send("Paciente actualizado");
+  res.redirect("/paciente/pacientes");
   next();
 });
 

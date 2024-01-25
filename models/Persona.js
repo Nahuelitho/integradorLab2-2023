@@ -34,6 +34,7 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
         type: DataTypes.STRING,
         unique: true,
         },
+      telefono: DataTypes.STRING,
       email: DataTypes.STRING,
       fechaNacimiento: DataTypes.DATE,
       sexo: DataTypes.STRING,

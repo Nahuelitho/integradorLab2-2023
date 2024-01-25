@@ -6,7 +6,6 @@ const pacienteRouter = require("../routers/pacienteRouter");
 const tecnicoRouter = require("../routers/tecnicoRouter");
 const secretariaRouter = require("../routers/secretariaRouter");
 const loginRouter = require("../routers/loginRouter")
-const tablaRouter = require("../routers/tablaRouter");
 const examenRouter = require("../routers/examenRouter");
 const ordenRouter = require("../routers/ordenTrabajoRouter");
 const determinacionRouter = require("../routers/determinacionRouter");
@@ -28,7 +27,6 @@ app.use('/paciente', pacienteRouter);
 app.use('/tecnico', tecnicoRouter);
 app.use('/secretaria', secretariaRouter);
 app.use('/login', loginRouter);
-app.use('/tabla', tablaRouter);
 app.use('/examen', examenRouter);
 app.use('/ordenTrabajo', ordenRouter);
 app.use('/determinacion', determinacionRouter);

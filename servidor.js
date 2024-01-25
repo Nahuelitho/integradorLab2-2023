@@ -6,7 +6,7 @@ const app = require("./app/app");
 app.listen(3000, async () => {
 
   
-  console.log("Servidor en puerto 3000");
+  console.log("Servidor en puerto 3000 --> http://localhost:3000");
 
  
 });
