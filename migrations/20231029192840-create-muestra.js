@@ -9,6 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+
       idPaciente: {
         type: Sequelize.INTEGER,
         references: {
@@ -19,6 +20,7 @@ module.exports = {
         onUpdate: "CASCADE",
         allowNull: false,
       },
+
       idExamen: {
         type: Sequelize.INTEGER,
         references: {
@@ -29,14 +31,22 @@ module.exports = {
         onUpdate: "CASCADE",
         allowNull: false,
       },
+
       fechaHoraRecoleccion: {
         type: Sequelize.DATE,
         allowNull: false,
       },
+
+      estado: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
+
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,

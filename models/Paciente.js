@@ -36,6 +36,10 @@ Paciente.init(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
   },
   {
     sequelize,

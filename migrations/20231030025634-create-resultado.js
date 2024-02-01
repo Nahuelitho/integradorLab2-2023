@@ -9,6 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+
       idOrdenTrabajo: {
         type: Sequelize.INTEGER,
         references: {
@@ -19,6 +20,7 @@ module.exports = {
         onDelete: "CASCADE",
         allowNull: false,
       },
+
       idBioquimico: {
         type: Sequelize.INTEGER,
         references: {
@@ -29,6 +31,7 @@ module.exports = {
         onUpdate: "CASCADE",
         allowNull: false,
       },
+
       idMedicoSolicitante: {
         type: Sequelize.INTEGER,
         references: {
@@ -39,13 +42,22 @@ module.exports = {
         onDelete: "CASCADE",
         allowNull: false,
       },
+
       estadoAprobado: {
         type: Sequelize.BOOLEAN,
+        allowNull: false,
       },
+
+      estado: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,

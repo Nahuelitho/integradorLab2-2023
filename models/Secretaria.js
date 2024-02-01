@@ -26,6 +26,10 @@ Secretaria.init(
     idPersona: DataTypes.INTEGER,
     titulo: DataTypes.STRING,
     fechaIngreso: DataTypes.DATEONLY,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
   },
   {
     sequelize,

@@ -9,6 +9,7 @@ module.exports = {
         defaults: {
           idPersona: 1,
           embarazada: true,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -16,6 +17,7 @@ module.exports = {
         defaults: {
           idPersona: 2,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -23,6 +25,7 @@ module.exports = {
         defaults: {
           idPersona: 3,
           embarazada: true,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -30,6 +33,7 @@ module.exports = {
         defaults: {
           idPersona: 4,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -37,6 +41,7 @@ module.exports = {
         defaults: {
           idPersona: 5,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -44,6 +49,7 @@ module.exports = {
         defaults: {
           idPersona: 6,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -51,6 +57,7 @@ module.exports = {
         defaults: {
           idPersona: 7,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -58,6 +65,7 @@ module.exports = {
         defaults: {
           idPersona: 8,
           embarazada: true,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -65,6 +73,7 @@ module.exports = {
         defaults: {
           idPersona: 9,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -72,6 +81,7 @@ module.exports = {
         defaults: {
           idPersona: 10,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -79,6 +89,7 @@ module.exports = {
         defaults: {
           idPersona: 11,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -86,6 +97,7 @@ module.exports = {
         defaults: {
           idPersona: 12,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -93,6 +105,7 @@ module.exports = {
         defaults: {
           idPersona: 13,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -100,6 +113,7 @@ module.exports = {
         defaults: {
           idPersona: 14,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -107,6 +121,7 @@ module.exports = {
         defaults: {
           idPersona: 15,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -114,6 +129,7 @@ module.exports = {
         defaults: {
           idPersona: 16,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -121,6 +137,7 @@ module.exports = {
         defaults: {
           idPersona: 17,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -128,6 +145,7 @@ module.exports = {
         defaults: {
           idPersona: 18,
           embarazada: true,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -135,6 +153,7 @@ module.exports = {
         defaults: {
           idPersona: 19,
           embarazada: false,
+          estado: true,
         },
       }),
       models.findOrCreate({
@@ -142,6 +161,7 @@ module.exports = {
         defaults: {
           idPersona: 20,
           embarazada: true,
+          estado: true,
         },
       }),
     ]);

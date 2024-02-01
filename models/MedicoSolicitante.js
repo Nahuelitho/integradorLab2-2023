@@ -26,6 +26,10 @@ MedicoSolicitante.init(
     apellido: DataTypes.STRING,
     telefono: DataTypes.STRING,
     email: DataTypes.STRING,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
   },
   {
     sequelize,

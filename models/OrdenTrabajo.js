@@ -33,12 +33,17 @@ class OrdenTrabajo extends Model {
 OrdenTrabajo.init(
   {
     idPaciente: DataTypes.INTEGER,
+    idMedicoSolicitante: DataTypes.INTEGER,
     diagnostico: DataTypes.STRING,
     estado: DataTypes.STRING,
     fechaCreacion: DataTypes.DATEONLY,
     fechaEstimada: DataTypes.DATEONLY,
     fechaCambioEstado: DataTypes.DATEONLY,
-    idMedicoSolicitante: DataTypes.INTEGER,
+    
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
   },
   {
     sequelize,

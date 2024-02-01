@@ -27,6 +27,10 @@ Bioquimico.init(
     titulo: DataTypes.STRING,
     especialidad: DataTypes.STRING,
     fechaIngreso: DataTypes.DATEONLY,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
   },
   {
     sequelize,

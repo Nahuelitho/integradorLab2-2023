@@ -9,14 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      cantidad: {
-        type: Sequelize.DOUBLE,
-        allowNull: false,
-      },
-      medida: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
+
       idResultado: {
         type: Sequelize.INTEGER,
         references: {
@@ -27,6 +20,7 @@ module.exports = {
         onUpdate: "CASCADE",
         allowNull: false,
       },
+
       idExamen: {
         type: Sequelize.INTEGER,
         references: {
@@ -38,10 +32,26 @@ module.exports = {
         allowNull: false,
       },
 
+      cantidad: {
+        type: Sequelize.DOUBLE,
+        allowNull: false,
+      },
+
+      medida: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+
+      estado: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,

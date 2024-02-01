@@ -8,7 +8,6 @@ const sequelize = new Sequelize(
   config
 );
 class Examen extends Model {
-  
   static associate(models) {
     // Has
     Examen.hasMany(models.Muestra, {
@@ -29,6 +28,10 @@ Examen.init(
   {
     nombre: DataTypes.STRING,
     fechaEntregaResultado: DataTypes.DATEONLY,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
   },
   {
     sequelize,

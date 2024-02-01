@@ -8,7 +8,6 @@ const sequelize = new Sequelize(
   config
 );
 class Determinacion extends Model {
-  
   static associate(models) {
     // Belongs to
     Determinacion.belongsTo(models.Resultado, {
@@ -20,16 +19,20 @@ class Determinacion extends Model {
     });
     Determinacion.belongsTo(models.Examen, {
       foreignKey: "id",
-      target_key: "idExamen"
-    })
+      target_key: "idExamen",
+    });
   }
 }
 Determinacion.init(
-  {
-    cantidad: DataTypes.DOUBLE,
-    medida: DataTypes.STRING,
+  { 
     idResultado: DataTypes.INTEGER,
     idExamen: DataTypes.INTEGER,
+    cantidad: DataTypes.DOUBLE,
+    medida: DataTypes.STRING,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
   },
   {
     sequelize,

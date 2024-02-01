@@ -29,6 +29,10 @@ Orden_Examen.init(
   {
     idExamen: DataTypes.INTEGER,
     idOrdenTrabajo: DataTypes.INTEGER,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
   },
   {
     sequelize,

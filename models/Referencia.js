@@ -20,13 +20,18 @@ class Referencia extends Model {
 }
 Referencia.init(
   {
+    idDeterminacion: DataTypes.INTEGER,
     edadMin: DataTypes.INTEGER,
     edadMax: DataTypes.INTEGER,
     sexo: DataTypes.STRING,
     embarazo: DataTypes.BOOLEAN,
     valMin: DataTypes.DOUBLE,
     valMax: DataTypes.DOUBLE,
-    idDeterminacion: DataTypes.INTEGER,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
+    
   },
   {
     sequelize,

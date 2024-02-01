@@ -9,34 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      edadMin: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      edadMax: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      sexo: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      embarazo: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-      },
-      valMin: {
-        type: Sequelize.DOUBLE,
-        allowNull: false,
-      },
-      valMax: {
-        type: Sequelize.DOUBLE,
-        allowNull: false,
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
+      
       idDeterminacion: {
         type: Sequelize.INTEGER,
         references: {
@@ -47,6 +20,47 @@ module.exports = {
         onDelete: "CASCADE",
         allowNull: false,
       },
+
+      edadMin: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+
+      edadMax: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+
+      sexo: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+
+      embarazo: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+
+      valMin: {
+        type: Sequelize.DOUBLE,
+        allowNull: false,
+      },
+
+      valMax: {
+        type: Sequelize.DOUBLE,
+        allowNull: false,
+      },
+      
+      estado: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,

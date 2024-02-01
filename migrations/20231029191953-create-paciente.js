@@ -9,6 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+
       idPersona: {
         type: Sequelize.INTEGER,
         references: {
@@ -19,17 +20,25 @@ module.exports = {
         onDelete: "CASCADE",
         allowNull: false,
       },
+
       embarazada: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
-      createdAt: {
+
+      estado: {
+        type: Sequelize.BOOLEAN,
         allowNull: false,
-        type: Sequelize.DATE,
       },
-      updatedAt: {
-        allowNull: false,
+
+      createdAt: {
         type: Sequelize.DATE,
+        allowNull: false,
+      },
+
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
       },
     });
   },

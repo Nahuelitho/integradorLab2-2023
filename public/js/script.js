@@ -11,13 +11,11 @@
         <input id="embarazada", name="embarazada" type="checkbox", value= 1>  </input>
       `
 
-    }/* else if (selector.value == "paciente"){
-      document.getElementById("adicional").innerHTML = `
-        <label for"embarazada"> Embarazo: </label>
-        <input id="embarazada", name="embarazada" type="checkbox", value= 1 >   </input>
-      `
-    } */
+    }
   };
+
+
+  
   // codigo pug para el selector de roles
 /*   div(id="adicional")
             select(id="selectorTipoPersona",name="selectPersona", onchange="elegir(this)" required)

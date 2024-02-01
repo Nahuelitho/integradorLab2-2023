@@ -9,6 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+
       idPaciente: {
         type: Sequelize.INTEGER,
         references: {
@@ -19,6 +20,7 @@ module.exports = {
         onDelete: "CASCADE",
         allowNull: false,
       },
+
       idExamen: {
         type: Sequelize.INTEGER,
         references: {
@@ -29,26 +31,7 @@ module.exports = {
         onUpdate: "CASCADE",
         allowNull: false,
       },
-      diagnostico: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      estado: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      fechaCreacion: {
-        type: Sequelize.DATEONLY,
-        allowNull: false,
-      },
-      fechaEstimada: {
-        type: Sequelize.DATEONLY,
-        allowNull: false,
-      },
-      fechaCambioEstado: {
-        type: Sequelize.DATEONLY,
-        allowNull: false,
-      },
+
       idMedicoSolicitante: {
         type: Sequelize.INTEGER,
         references: {
@@ -59,10 +42,42 @@ module.exports = {
         onUpdate: "CASCADE",
         allowNull: false,
       },
+
+      diagnostico: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+
+      progreso: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+
+      fechaCreacion: {
+        type: Sequelize.DATEONLY,
+        allowNull: false,
+      },
+
+      fechaEstimada: {
+        type: Sequelize.DATEONLY,
+        allowNull: false,
+      },
+
+      fechaCambioEstado: {
+        type: Sequelize.DATEONLY,
+        allowNull: false,
+      },
+
+      estado: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,

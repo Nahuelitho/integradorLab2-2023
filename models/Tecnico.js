@@ -27,6 +27,10 @@ Tecnico.init(
     titulo: DataTypes.STRING,
     matricula: DataTypes.INTEGER,
     fechaIngreso: DataTypes.DATEONLY,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
   },
   {
     sequelize,

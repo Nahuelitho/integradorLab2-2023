@@ -34,7 +34,8 @@ block contenido
                           button(type="submit", value="editar" class="editar btn btn-primary") editar
                           
                       td(class="centered")
-                        button(type="button", id="butonBorrar" class="borrar btn btn-danger") borrar
+                        form(method="post", action=`/paciente/borrar/${persona.dni}`)
+                          button(type="submit", id="butonBorrar" class="borrar btn btn-danger") borrar
               form( method="get", action=`/paciente`)
                 button(type="submit", id="agregar", class="agregar btn btn-plus")  agregar          
             else
