@@ -1,7 +1,6 @@
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 const selects = document.querySelectorAll('#formulario select');
-
 const expresiones = {
     nombre: /^[A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?)([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30})?$/,   // formato de la A a la Z y pueden llevar acento.
     apellido: /^[A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30})?$/ , // formato de la A a la Z y pueden llevar acento.
@@ -152,11 +151,16 @@ const validarCampo = (expresion, input, campo)=>{
 }
 
 formulario.addEventListener('submit', (e)=>{
-    e.preventDefault();
+    // e.preventDefault();
     if(resultados.nombre && resultados.apellido && resultados.dni && resultados.telefono && resultados.email 
         && resultados.fechaNacimiento && resultados.domicilio && resultados.obraSocial && resultados.numeroAfiliado 
         && resultados.user && resultados.password) {
-            formulario.reset();
-        }
+        document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo')
+        setTimeout(() => {
+            formulario.reset()
+            document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo')
+        }, 5000);
+    }
+
 })
 

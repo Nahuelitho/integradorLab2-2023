@@ -7,54 +7,64 @@ const bcrypt = require("bcryptjs");
 const Swal = require("sweetalert2");
 //metodos de Paciente
 router.get("/", async (req, res, next) => {
-  const personas = Persona.findAll();
-  const pacientes = Paciente.findAll();
+  const personas = await Persona.findAll();
+  const pacientes = await Paciente.findAll();
   res.render("pages/personaFormulario",{pacientes: pacientes, personas: personas});
   next();
 });
 
 ///crear, primero crea la persona y luego le asigna el id de esa persona al  Paciente (idPersona)
 router.post("/", async (req, res, next) => {
+  const hashedPassword = await bcrypt.hash(req.body.password, 5);
   const personas = await Persona.findAll();
   var dniPersonas = [];
   var emailPersonas = [];
   var usersPersonas = [];
+  let datosPersona = {
+    nombre: req.body.nombre,
+    apellido: req.body.apellido,
+    dni: req.body.dni,
+    telefono: req.body.telefono,
+    email: req.body.email,
+    sexo: req.body.sexo,
+    fechaNacimiento: req.body.fechaNacimiento,
+    domicilio: req.body.domicilio,
+    provincia: req.body.provincia,
+    localidad: req.body.localidad,
+    obraSocial: req.body.obraSocial,
+    numeroAfiliado: req.body.numeroAfiliado,
+    estado: true,
+    user: req.body.user,
+    password: hashedPassword
+  };
   personas.forEach(function (perso) {
     dniPersonas.push(perso.dni);
     emailPersonas.push(perso.email);
-    usersPersonas.push(person.user);
+    usersPersonas.push(perso.user);
   });
   if ((!dniPersonas.includes(req.body.dni))&&(!emailPersonas.includes(req.body.email))&&(!usersPersonas.includes(req.body.user))){
-    const hashedPassword = await bcrypt.hash(req.body.password, 5);
-    const persona = await Persona.create({
-      nombre: req.body.nombre,
-      apellido: req.body.apellido,
-      dni: req.body.dni,
-      telefono: req.body.telefono,
-      email: req.body.email,
-      sexo: req.body.sexo,
-      fechaNacimiento: req.body.fechaNacimiento,
-      domicilio: req.body.domicilio,
-      provincia: req.body.provincia,
-      localidad: req.body.localidad,
-      obraSocial: req.body.obraSocial,
-      numeroAfiliado: req.body.numeroAfiliado,
-      estado: true,
-      user: req.body.user,
-      password: hashedPassword,
-    });
-    await Paciente.create({
+    
+    const persona = await Persona.create(datosPersona);
+    const paciente = await Paciente.create({
       idPersona: persona.id,
       embarazada: req.body.embarazada,
       estado:true
     });
-    res.redirect("/login"); 
+    res.send('Paciente creado!!')
+    
+    
   } else {
     const personaEncontrada = await Persona.findOne({where: {dni : req.body.dni}})
     const pacienteEncontrado = await Paciente.findOne({where: {idPersona : personaEncontrada.id }})
-    if(personaEncontrada.estado == false || pacienteEncontrado.estado == false){
-       
-      
+    if(personaEncontrada.estado == 0 || pacienteEncontrado.estado == 0){
+      await Persona.update(datosPersona, {where:{dni: personaEncontrada.dni}});
+      await Paciente.update({
+          embarazada: req.body.embarazada,
+          estado:true
+        }, 
+        {where: {idPersona: personaEncontrada.id}
+      })
+      res.status(201).send('persona dada de alta nuevamente con datos nuevos.!!')
     }
     else{
       res.send('<h1>Persona ya existente</h1>')

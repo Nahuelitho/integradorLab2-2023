@@ -3,8 +3,9 @@ extends ../layout/plantilla
 block contenido 
     link(rel='stylesheet', type='text/css', href='css/personaFormulario.css') 
     
-    form(class="formulario" method="post", id="formulario")
+    form(class="formulario" method="post", id="formulario" action="/paciente")
         h2 Ingreso de Paciente
+       
         main    
                 .row
                     .col
@@ -26,15 +27,16 @@ block contenido
                             p(class="formulario__input-error") * El apellido no debe estar vacio ni contener caracteres especiales.
                         br
                 .row
-                    .col
-                        //---------------- Grupo: DNI ----------------
-                        div(class=" formulario__grupo" id="grupo__dni") 
-                            label(for='dni' class="formulario__label") DNI:
-                            div(class="formulario__grupo-input")
-                                input(type='text',class="formulario__input" id='dni', name='dni',placeholder="37256988")
-                                i(class="formulario__validacion-estado fa-solid fa-circle-xmark")
-                            p(class="formulario__input-error") * El dni deben ser numeros (max. de 8) sin puntos ni caracteres especiales.
-                        br
+                    .col    
+                            //---------------- Grupo: DNI ----------------
+                            div(class=" formulario__grupo" id="grupo__dni") 
+                                label(for='dni' class="formulario__label") DNI:
+                                div(class="formulario__grupo-input")
+                                    input(type='text',class="formulario__input", name='dni',placeholder="37256988" id='dni')
+                                    i(class="formulario__validacion-estado fa-solid fa-circle-xmark")
+                                p(class="formulario__input-error") * El dni deben ser numeros (max. de 8) sin puntos ni caracteres especiales.
+                                p(class="formulario__input-error-2") * El dni ya esta registrado!!
+                            br
                     .col
                         //---------------- Grupo: Telefono ----------------
                         div(class="formulario__grupo" id="grupo__telefono") 
@@ -177,10 +179,10 @@ block contenido
                             p(class="formulario__input-error") * La contraseña debe tener al menos 6 caracteres max 16.
                             p(class="formulario__input-error-2") * Las contraseñas deben ser iguales.
                         br 
-                .row
-                    button(type='submit' class="formulario_btn-enviar") Guardar
-                        p(class="formulario__mensaje-exito" id="formulario__mensaje-exito") Paciente guardado con exito!
-                    br
+            
+                button(type='submit'  class="formulario_btn-enviar") Guardar
+                    p(class="formulario__mensaje-exito" id="formulario__mensaje-exito") Paciente guardado con exito!
+                br
     script(src="../js/validacionPacientes.js")
     script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
     script(src="https://kit.fontawesome.com/7aad8207b8.js"  crossorigin="anonymous")
