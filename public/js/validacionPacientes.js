@@ -1,6 +1,7 @@
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 const selects = document.querySelectorAll('#formulario select');
+const dniPersonas = [];
 const expresiones = {
     nombre: /^[A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?)([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30})?$/,   // formato de la A a la Z y pueden llevar acento.
     apellido: /^[A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30})?$/ , // formato de la A a la Z y pueden llevar acento.
@@ -100,12 +101,12 @@ const validarFecha = (input)=>{
         document.getElementById(`grupo__fechaNacimiento`).classList.add('formulario__grupo-correcto')
         document.getElementById(`grupo__fechaNacimiento`).classList.remove('formulario__grupo-incorrecto');
         document.querySelector(`#grupo__fechaNacimiento .formulario__input-error`).classList.remove('formulario__input-error-activo');
-        resultados[fechaNacimiento] = true;
+        resultados.fechaNacimiento = true;
     }else{
         document.getElementById(`grupo__fechaNacimiento`).classList.add('formulario__grupo-incorrecto');
         document.getElementById(`grupo__fechaNacimiento`).classList.remove('formulario__grupo-correcto');
         document.querySelector(`#grupo__fechaNacimiento .formulario__input-error`).classList.add('formulario__input-error-activo');
-        resultados[fechaNacimiento] = false;
+        resultados.fechaNacimiento = false;
     }
 
 
@@ -114,20 +115,28 @@ const validarFecha = (input)=>{
 const validarPassword=()=>{
     const inputPass1 = document.getElementById('password');
     const inputPass2 = document.getElementById('password2');
+    if(inputPass1.value == null){
+        document.getElementById(`grupo__password`).classList.add('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__password`).classList.remove('formulario__grupo-correcto');
+        document.querySelector(`#grupo__password i`).classList.add('fa-circle-xmark');
+        document.querySelector(`#grupo__password i`).classList.remove('fa-circle-check');
+        document.querySelector(`#grupo__password .formulario__input-error`).classList.add('formulario__input-error-activo');
+        resultados.password = false;
+    }
     if(inputPass1.value !== inputPass2.value){
         document.getElementById(`grupo__password2`).classList.add('formulario__grupo-incorrecto');
         document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-correcto');
         document.querySelector(`#grupo__password2 i`).classList.add('fa-circle-xmark');
         document.querySelector(`#grupo__password2 i`).classList.remove('fa-circle-check');
         document.querySelector(`#grupo__password2 .formulario__input-error-2`).classList.add('formulario__input-error-2-activo');
-        resultados[password] = false;
+        resultados.password = false;
     }else{
         document.getElementById(`grupo__password2`).classList.add('formulario__grupo-correcto');
         document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-incorrecto');
         document.querySelector(`#grupo__password2 i`).classList.add('fa-circle-check');
         document.querySelector(`#grupo__password2 i`).classList.remove('fa-circle-xmark');
         document.querySelector(`#grupo__password2 .formulario__input-error-2`).classList.remove('formulario__input-error-2-activo');
-        resultados[password] = true;
+        resultados.password = true;
     }
 }
 
@@ -138,20 +147,20 @@ const validarCampo = (expresion, input, campo)=>{
         document.querySelector(`#grupo__${campo} i`).classList.add('fa-circle-check');
         document.querySelector(`#grupo__${campo} i`).classList.remove('fa-circle-xmark');
         document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
-        resultados[campo] = true;
+        resultados.campo = true;
     }else {
         document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
         document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
         document.querySelector(`#grupo__${campo} i`).classList.add('fa-circle-xmark');
         document.querySelector(`#grupo__${campo} i`).classList.remove('fa-circle-check');
         document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
-        resultados[campo] = false;
+        resultados.campo = false;
     }
-
 }
 
+
 formulario.addEventListener('submit', (e)=>{
-    // e.preventDefault();
+    // 
     if(resultados.nombre && resultados.apellido && resultados.dni && resultados.telefono && resultados.email 
         && resultados.fechaNacimiento && resultados.domicilio && resultados.obraSocial && resultados.numeroAfiliado 
         && resultados.user && resultados.password) {
@@ -160,6 +169,10 @@ formulario.addEventListener('submit', (e)=>{
             formulario.reset()
             document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo')
         }, 5000);
+    } else {
+       // e.preventDefault();
+        console.log('fallo la carga..')
+        
     }
 
 })

@@ -5,14 +5,10 @@ const Persona = require("../models/Persona");
 const Paciente = require("../models/Paciente");
 const bcrypt = require("bcryptjs");
 const Swal = require("sweetalert2");
+const pacienteController = require('../controllers/paciente.controller')
 //metodos de Paciente
-router.get("/", async (req, res, next) => {
-  const personas = await Persona.findAll();
-  const pacientes = await Paciente.findAll();
-  res.render("pages/personaFormulario",{pacientes: pacientes, personas: personas});
-  next();
-});
-
+router.get("/", pacienteController.crearPaciente);
+// error al encontrar usuario o mail tambien intenta encontrar una persona con el dni ingresado. 
 ///crear, primero crea la persona y luego le asigna el id de esa persona al  Paciente (idPersona)
 router.post("/", async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 5);
@@ -50,7 +46,7 @@ router.post("/", async (req, res, next) => {
       embarazada: req.body.embarazada,
       estado:true
     });
-    res.send('Paciente creado!!')
+    res.redirect('/paciente/pacientes')
     
     
   } else {
@@ -64,7 +60,7 @@ router.post("/", async (req, res, next) => {
         }, 
         {where: {idPersona: personaEncontrada.id}
       })
-      res.status(201).send('persona dada de alta nuevamente con datos nuevos.!!')
+      res.redirect('/paciente/pacientes')
     }
     else{
       res.send('<h1>Persona ya existente</h1>')
@@ -75,22 +71,7 @@ router.post("/", async (req, res, next) => {
 });
 
 //lista todos los pacientes en una tabla persona/pacientes
-router.get("/pacientes", async (req, res, next) => {
-  const pacientes = await Paciente.findAll({ where: { estado: true } });
-  var idPacientes = [];
-  pacientes.forEach(function (paciente) {
-    idPacientes.push(paciente.idPersona);
-  });
-  const personas = await Persona.findAll({
-    where: {
-      id: idPacientes,
-      estado: true,
-    },
-  });
-
-  res.render("pages/tabla", { personas: personas });
-  next();
-});
+router.get("/pacientes", pacienteController.mostrarPacientes);
 //obtiene y muestra el paciente a actualizar
 router.get("/actualizar/:dni", async (req, res, next) => {
   const dni = req.params.dni;
@@ -163,6 +144,7 @@ router.post("/borrar/:dni", async (req, res, next) => {
       obraSocial: data.obraSocial,
       numeroAfiliado: data.numeroAfiliado,
       user: data.user,
+      estado: false,
       password: data.password,
     },
     {
@@ -172,6 +154,7 @@ router.post("/borrar/:dni", async (req, res, next) => {
   await Paciente.update(
     {
       embarazada: data.embar,
+      estado: false
     },
     {
       where: { idPersona: persona.id },
