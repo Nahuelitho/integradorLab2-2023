@@ -1,4 +1,4 @@
-extends ../layout/plantilla
+extends ../../layout/plantilla
 block contenido
     link(rel="stylesheet", href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css")
     link(rel="stylesheet", href="../css/TablaPacientes.css")
@@ -30,11 +30,11 @@ block contenido
                       td(class="centered")= `${persona.provincia}`  
                       td(class="centered")= `${persona.domicilio}`
                       td(class="centered")
-                        form( method="get", action=`/paciente/actualizar/${persona.dni}`)
+                        form( method="get", action=`/pacientes/actualizar/${persona.dni}`)
                           button(type="submit", value="editar" class="editar btn btn-primary") editar
                           
                       td(class="centered")
-                        form(method="post", action=`/paciente/borrar/${persona.dni}`)
+                        form(method="post", action=`/pacientes/borrar/${persona.dni}`)
                           button(type="submit", id="butonBorrar" class="borrar btn btn-danger") borrar
               form( method="get", action=`/paciente`)
                 button(type="submit", id="agregar", class="agregar btn btn-plus")  agregar          

@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 //de datos)
 
 app.use('/', loginRouter);
-app.use('/paciente', pacienteRouter);
+app.use('/pacientes', pacienteRouter);
 app.use('/tecnico', tecnicoRouter);
 app.use('/secretaria', secretariaRouter);
 app.use('/login', loginRouter);
