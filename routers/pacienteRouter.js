@@ -166,11 +166,11 @@ router.post("/borrar/:dni", async (req, res, next) => {
 });
 
 // 3000:/persona/buscar/   solo a modo ejemplo esto lo hace la tabla
-router.post("/buscar", async (req, res) => {
+/* router.post("/buscar", async (req, res) => {
   const dni = req.body.dniBuscar;
   const personaEditable = await Persona.findOne({ where: { dni: dni } });
 
-  res.render("pages/tabla", { persona: personaEditable });
-});
+  res.render("pages/tablaPacientes", { persona: personaEditable });
+}); */
 
 module.exports = router;

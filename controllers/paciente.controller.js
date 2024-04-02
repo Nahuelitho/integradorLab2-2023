@@ -8,7 +8,7 @@ const Swal = require("sweetalert2");
 const controllerPaciente = {};
 
 controllerPaciente.crearPaciente = async(req, res, next)=>{
-const personas = await Persona.findAll();
+  const personas = await Persona.findAll();
   const pacientes = await Paciente.findAll();
   let dniPersonas= new Array();
   personas.forEach(function (perso) {
@@ -29,10 +29,9 @@ controllerPaciente.mostrarPacientes =  async (req, res, next) => {
       estado: true,
     },
   });
-
-  res.render("pages/tabla", { personas: personas });
+  res.render("pages/tablaPacientes", { personas: personas });
   next();
-}
+};
 
 
 
