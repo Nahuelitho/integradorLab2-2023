@@ -17,9 +17,6 @@ router.post("/", pacienteController.crearPaciente);
 router.get("/actualizar/:dni", pacienteController.mostrarPaciente);
 
 //persona/actualizar url ejecuta la actualizacion por DNI
-<<<<<<< Updated upstream
-router.post("/actualizar/:dni", pacienteController.editarPaciente);
-=======
 router.post("/actualizar/:dni", async (req, res, next) => { //el boton Guardar del Formulario Actualizar
   const dni = req.params.dni;
   const data = req.body;
@@ -59,7 +56,6 @@ router.post("/actualizar/:dni", async (req, res, next) => { //el boton Guardar d
   res.redirect("/paciente/pacientes");
   next();
 });
->>>>>>> Stashed changes
 // hace borrado logico~ pasa el estado de true a false./
 router.post("/borrar/:dni", pacienteController.eliminarPaciente);
 
