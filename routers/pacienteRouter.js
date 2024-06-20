@@ -1,17 +1,18 @@
 const router = require("express").Router();
 const { json } = require("express");
 //ruteador para requerir a personas
-const Persona = require("../models/Persona");
-const Paciente = require("../models/Paciente");
+
 const bcrypt = require("bcryptjs");
 const Swal = require("sweetalert2");
 const pacienteController = require('../controllers/paciente.controller');
 //metodos de Paciente
 //lista todos los pacientes en una tabla
+//http:localhost/pacientes
 router.get("/", pacienteController.mostrarPacientes);
 // error al encontrar usuario o mail tambien intenta encontrar una persona con el dni ingresado. 
 ///crear, primero crea la persona y luego le asigna el id de esa persona al  Paciente (idPersona)
-router.post("/", pacienteController.crearPaciente);
+router.get("/crear", pacienteController.formPaciente);
+router.post("/crear", pacienteController.alta);
 
 //obtiene y muestra el paciente a actualizar
 router.get("/actualizar/:dni", pacienteController.mostrarPaciente);

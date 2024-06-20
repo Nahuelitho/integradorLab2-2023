@@ -2,12 +2,17 @@ const router = require("express").Router();
 const { json } = require("express");
 //ruteador para requerir a examenes
 const Referencia = require("../models/Referencia");
+const controllerReferencia  = require("../controllers/referencia.controller")
 
-//carga formulario de referencia vacio
+//carga formulario de referencia vacio http://localhost:3000/referencia
 router.get("/", (req, res, next) => {
   res.render("pages/cargaReferencia");
   next();
 });
+
+//alta referencia en bd con creacion de tabla de ser necesario
+//http://localhost:3000/referencia
+router.post("/", controllerReferencia.alta);
 
 router.get("/buscar", (req, res, next) => {
   res.render("pages/referenciaBuscar");
@@ -22,22 +27,9 @@ router.post("/buscar/", async (req, res, next) => {
   next();
 });
 
-//alta referencia en bd con creacion de tabla de ser necesario
-router.post("/", async (req, res, next) => {
-  await Referencia.sync();
-  const createReferencia = await Referencia.create({
-    edadMin: req.body.edadMin,
-    edadMax: req.body.edadMax,
-    sexo: req.body.sexo,
-    embarazo: req.body.embarazo,
-    valMin: req.body.valMin,
-    valMax: req.body.valMax,
-    idDeterminacion: req.body.idDeterminacion,
-  });
-  res.render("pages/cargaReferencia");
-  next();
-});
 
+
+//Actualizar referencia.
 router.put("/Actualizar", async (req, res, next) => {
   const referenciaId = req.body.referenciaId;
   const body = req.body;

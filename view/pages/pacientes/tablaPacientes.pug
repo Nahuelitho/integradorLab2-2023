@@ -36,10 +36,11 @@ block contenido
                       td(class="centered")
                         form(method="post", action=`/pacientes/borrar/${persona.dni}`)
                           button(type="submit", id="butonBorrar" class="borrar btn btn-danger") borrar
-              form( method="get", action=`/paciente`)
-                button(type="submit", id="agregar", class="agregar btn btn-plus")  agregar          
+                      
             else
                 h2(style="text-align: center") No se encontraron pacientes cargados.
+            form( method="get", action=`/paciente`)
+              button(type="submit", id="agregar", class="agregar btn btn-plus")  agregar 
     
         //- button(onclick="ocultar('ocultable')") ocultar tabla
         //- Más filas aquí

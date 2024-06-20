@@ -12,7 +12,7 @@ controllerPaciente.formPaciente = (req, res, next) => {
   next();
 };
 
-controllerPaciente.crearPaciente = async (req, res, next) => {
+controllerPaciente.alta = async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 5);
   const personas = await Persona.findAll();
   var dniPersonas = [];
@@ -40,7 +40,7 @@ controllerPaciente.crearPaciente = async (req, res, next) => {
     emailPersonas.push(perso.email);
     usersPersonas.push(perso.user);
   });
-  if ((!dniPersonas.includes(req.body.dni))&&(!emailPersonas.includes(req.body.email))&&(!usersPersonas.includes(req.body.user))){
+  if ((!dniPersonas.includes(req.body.dni))&&(!usersPersonas.includes(req.body.user))){
     
     const persona = await Persona.create(datosPersona);
     const paciente = await Paciente.create({
