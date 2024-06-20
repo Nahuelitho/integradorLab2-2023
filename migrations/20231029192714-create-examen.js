@@ -15,9 +15,29 @@ module.exports = {
         allowNull: false,
       },
 
-      fechaEntregaResultado: {
-        type: Sequelize.DATEONLY,
-        allowNull: false,
+      valRefHombreD: { 
+        type: Sequelize.DECIMAL,
+        allowNull: true,
+      },
+      valRefHombreH: { 
+        type: Sequelize.DECIMAL,
+        allowNull: true,
+      },
+      valRefMujerD: { 
+        type: Sequelize.DECIMAL,
+        allowNull: true,
+      },
+      valRefMujerH: { 
+        type: Sequelize.DECIMAL,
+        allowNull: true,
+      },
+      valRefNinioD: { 
+        type: Sequelize.DECIMAL,
+        allowNull: true,
+      },
+      valRefNinioH: { 
+        type: Sequelize.DECIMAL,
+        allowNull: true,
       },
 
       estado: {

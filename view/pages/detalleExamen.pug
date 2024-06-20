@@ -1,0 +1,51 @@
+extends ../layout/plantilla 
+
+block contenido 
+    link(rel='stylesheet', type='text/css', href='../css/personaFormulario.css')
+    div.container
+        h3 Cargar un Examen 
+        form(action="/examen", method="post", id="cargaExamenForm")
+            .row
+                .col
+                    h5 Nombre de examen: 
+                    input(type='text', id='nombre', name='nombre', placeholder='Ingrese Nombre examen', required)
+                .col
+            .row
+                h5 Valores Referencia Hombre : 
+            .row 
+                .col
+                    label(for='desde') Desde :
+                    input(type='text', id='valRefHomD', name='valRefHomD')
+                .col
+                    label(for='hasta') Hasta :
+                    input(type='text', id='valRefHomH', name='valRefHomH')   
+            .row
+                h5 Valores Referencia Mujer : 
+                .row
+                    .col
+                        label(for='desde') Desde :
+                        input(type='text', id='valRefMujD', name='valRefMujD')
+                    .col 
+                        label(for='hasta') Hasta :
+                        input(type='text', id='valRefMujH', name='valRefMujH')
+            .row 
+                h5 Valores Referencia Niño : 
+                .row 
+                    .col 
+                        label(for='desde') Desde :
+                        input(type='text', id='valRefNinioD', name='valRefNinioD')
+                    .col 
+                        label(for='hasta') Hasta :
+                        input(type='text', id='valRefNinioH', name='valRefNinioH')
+            .row 
+                .col 
+                    button(type='submit', id="btGuardarExamen" class="btn btn-primary") Guardar Examen
+                .col
+                    a(href="listadoExamen") Volver
+    div(name="tabla")
+
+
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+    script(src="https://kit.fontawesome.com/7aad8207b8.js"  crossorigin="anonymous")
+    script(scr="../js/ExamenDetalle.js")
+

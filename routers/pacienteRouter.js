@@ -5,7 +5,7 @@ const Persona = require("../models/Persona");
 const Paciente = require("../models/Paciente");
 const bcrypt = require("bcryptjs");
 const Swal = require("sweetalert2");
-const pacienteController = require('../controllers/paciente.controller')
+const pacienteController = require('../controllers/paciente.controller');
 //metodos de Paciente
 //lista todos los pacientes en una tabla
 router.get("/", pacienteController.mostrarPacientes);
@@ -17,7 +17,49 @@ router.post("/", pacienteController.crearPaciente);
 router.get("/actualizar/:dni", pacienteController.mostrarPaciente);
 
 //persona/actualizar url ejecuta la actualizacion por DNI
+<<<<<<< Updated upstream
 router.post("/actualizar/:dni", pacienteController.editarPaciente);
+=======
+router.post("/actualizar/:dni", async (req, res, next) => { //el boton Guardar del Formulario Actualizar
+  const dni = req.params.dni;
+  const data = req.body;
+  const persona = await Persona.findOne({ where: { dni: dni } });
+  await Persona.update(
+    {
+      nombre: data.nombre,
+      apellido: data.apellido,
+      dni: data.dni,
+      telefono: data.telefono,
+      email: data.email,
+      fechaNacimiento: data.fechaNacimiento,
+      sexo: data.sexo,
+      domicilio: data.domicilio,
+      provincia: data.provincia,
+      localidad: data.localidad,
+      obraSocial: data.obraSocial,
+      numeroAfiliado: data.numeroAfiliado,
+      estado: true,
+      user: data.user,
+      password: data.password,
+    },
+    {
+      where: { dni: dni },
+    }
+  );
+  await Paciente.update(
+    {
+      embarazada: data.embar,
+      estado: true
+    },
+    {
+      where: { idPersona: persona.id },
+    }
+  );
+
+  res.redirect("/paciente/pacientes");
+  next();
+});
+>>>>>>> Stashed changes
 // hace borrado logico~ pasa el estado de true a false./
 router.post("/borrar/:dni", pacienteController.eliminarPaciente);
 

@@ -1,0 +1,53 @@
+extends ../layout/plantilla
+block contenido
+    link(rel="stylesheet", href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css")
+    link(rel="stylesheet", href="../css/TablaPacientes.css")
+    
+    div(class="container", id="tablaExamen") 
+      h3(style="text-align: center", id="titulo") Examenes
+      div(class="row", )
+        div(class="col")
+            if examenes.length  !== 0
+              table(id="miTabla", class="table table-striped")
+                thead
+                    tr
+                      th(class="centered") Nombre
+                      th(class="centered") Valor referencia Hombre Desde
+                      th(class="centered") Valor referencia Hombre Hasta 
+                      th(class="centered") Valor referencia Mujer Desde
+                      th(class="centered") Valor referencia Mujer Hasta
+                      th(class="centered") Valor referencia Niño Desde
+                      th(class="centered") Valor referencia Niño Hasta
+                      th(class="centered") Actualizar
+                      th(class="centered") Eliminar
+                tbody
+                  each examen in examenes 
+                  
+                    tr
+                      td(class="centered")= `${examen.nombre}`  
+                      td(class="centered")= `${examen.valRefHomD}`  
+                      td(class="centered")= `${examen.valRefHomH}`  
+                      td(class="centered")= `${examen.valRefMujD}`  
+                      td(class="centered")= `${examen.valRefMujH}`  
+                      td(class="centered")= `${examen.valRefNinioD}`
+                      td(class="centered")= `${examen.valRefNinioH}`
+                      td(class="centered")
+                        form( method="get", action=`/examen/actualizar/${examen.id}`)
+                          button(type="submit", value="editar" class="editar btn btn-primary") editar
+                          
+                      td(class="centered")
+                        form(method="post", action=`/examen/borrar/${examen.id}`)
+                          button(type="submit", id="butonBorrar" class="borrar btn btn-danger") borrar
+              form( method="get", action=`/examen`)
+                button(type="submit", id="agregar", class="agregar btn btn-plus") Agregar          
+            else
+                h2(style="text-align: center") No se encontraron examenes cargados.
+    
+        //- button(onclick="ocultar('ocultable')") ocultar tabla
+        //- Más filas aquí
+    script(src="https://code.jquery.com/jquery-3.7.0.js")
+    script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
+    script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
+    script(src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js")
+    script(src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js")
+    script(src="../js/iniciarDataTable.js")

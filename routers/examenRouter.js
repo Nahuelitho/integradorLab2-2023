@@ -2,15 +2,12 @@ const router = require("express").Router();
 const { json } = require("express");
 //ruteador para requerir a examenes
 const Examen = require('../models/Examen');
-
+const bcrypt = require("bcryptjs");
+const Swal = require("sweetalert2");
+const examenController = require('../controllers/examenController');
 //carga formulario de examenes vacio
 router.get("/", (req, res, next) => {
-  res.render("pages/cargaExamen");
-  next();
-});
-
-router.get("/buscar", (req, res, next) => {
-  res.render("pages/resExamen");
+  res.render("pages/detalleExamen");
   next();
 });
 
@@ -18,35 +15,31 @@ router.get("/buscar", (req, res, next) => {
 router.post("/buscar/", async (req, res, next) => {
   const examenId = req.body.examenId;
   const examen = await Examen.findOne({ where: {id: examenId}});
-  res.render("pages/resExamen", {examen: examen});
+  res.render("pages/listadoExamen", {examen: examen});
   next();
 });
 
-//alta examen en bd con creacion de tabla de ser necesario
-router.post("/", async (req, res, next) => {
-  await Examen.sync();
-  const createExamen = await Examen.create({
-    muestraId: req.body.muestraId,
-    nombre: req.body.nombre,
-    fechaEntregaResultado: req.body.fechaEntregaResultado,
-    estado: req.body.estado,
-  });
-  res.render("pages/cargaExamen");
-  next();
-});
+//lista todos los examenes en la tabla
+router.get("/examenes", examenController.obtenerExamenes);
 
-router.put("/Actualizar", async(req, res, next) => {
-  const examenId = req.body.examenId;
-  const body = req.body;
-  const actualizarExamen = await Examen.update({
-    muestraId: body.muestraId,
+router.get("/Actualizar/:id", examenController.BuscarXId);
+router.post("/Actualizar/:id", async(req, res, next) => {
+  const examenId = req.params.id;
+  const data = req.body;
+  const examenAActualizar = await Examen.findOne({where: {examenId: id}});
+  await Examen.update({
     nombre: body.nombre,
-    fechaEntregaResultado: body.fechaEntregaResultado,
+    valRefHombreD: body.valRefHombreD,
+    valRefHombreH: body.valRefHombreH,
+    valRefMujerD: body.valRefMujerD,
+    valRefMujerH: body.valRefMujerH,
+    valRefNinioD: body.valRefNinioD,
+    valRefNinioH: body.valRefNinioH,
     estado: body.estado,
   },
   { where: {id: examenId}}
   );
-  res.render("pages/cargaExamen");
+  res.render("pages/detalleExamen");
   next();
 });
 

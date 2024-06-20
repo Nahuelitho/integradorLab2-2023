@@ -27,7 +27,31 @@ class Examen extends Model {
 Examen.init(
   {
     nombre: DataTypes.STRING,
-    fechaEntregaResultado: DataTypes.DATEONLY,
+    //fechaEntregaResultado: DataTypes.DATEONLY,
+    valRefHombreD: { 
+      type: DataTypes.DECIMAL,
+      allowNull: true,
+    },
+    valRefHombreH: { 
+      type: DataTypes.DECIMAL,
+      allowNull: true,
+    },
+    valRefMujerD: { 
+      type: DataTypes.DECIMAL,
+      allowNull: true,
+    },
+    valRefMujerH: { 
+      type: DataTypes.DECIMAL,
+      allowNull: true,
+    },
+    valRefNinioD: { 
+      type: DataTypes.DECIMAL,
+      allowNull: true,
+    },
+    valRefNinioH: { 
+      type: DataTypes.DECIMAL,
+      allowNull: true,
+    },
     estado: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
