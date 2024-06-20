@@ -24,3 +24,4 @@ examenController.BuscarXId = async(req, res, next) => {
   const examen = await Examen.findOne({where: {id : IdExamen}});
   res.render("pages/detalleExamen", {examen : examen});
 }
+module.exports = examenController;
