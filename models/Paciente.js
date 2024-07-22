@@ -40,6 +40,13 @@ Paciente.init(
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
+    diagnostico: {
+      type: DataTypes.STRING,
+    },
+    estDiagnostico: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   },
   {
     sequelize,

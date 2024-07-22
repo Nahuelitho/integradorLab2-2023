@@ -7,6 +7,7 @@ const expresiones = {
     apellido: /^[A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30})?$/ , // formato de la A a la Z y pueden llevar acento.
     dni: /^[0-9]{7,8}$/ ,                          // 7 a 8 digitos del 0 al 9.
     obraSocial: /^[A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30})?$/, // formato de la A a la Z y pueden llevar acento.
+    diagnostico: /^[A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?)([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30})?$/,   // formato de la A a la Z y pueden llevar acento.
     telefono: /^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/, // elimina todo lo que no sea numero opcionales el +54, 0 15 y 4.
     usuario: /^[a-z0-9_-]{3,20}$/, // formato numeros letras y guiones 3 a 16 caracteres
     email: /^\w+([./\-_+/]*?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/, // formato example_ex09@example.com
@@ -24,6 +25,7 @@ const resultados = {
     fechaNacimiento: false,
     domicilio: false,
     obraSocial: false,
+    diagnostico: false,
     numeroAfiliado: false,
     user: false,
     password: false
@@ -48,6 +50,10 @@ const validarFormulario =(e)=>{
 
         case "email":
             validarCampo(expresiones.email, e.target, 'email');
+        break;
+
+        case "diagnostico":
+            validarCampo(expresiones.diagnostico, e.target, "diagnostico");
         break;
 
         case "fechaNacimiento": 

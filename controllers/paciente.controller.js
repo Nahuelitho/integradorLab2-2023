@@ -46,6 +46,8 @@ controllerPaciente.alta = async (req, res, next) => {
     const paciente = await Paciente.create({
       idPersona: persona.id,
       embarazada: req.body.embarazada,
+      diagnostico: req.body.diagnostico,
+      estDiagnostico: req.body.estDiag,
       estado:true
     });
     res.redirect('/pacientes')
@@ -58,6 +60,8 @@ controllerPaciente.alta = async (req, res, next) => {
       await Persona.update(datosPersona, {where:{dni: personaEncontrada.dni}});
       await Paciente.update({
           embarazada: req.body.embarazada,
+          diagnostico: req.body.diagnostico,
+          estDiagnostico: req.body.estDiag,
           estado:true
         }, 
         {where: {idPersona: personaEncontrada.id}
@@ -128,6 +132,8 @@ controllerPaciente.editarPaciente = async (req, res, next) => {
   await Paciente.update(
     {
       embarazada: data.embar,
+      estDiagnostico: data.estDiag,
+      diagnostico: data.diagnostico,
       estado: true
     },
     {
@@ -168,6 +174,8 @@ controllerPaciente.eliminarPaciente = async (req, res, next) => {
   await Paciente.update(
     {
       embarazada: data.embar,
+      diagnostico: data.diagnostico,
+      estDiagnostico: data.estDiag,
       estado: false
     },
     {

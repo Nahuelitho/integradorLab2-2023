@@ -1,4 +1,7 @@
 "use strict";
+
+const { sequelize } = require('../models/Persona');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -20,7 +23,14 @@ module.exports = {
         onDelete: "CASCADE",
         allowNull: false,
       },
-
+      diagnostico:{
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      estDiagnostico:{
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+      },
       embarazada: {
         type: Sequelize.BOOLEAN,
         allowNull: false,

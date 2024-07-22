@@ -6,6 +6,7 @@ block contenido
             
             form(method="post", id="formulario", action="")
                 h1 Actualizar Paciente:
+
                 label(for='nombre') Nombre:
                 input(type='text', id='nombre', name='nombre', value=persona.nombre)
                 
@@ -47,6 +48,23 @@ block contenido
                             input(type="radio",form="formulario", id="embarazada" name="embar", value=1) 
                         label(for="") No 
                             input(type="radio",form="formulario", id="embarazada" name="embar",checked, value=0)
+                br
+
+                label(for='diagnostico') Diagnostico:
+                input(type='text', id='diagnostico', name='diagnostico', value=persona.diagnostico)
+
+                br
+                label(for="estDiagnosticoSi", style="display: block") Tipo de Diagnostico:
+                    if `${paciente.estDiagnostico}` == 'true'
+                        label(for="") Confirmado
+                            input(type="radio",form="formulario", id="estDiagnostico" name="estDiag", checked, value=1)
+                        label(for="") Presunto 
+                            input(type="radio",form="formulario",  id="estDiagnostico" name="estDiag", value=0)  
+                    else 
+                        label(for="") Confirmado
+                            input(type="radio",form="formulario", id="estDiagnostico" name="estDiag", value=1) 
+                        label(for="") Presunto 
+                            input(type="radio",form="formulario", id="estDiagnostico" name="estDiag",checked, value=0)
                         
                 label(for='fechaNac') Fecha de Nacimiento:
                 input(type='date', form="formulario",  id='fechaNacimiento', name='fechaNacimiento', value=persona.fechaNacimiento)

@@ -9,6 +9,8 @@ module.exports = {
         defaults: {
           idPersona: 1,
           embarazada: true,
+          diagnostico: "gripe",
+          estDianostico: true,
           estado: true,
         },
       }),
@@ -17,6 +19,8 @@ module.exports = {
         defaults: {
           idPersona: 2,
           embarazada: false,
+          diagnostico: "leucemia",
+          estDianostico: false,
           estado: true,
         },
       }),
@@ -25,6 +29,8 @@ module.exports = {
         defaults: {
           idPersona: 3,
           embarazada: true,
+          diagnostico: "colicos idiopaticos",
+          estDianostico: true,
           estado: true,
         },
       }),
@@ -33,6 +39,8 @@ module.exports = {
         defaults: {
           idPersona: 4,
           embarazada: false,
+          diagnostico: "varicela",
+          estDianostico: true,
           estado: true,
         },
       }),
@@ -41,6 +49,8 @@ module.exports = {
         defaults: {
           idPersona: 5,
           embarazada: false,
+          diagnostico: "sarampion",
+          estDianostico: false,
           estado: true,
         },
       }),
@@ -49,6 +59,8 @@ module.exports = {
         defaults: {
           idPersona: 6,
           embarazada: false,
+          diagnostico: "gripe",
+          estDianostico: false,
           estado: true,
         },
       }),
@@ -57,6 +69,8 @@ module.exports = {
         defaults: {
           idPersona: 7,
           embarazada: false,
+          diagnostico: "anemia",
+          estDianostico: false,
           estado: true,
         },
       }),
@@ -65,6 +79,8 @@ module.exports = {
         defaults: {
           idPersona: 8,
           embarazada: true,
+          diagnostico: "intoxicacion por metales",
+          estDianostico: false,
           estado: true,
         },
       }),
@@ -73,6 +89,8 @@ module.exports = {
         defaults: {
           idPersona: 9,
           embarazada: false,
+          diagnostico: "perdida de apetito",
+          estDianostico: true,
           estado: true,
         },
       }),
@@ -81,6 +99,8 @@ module.exports = {
         defaults: {
           idPersona: 10,
           embarazada: false,
+          diagnostico: "hematomas",
+          estDianostico: false,
           estado: true,
         },
       }),
@@ -89,6 +109,8 @@ module.exports = {
         defaults: {
           idPersona: 11,
           embarazada: false,
+          diagnostico: "gastroenteritis",
+          estDianostico: true,
           estado: true,
         },
       }),
@@ -97,6 +119,8 @@ module.exports = {
         defaults: {
           idPersona: 12,
           embarazada: false,
+          diagnostico: "gripe",
+          estDianostico: true,
           estado: true,
         },
       }),
@@ -105,6 +129,8 @@ module.exports = {
         defaults: {
           idPersona: 13,
           embarazada: false,
+          diagnostico: "gripe",
+          estDianostico: true,
           estado: true,
         },
       }),
@@ -113,6 +139,8 @@ module.exports = {
         defaults: {
           idPersona: 14,
           embarazada: false,
+          diagnostico: "gripe",
+          estDianostico: true,
           estado: true,
         },
       }),
@@ -121,6 +149,8 @@ module.exports = {
         defaults: {
           idPersona: 15,
           embarazada: false,
+          diagnostico: "hepatitis",
+          estDianostico: true,
           estado: true,
         },
       }),
@@ -129,6 +159,8 @@ module.exports = {
         defaults: {
           idPersona: 16,
           embarazada: false,
+          diagnostico: "faringitis",
+          estDianostico: true,
           estado: true,
         },
       }),
@@ -137,6 +169,8 @@ module.exports = {
         defaults: {
           idPersona: 17,
           embarazada: false,
+          diagnostico: "examenes de rutina",
+          estDianostico: true,
           estado: true,
         },
       }),
@@ -145,6 +179,8 @@ module.exports = {
         defaults: {
           idPersona: 18,
           embarazada: true,
+          diagnostico: "fiebre",
+          estDianostico: false,
           estado: true,
         },
       }),
@@ -153,6 +189,8 @@ module.exports = {
         defaults: {
           idPersona: 19,
           embarazada: false,
+          diagnostico: "ganglios inflamados",
+          estDianostico: true,
           estado: true,
         },
       }),
@@ -161,6 +199,8 @@ module.exports = {
         defaults: {
           idPersona: 20,
           embarazada: true,
+          diagnostico: "gripe",
+          estDianostico: true,
           estado: true,
         },
       }),

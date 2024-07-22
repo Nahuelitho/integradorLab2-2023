@@ -3,7 +3,7 @@ extends ../../layout/plantilla
 block contenido 
     link(rel='stylesheet', type='text/css', href='css/personaFormulario.css') 
     
-    form(class="formulario" method="post", name= 'formulario' id="formulario" action="/crear")
+    form(class="form" method="post", name= 'formulario' id="formulario" action="/crear")
         h2 Ingreso de Paciente
         main    
                 .row
@@ -83,6 +83,28 @@ block contenido
                             label(for='fechaNacimiento' class="formulario__label") Fecha de Nacimiento:
                             input(type='date', class="formulario__input" form="formulario",  id='fechaNacimiento', name='fechaNacimiento', required)
                             p(class="formulario__input-error") * La fecha no es Valida.
+                        br
+                .row
+                    .col
+                        //---------------- Grupo: Diagnostico ---------------
+                        div(class="formulario__grupo" id="grupo__diagnostico") 
+                            label(for='diagnostico' class="formulario__label") Diagnostico:
+                            div(class="formulario__grupo-input")
+                                input(type='text',class="formulario__input" id='diagnostico', name='diagnostico',placeholder="enfermedad")
+                                i(class="formulario__validacion-estado fa-solid fa-circle-xmark")
+                            p(class="formulario__input-error") * El diagnostico debe tener solo letras y no debe estar vacio.
+                        br
+                    .col
+                        //---------------- Grupo: Estado de diagnostico ----------------
+                        div(class="formulario__grupo" id="grupo__estDiagnostico")
+                            label(class="formulario__label") Estado del Diagnostico: 
+                            div(class="formulario__grupo-input")
+                            
+                                label(for="estDiagnostico" class="formulario__label-radio") Confirmado: 
+                                input(type="radio" class="formulario__radio" form="formulario" name="estDiagnostico" id="estDiagnostico" value=1)
+                            
+                                label(for="estDiagnosticoP" class="formulario__label-radio") Presuntivo:
+                                input(type="radio" class="formulario__radio" form="formulario" name="estDiagnosticoP" id="estDiagnosticoP" value=0)
                         br
                 .row
                     .col
