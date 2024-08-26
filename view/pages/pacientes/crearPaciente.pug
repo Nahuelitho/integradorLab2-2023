@@ -1,9 +1,10 @@
 extends ../../layout/plantilla
 
 block contenido 
-    link(rel='stylesheet', type='text/css', href='css/personaFormulario.css') 
+    link(rel='stylesheet', type='text/css', href='../css/personaFormulario.css') 
     
     form(class="form" method="post", name= 'formulario' id="formulario" action="/crear")
+
         h2 Ingreso de Paciente
         main    
                 .row
@@ -207,5 +208,5 @@ block contenido
     
     script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
     script(src="https://kit.fontawesome.com/7aad8207b8.js"  crossorigin="anonymous")
-    script(src="../js/validacionPacientes.js")
+    script(src="public/js/validacionPacientes.js")
     
