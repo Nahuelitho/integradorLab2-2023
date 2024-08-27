@@ -19,7 +19,7 @@ router.post('/login', async (req, res) => {
       // Genera un token JWT
       const token = jwt.sign({ user: usuario.user }, 'tu_secreto_secreto', { expiresIn: '1h' });
       // Realiza una redirección después de la autenticación exitosa
-      res.redirect('/paciente/pacientes');
+      res.redirect('/pacientes');
     } else {
       res.status(401).json({ error: "Credenciales inválidas" });
     }

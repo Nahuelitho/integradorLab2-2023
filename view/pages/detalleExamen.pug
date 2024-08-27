@@ -4,7 +4,7 @@ block contenido
     link(rel='stylesheet', type='text/css', href='../css/personaFormulario.css')
     div.container
         h3 Cargar un Examen 
-        form(action="/examen", method="post", id="cargaExamenForm")
+        form(action="", method="post", id="cargaExamenForm")
             .row
                 .col
                     h5 Nombre de examen: 
@@ -41,7 +41,8 @@ block contenido
                 .col 
                     button(type='submit', id="btGuardarExamen" class="btn btn-primary") Guardar Examen
                 .col
-                    a(href="listadoExamen") Volver
+                    input(type="button" onclick="history.back()" name="volver" value="volver")
+
     div(name="tabla")
 
 

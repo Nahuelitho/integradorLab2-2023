@@ -37,11 +37,13 @@ block contenido
                           
                       td(class="centered")
                         form(method="post", action=`/examen/borrar/${examen.id}`)
-                          button(type="submit", id="butonBorrar" class="borrar btn btn-danger") borrar
-              form( method="get", action=`/examen`)
-                button(type="submit", id="agregar", class="agregar btn btn-plus") Agregar          
+                          button(type="submit", id="butonBorrar" class="borrar btn btn-danger") borrar          
             else
                 h2(style="text-align: center") No se encontraron examenes cargados.
+
+            form( method="get", action=`/examenes/crear`)
+              button(type="submit", id="agregar", class="agregar btn btn-plus") Agregar 
+
     
         //- button(onclick="ocultar('ocultable')") ocultar tabla
         //- Más filas aquí

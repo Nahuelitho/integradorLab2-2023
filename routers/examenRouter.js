@@ -6,10 +6,8 @@ const bcrypt = require("bcryptjs");
 const Swal = require("sweetalert2");
 const examenController = require('../controllers/examenController');
 //carga formulario de examenes vacio
-router.get("/", (req, res, next) => {
-  res.render("pages/detalleExamen");
-  next();
-});
+router.get("/crear", examenController.formExamen);
+router.post("/crear", examenController.altaExamen);
 
 //busca un examen por examenId
 router.post("/buscar/", async (req, res, next) => {
@@ -20,7 +18,7 @@ router.post("/buscar/", async (req, res, next) => {
 });
 
 //lista todos los examenes en la tabla
-router.get("/examenes", examenController.obtenerExamenes);
+router.get("/", examenController.obtenerExamenes);
 
 router.get("/Actualizar/:id", examenController.BuscarXId);
 router.post("/Actualizar/:id", async(req, res, next) => {

@@ -27,7 +27,7 @@ app.use('/pacientes', pacienteRouter);
 app.use('/tecnico', tecnicoRouter);
 app.use('/secretaria', secretariaRouter);
 app.use('/login', loginRouter);
-app.use('/examen', examenRouter);
+app.use('/examenes', examenRouter);
 app.use('/ordenTrabajo', ordenRouter);
 app.use('/determinacion', determinacionRouter);
 app.use('/muestra', muestraRouter);
