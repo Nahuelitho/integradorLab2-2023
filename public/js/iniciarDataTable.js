@@ -32,7 +32,7 @@ const initDataTable = async()=>{
 window.addEventListener("load", async()=>{
     await initDataTable();
     dataTable.on('search.dt', function () {
-        var btnAgregar = document.getElementById('agregar');
+        var btnAgregar = document.getElementById('agregarPaciente');
         var data = dataTable.rows( {search: 'applied'} ).data().toArray();
         if(data[0]==null){
             btnAgregar.disabled = false;

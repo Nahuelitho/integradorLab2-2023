@@ -5,7 +5,7 @@ const Examen = require('../models/Examen');
 const bcrypt = require("bcryptjs");
 const Swal = require("sweetalert2");
 const examenController = require('../controllers/examenController');
-//carga formulario de examenes vacio
+//carga formulario de examenes vacio examenes/crear
 router.get("/crear", examenController.formExamen);
 router.post("/crear", examenController.altaExamen);
 

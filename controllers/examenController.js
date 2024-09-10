@@ -30,7 +30,7 @@ examenController.altaExamen = async(req, res, next)=>{
     });
     if(!nombreExamen.includes(req.body.nombre)){
       const examen = await Examen.create(datosExamen);
-      res.redirect("/examenes",{examenes: examenes});
+      res.redirect("/examenes");
       next();
     } else {
       const examenEncontrado = await Examen.findOne({where: {nombre: datosExamen.nombre}});
