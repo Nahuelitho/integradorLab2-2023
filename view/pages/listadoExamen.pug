@@ -25,23 +25,23 @@ block contenido
                   
                     tr
                       td(class="centered")= `${examen.nombre}`  
-                      td(class="centered")= `${examen.valRefHomD}`  
-                      td(class="centered")= `${examen.valRefHomH}`  
-                      td(class="centered")= `${examen.valRefMujD}`  
-                      td(class="centered")= `${examen.valRefMujH}`  
+                      td(class="centered")= `${examen.valRefHombreD}`  
+                      td(class="centered")= `${examen.valRefHombreH}`  
+                      td(class="centered")= `${examen.valRefMujerD}`  
+                      td(class="centered")= `${examen.valRefMujerH}`  
                       td(class="centered")= `${examen.valRefNinioD}`
                       td(class="centered")= `${examen.valRefNinioH}`
                       td(class="centered")
                         form( method="get", action=`/examen/actualizar/${examen.id}`)
-                          button(type="submit", value="editar" class="editar btn btn-primary") editar
+                          button(type="submit", value="editar" class="editar btn btn-primary") Editar
                           
                       td(class="centered")
                         form(method="post", action=`/examen/borrar/${examen.id}`)
-                          button(type="submit", id="butonBorrar" class="borrar btn btn-danger") borrar          
+                          button(type="submit", id="butonBorrar" class="borrar btn btn-danger") Eliminar         
             else
                 h2(style="text-align: center") No se encontraron examenes cargados.
 
-            form( method="get", action=`/examenes/crear`)
+            form( method="get", action="/detalleExamen")
               button(type="submit", id="agregar", class="agregar btn btn-plus") Agregar 
 
     

@@ -12,12 +12,14 @@ examenController.formExamen = async (req, res, next)=>{
 
 examenController.altaExamen = async(req, res, next)=>{
     const examenes = await Examen.findAll();
+    console.log("Examenes: ", examenes);
+    console.log("req.body: ", req.body);
     const datosExamen = {
       nombre: req.body.nombre,
-      valRefHombreD: req.body.valRefHomD,
-      valRefHombreH: req.body.valRefHomH,
-      valRefMujerD: req.body.valRefMujD,
-      valRefMujerH: req.body.valRefMujH,
+      valRefHombreD: req.body.valRefHombreD,
+      valRefHombreH: req.body.valRefHombreH,
+      valRefMujerD: req.body.valRefMujerD,
+      valRefMujerH: req.body.valRefMujerH,
       valRefNinioD: req.body.valRefNinioD,
       valRefNinioH: req.body.valRefNinioH,
       estado: true
