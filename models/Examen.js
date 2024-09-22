@@ -26,6 +26,7 @@ class Examen extends Model {
 }
 Examen.init(
   {
+    //idExamen: DataTypes.INTEGER,
     nombre: DataTypes.STRING,
     //fechaEntregaResultado: DataTypes.DATEONLY,
     valRefHombreD: { 

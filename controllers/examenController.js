@@ -54,8 +54,35 @@ examenController.obtenerExamenes = async(req, res, next)=>{
 }
 
 examenController.BuscarXId = async(req, res, next) => {
+  console.log("Examen Id: ", req.params.id);
   const IdExamen = req.params.id;
   const examen = await Examen.findOne({where: {id : IdExamen}});
-  res.render("pages/detalleExamen", {examen : examen});
+  console.log("Examen que se recupera: ", examen);
+  res.render("pages/examenes/editarExamen", {examen : examen});
+  next();
+}
+
+examenController.EditarExamen = async(req, res, next) => {
+  console.log("Examen Id: ", req.params.id);
+  const id = req.params.id;
+  console.log("examen: ", req.body);
+  const data = req.body;
+  const examen = await Examen.findOne({ where: {id: id}});
+  console.log("examen encontrado: ", examen);
+  await Examen.update(
+    { nombre: data.nombre,
+      valRefHombreD: data.valRefHombreD,
+      valRefHombreH: data.valRefHombreH,
+      valRefMujerD: data.valRefMujerD,
+      valRefMujerH: data.valRefMujerH,
+      valRefNinioD: data.valRefNinioD,
+      valRefNinioH: data.valRefNinioH,
+      estado: true,
+    },
+  {
+    where: {id: id},
+  });
+  res.redirect("/examenes");
+  next();
 }
 module.exports = examenController;

@@ -32,11 +32,11 @@ block contenido
                       td(class="centered")= `${examen.valRefNinioD}`
                       td(class="centered")= `${examen.valRefNinioH}`
                       td(class="centered")
-                        form( method="get", action=`/examen/actualizar/${examen.id}`)
+                        form( method="get", action=`/examenes/actualizar/${examen.id}`)
                           button(type="submit", value="editar" class="editar btn btn-primary") Editar
                           
                       td(class="centered")
-                        form(method="post", action=`/examen/borrar/${examen.id}`)
+                        form(method="post", action=`/examenes/borrar/${examen.id}`)
                           button(type="submit", id="butonBorrar" class="borrar btn btn-danger") Eliminar         
             else
                 h2(style="text-align: center") No se encontraron examenes cargados.

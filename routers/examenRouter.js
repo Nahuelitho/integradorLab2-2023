@@ -19,26 +19,10 @@ router.post("/buscar/", async (req, res, next) => {
 
 //lista todos los examenes en la tabla
 router.get("/", examenController.obtenerExamenes);
+//obtiene y muestra el examen a actualizar
+router.get("/actualizar/:id", examenController.BuscarXId);
 
-router.get("/Actualizar/:id", examenController.BuscarXId);
-router.post("/Actualizar/:id", async(req, res, next) => {
-  const examenId = req.params.id;
-  const data = req.body;
-  const examenAActualizar = await Examen.findOne({where: {examenId: id}});
-  await Examen.update({
-    nombre: body.nombre,
-    valRefHombreD: body.valRefHombreD,
-    valRefHombreH: body.valRefHombreH,
-    valRefMujerD: body.valRefMujerD,
-    valRefMujerH: body.valRefMujerH,
-    valRefNinioD: body.valRefNinioD,
-    valRefNinioH: body.valRefNinioH,
-    estado: body.estado,
-  },
-  { where: {id: examenId}}
-  );
-  res.render("pages/detalleExamen");
-  next();
-});
+//guarda el examen editado
+router.post("/actualizar/:id", examenController.EditarExamen); 
 
 module.exports = router;

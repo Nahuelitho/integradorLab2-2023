@@ -1,0 +1,48 @@
+extends ../../layout/plantilla
+
+block contenido 
+    body()
+        div.container
+            
+            form(method="post", id="formulario", action="")
+                h1 Actualizar Examen:
+
+                .row
+                .col
+                    h5 Nombre de examen: 
+                    input(type='text', id='nombre', name='nombre', value=examen.nombre)
+                .col
+            .row
+                h5 Valores Referencia Hombre : 
+            .row 
+                .col
+                    label(for='desde') Desde :
+                    input(type='text', id='valRefHombreD', name='valRefHombreD', value=examen.valRefHombreD)
+                .col
+                    label(for='hasta') Hasta :
+                    input(type='text', id='valRefHombreH', name='valRefHombreH', value=examen.valRefHombreH)   
+            .row
+                h5 Valores Referencia Mujer : 
+                .row
+                    .col
+                        label(for='desde') Desde :
+                        input(type='text', id='valRefMujerD', name='valRefMujerD', value=examen.valRefMujerD)
+                    .col 
+                        label(for='hasta') Hasta :
+                        input(type='text', id='valRefMujerH', name='valRefMujerH', value=examen.valRefMujerH)
+            .row 
+                h5 Valores Referencia Niño : 
+                .row 
+                    .col 
+                        label(for='desde') Desde :
+                        input(type='text', id='valRefNinioD', name='valRefNinioD', value=examen.valRefNinioD)
+                    .col 
+                        label(for='hasta') Hasta :
+                        input(type='text', id='valRefNinioH', name='valRefNinioH', value=examen.valRefNinioD)
+            .row 
+                .col 
+                    button(type='submit', id="btGuardarExamen" class="btn btn-primary") Guardar Examen
+                .col
+                    input(type="button" onclick="history.back()" name="volver" value="Volver", class="btn btn-primary")
+                br
+                br

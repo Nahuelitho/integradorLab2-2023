@@ -14,7 +14,7 @@ block contenido
                       th(class="centered") Nombre
                       th(class="centered") Apellido
                       th(class="centered") DNI 
-                      th(class="centered") email
+                      th(class="centered") Email
                       th(class="centered") Provincia 
                       th(class="centered") Direccion
                       th(class="centered") Actualizar
@@ -31,11 +31,11 @@ block contenido
                       td(class="centered")= `${persona.domicilio}`
                       td(class="centered")
                         form( method="get", action=`/pacientes/actualizar/${persona.dni}`)
-                          button(type="submit", value="editar" class="editar btn btn-primary") editar
+                          button(type="submit", value="editar" class="editar btn btn-primary") Editar
                           
                       td(class="centered")
                         form(method="post", action=`/pacientes/borrar/${persona.dni}`)
-                          button(type="submit", id="butonBorrar" class="borrar btn btn-danger") borrar
+                          button(type="submit", id="butonBorrar" class="borrar btn btn-danger") Borrar
                       
             else
                 h2(style="text-align: center") No se encontraron pacientes cargados.
