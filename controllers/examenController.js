@@ -66,8 +66,8 @@ examenController.EditarExamen = async(req, res, next) => {
   console.log("Examen Id: ", req.params.id);
   const id = req.params.id;
   console.log("examen: ", req.body);
-  const data = req.body;
   const examen = await Examen.findOne({ where: {id: id}});
+  const data = req.body;
   console.log("examen encontrado: ", examen);
   await Examen.update(
     { nombre: data.nombre,
