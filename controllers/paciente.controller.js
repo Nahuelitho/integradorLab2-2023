@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { json } = require("express");
-//ruteador para requerir a personas
+//require para requerir a personas
 const Persona = require("../models/Persona");
 const Paciente = require("../models/Paciente");
 const bcrypt = require("bcryptjs");
@@ -35,6 +35,7 @@ controllerPaciente.alta = async (req, res, next) => {
     user: req.body.user,
     password: hashedPassword
   };
+  
   personas.forEach(function (perso) {
     dniPersonas.push(perso.dni);
     emailPersonas.push(perso.email);
@@ -54,6 +55,7 @@ controllerPaciente.alta = async (req, res, next) => {
     
     
   } else {
+    //usuario igual y dni distinto no encuentra al usuario y devuelve persona.id null
     const personaEncontrada = await Persona.findOne({where: {dni : req.body.dni}})
     const pacienteEncontrado = await Paciente.findOne({where: {idPersona : personaEncontrada.id }})
     if(personaEncontrada.estado == 0 || pacienteEncontrado.estado == 0){

@@ -86,6 +86,11 @@ module.exports = {
         allowNull: false,
       },
 
+      rol: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+
       estado: {
         type: Sequelize.BOOLEAN,
         allowNull: false,

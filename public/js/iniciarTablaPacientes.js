@@ -1,4 +1,4 @@
-let dataTable;
+let dataTable ;
 let dataTableIsInitialized = false;
 const dataTableOption= {
     
@@ -16,13 +16,14 @@ const dataTableOption= {
     "language": {
         "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
     },
+
 }
 
 const initDataTable = async()=>{
     if(dataTableIsInitialized == true){
     dataTable.destroy();
     }
-    dataTable = $('#miTabla').DataTable(dataTableOption);
+    dataTable = $('#tablaPacientes').DataTable(dataTableOption);
     dataTableIsInitialized = true;
     
     
@@ -30,7 +31,6 @@ const initDataTable = async()=>{
 }
 window.addEventListener("load", async()=>{
     await initDataTable();
-    
     
         dataTable.on('search.dt', function () {
             var btnAgregar = document.getElementById('agregarPaciente');
@@ -41,24 +41,7 @@ window.addEventListener("load", async()=>{
             else {
                 btnAgregar.disabled = true;
             }
-        })
+        }); 
             
     
 });
-
-
-
-/* function ocultar(id){
-    let tab = document.getElementById(id);
-    if(tab.style.display == "none"){
-        tab.style.display = "block"
-    } else{
-        tab.style.display = "none"
-    }
-} */
-
-
-/* 
-    var searchPhrase = dataTable.search();
-        console.log('searchPhrase', searchPhrase);
-*/

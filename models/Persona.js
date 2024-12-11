@@ -45,10 +45,10 @@ Persona.init(
     sexo: DataTypes.STRING,
     domicilio: DataTypes.STRING,
     provincia: DataTypes.STRING,
+    rol: DataTypes.STRING,
     localidad: DataTypes.STRING,
     obraSocial: DataTypes.STRING,
     numeroAfiliado: DataTypes.STRING,
-    user: DataTypes.STRING,
     password: DataTypes.STRING,
     estado: {
       type: DataTypes.BOOLEAN,

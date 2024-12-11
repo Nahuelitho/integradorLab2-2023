@@ -1,14 +1,12 @@
 extends ../../layout/plantilla
 block contenido
-    link(rel="stylesheet", href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css")
     link(rel="stylesheet", href="../css/TablaPacientes.css")
-    
-    div(class="container", id="tablaPacientes") 
+    div(class="container", id="dttablaPacientes") 
       h3(style="text-align: center", id="titulo") Pacientes 
-      div(class="row", )
+      div(class="row")
         div(class="col")
             if personas.length  !== 0
-              table(id="miTabla", class="table table-striped")
+              table(id="tablaPacientes", class="table table-striped")
                 thead
                     tr
                       th(class="centered") Nombre
@@ -36,20 +34,24 @@ block contenido
                       td(class="centered")
                         form(method="post", action=`/pacientes/borrar/${persona.dni}`)
                           button(type="submit", id="butonBorrar" class="borrar btn btn-danger") Borrar
-                      
             else
-                h2(style="text-align: center") No se encontraron pacientes cargados.
-            form(method="get", action="/pacientes/crear")
-              button(type="submit", id="agregarPaciente", class="agregar btn btn-plus")  agregar 
+              h2(style="text-align: center") No se encontraron pacientes cargados.
+            button.btn.btn-primary(disabled=true, id="agregarPaciente", data-toggle='modal', data-target='#myModal') Abrir Formulario
+            //- este boton abre un formulario que esta en otro archivo.
+            //-este es el formulario-//
+            include formPrueba.pug
+             
+           
     
         //- button(onclick="ocultar('ocultable')") ocultar tabla
         //- Más filas aquí
     script(src="https://code.jquery.com/jquery-3.7.0.js")
     script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
-    script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
     script(src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js")
     script(src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js")
-    script(src="../js/iniciarDataTable.js")
+    script(src="../js/iniciarTablaPacientes.js")
+   
+    
 
 
     

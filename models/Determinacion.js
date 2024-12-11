@@ -27,8 +27,8 @@ Determinacion.init(
   { 
     idResultado: DataTypes.INTEGER,
     idExamen: DataTypes.INTEGER,
-    cantidad: DataTypes.DOUBLE,
-    medida: DataTypes.STRING,
+    valorHallado: DataTypes.DOUBLE,
+    unidadMedida: DataTypes.STRING,
     estado: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
