@@ -55,7 +55,7 @@ controllerPaciente.alta = async (req, res, next) => {
     
     
   } else {
-    //usuario igual y dni distinto no encuentra al usuario y devuelve persona.id null
+    // !usuario igual y dni distinto no encuentra al usuario y devuelve persona.id null
     const personaEncontrada = await Persona.findOne({where: {dni : req.body.dni}})
     const pacienteEncontrado = await Paciente.findOne({where: {idPersona : personaEncontrada.id }})
     if(personaEncontrada.estado == 0 || pacienteEncontrado.estado == 0){
