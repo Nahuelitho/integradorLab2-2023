@@ -10,7 +10,6 @@
         <label for="embarazada"> Embarazo: </label>
         <input id="embarazada", name="embarazada" type="checkbox", value= 1>  </input>
       `
-
     }
   };
 

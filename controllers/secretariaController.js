@@ -60,6 +60,8 @@ controllerSecretaria.alta = async (req, res, next)=>{
 controllerSecretaria.mostrarSecretarias = async (req, res, next)=>{
     const secretarias = await Secretaria.findAll({ where: { estado: true } });
     var idSecretarias = [];
+    var listaPersonal =[];
+    //recorremos la lista de Secretaria para obtener los idPersona para obtener los datos de la tabla Persona. 
     secretarias.forEach(function (secretaria) {
         idSecretarias.push(secretaria.idPersona);
     });
@@ -69,7 +71,26 @@ controllerSecretaria.mostrarSecretarias = async (req, res, next)=>{
         estado: true,
         },
     });
-    res.render("pages/secretaria/tablaSecretarias", { personas: personas, secretarias: secretarias });
+    //recorremos las 2 listas de las entidades Secretaria y Persona para obtener los datos necesarios
+    //para enviar a la vista.
+    secretarias.forEach(function(secretaria){
+      personas.forEach(function(persona){
+        var datoPersonal = {
+          nombre: persona.nombre,
+          apellido: persona.apellido,
+          dni: persona.dni,
+          email: persona.email,
+          titulo: secretaria.titulo,
+          idSecretaria: secretaria.id,
+          idPersona: secretaria.idPersona
+        }
+        listaPersonal.push(datoPersonal);
+
+      });
+    });
+
+    
+    res.render("pages/secretaria/tablaSecretarias", { listaPersonal : listaPersonal });
     next();
 }
 
