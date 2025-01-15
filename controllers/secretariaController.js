@@ -89,6 +89,7 @@ controllerSecretaria.mostrarSecretarias = async (req, res, next)=>{
 
     
     res.render("pages/personal/tablaPersonal", { listaPersonal : listaPersonal });
+    next();
 }
 
 
