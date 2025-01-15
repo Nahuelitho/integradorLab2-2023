@@ -5,17 +5,19 @@ const { json } = require("express");
 const bcrypt = require("bcryptjs");
 const Swal = require("sweetalert2");
 const secretariaController = require("../controllers/secretariaController");
-//const bioquimicoController = require("../controllers/bioquimicoController");
+const bioquimicoController = require("../controllers/bioquimicoController");
 //const tecnicoController = require("../controllers/tecnicoController");
 
-
-
-//lista de personal
-router.get("/secretaria", secretariaController.mostrarSecretarias );
-//router.get("/bioquimico", bioquimicoController.mostrarBioquimicos );
+//lista de personal muestra por defecto las secretarias
+router.get("/", secretariaController.mostrarSecretarias );
+router.get("/secretaria", secretariaController.mostrarSecretarias);
+router.get("/bioquimico", bioquimicoController.mostrarBioquimicos);
 //router.get("/tecnico", tecnicoController.mostrarTecnicos);
-///crear, primero crea la persona y luego le asigna el id de esa persona al  Paciente (idPersona)
+// alta de secretaria
 router.get("/crearSecretaria", secretariaController.formSecretaria);
 router.post("/crearSecretaria", secretariaController.alta);
+//alta de Bioquimico
+router.get("/crearBioquimico", bioquimicoController.formBioquimico);
+router.post("/crearBioquimico", bioquimicoController.alta);
 
 module.exports = router;

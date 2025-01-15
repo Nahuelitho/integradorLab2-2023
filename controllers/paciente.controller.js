@@ -17,7 +17,6 @@ controllerPaciente.alta = async (req, res, next) => {
   const personas = await Persona.findAll();
   var dniPersonas = [];
   var emailPersonas = [];
-  var usersPersonas = [];
   let datosPersona = {
     nombre: req.body.nombre,
     apellido: req.body.apellido,
@@ -31,17 +30,16 @@ controllerPaciente.alta = async (req, res, next) => {
     localidad: req.body.localidad,
     obraSocial: req.body.obraSocial,
     numeroAfiliado: req.body.numeroAfiliado,
+    rol: 'paciente',
     estado: true,
-    user: req.body.user,
     password: hashedPassword
   };
   
   personas.forEach(function (perso) {
     dniPersonas.push(perso.dni);
     emailPersonas.push(perso.email);
-    usersPersonas.push(perso.user);
   });
-  if ((!dniPersonas.includes(req.body.dni))&&(!usersPersonas.includes(req.body.user))){
+  if ((!dniPersonas.includes(req.body.dni))&&(!emailPersonas.includes(req.body.email))){
     
     const persona = await Persona.create(datosPersona);
     const paciente = await Paciente.create({

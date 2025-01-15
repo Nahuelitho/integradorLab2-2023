@@ -1,0 +1,77 @@
+extends ../../layout/plantilla
+block contenido
+    link(rel="stylesheet", href="../css/TablaPacientes.css")
+    script(src="../js/script.js")
+    div(class="container", id="dttablaPersonal")
+      if listaPersonal[0].especialidad 
+        h3(style="text-align: center", id="titulo") Bioquimicos 
+      else 
+        if listaPersonal[0].matricula
+          h3(style="text-align: center", id="titulo") Tecnicos 
+        else 
+          h3(style="text-align: center", id="titulo") Secretarias
+      div(class="row")
+        div(class="col")
+            if listaPersonal.length  !== 0
+              table(id="tablaPersonal", class="table table-striped")
+                thead
+                  tr
+                    th(class="text-center") Nombre
+                    th(class="text-center") Apellido
+                    th(class="text-center") DNI 
+                    th(class="text-center") Email
+                    th(class="text-center") Titulo
+                    if listaPersonal[0].especialidad
+                      th(class="text-center") Especialidad
+                    if listaPersonal[0].matricula
+                      th(class="text-center") matricula
+                tbody
+                  each persona in listaPersonal 
+                  
+                    tr
+                      td(class="text-center")= `${persona.nombre}`  
+                      td(class="text-center")= `${persona.apellido}`  
+                      td(class="text-center")= `${persona.dni}`  
+                      td(class="text-center")= `${persona.email}`  
+                      td(class="text-center")= `${persona.titulo}`
+                      if persona.especialidad
+                        td(class="text-center")= `${persona.especialidad}`
+                      if persona.matricula
+                        td(class="text-center")= `${persona.matricula}`
+              form#actualizarTabla(method='GET')
+                div(class="container text-center")
+                  div(class="row")
+                    div(class="col-2")
+                      button.btn.btn-primary(type="button" onclick="enviarFormulario('personal/secretaria')") Secretarias
+                    div(class="col-2")
+                      button.btn.btn-primary(type="button" onclick="enviarFormulario('personal/bioquimico')") Bioquimicos
+                    div(class="col-2")
+                      button.btn.btn-primary(type="button" onclick="enviarFormulario('personal/tecnico')") Tecnicos
+              br
+                  
+            else
+              h2(style="text-align: center") No se encontraron secretarias cargadas.
+            div(class="container text-center")
+                  div(class="row")
+                    div(class="col-2")
+                      button.btn.btn-primary(disabled=true, id="agregar", data-toggle='modal', data-target='#myModal') Abrir Formulario
+            //- este boton abre un formulario que esta en otro archivo.
+            //-este es el formulario-//
+            if listaPersonal[0].especialidad 
+              include crearBioquimico.pug
+            else 
+              if listaPersonal[0].matricula
+                h3(style="text-align: center", id="titulo") Tecnicos 
+              else 
+                include crearSecretaria.pug
+            
+             
+           
+    
+        //- button(onclick="ocultar('ocultable')") ocultar tabla
+        //- Más filas aquí
+    script(src="https://code.jquery.com/jquery-3.7.0.js")
+    script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
+    script(src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js")
+    script(src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js")
+    script(src="../js/iniciarTablaPersonal.js")

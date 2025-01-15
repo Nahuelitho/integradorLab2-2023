@@ -9,7 +9,7 @@ const controllerSecretaria = {};
 
 //muestra el formulario para crear Secretaria
 controllerSecretaria.formSecretaria = (req, res, next)=>{
-    res.render("pages/secretaria/crearSecretaria")
+    res.render("pages/personal/crearSecretaria")
     next();
 }
 //Da de alta a la secretaria
@@ -18,7 +18,6 @@ controllerSecretaria.alta = async (req, res, next)=>{
     const personas = await Persona.findAll();
     var dniPersonas = [];
     var emailPersonas = [];
-    var usersPersonas = [];
     let datosPersona = {
       nombre: req.body.nombre,
       apellido: req.body.apellido,
@@ -32,26 +31,25 @@ controllerSecretaria.alta = async (req, res, next)=>{
       localidad: req.body.localidad,
       obraSocial: req.body.obraSocial,
       numeroAfiliado: req.body.numeroAfiliado,
+      rol: 'secretaria',
       estado: true,
-      user: req.body.user,
       password: hashedPassword
     };
     
     personas.forEach(function (perso) {
       dniPersonas.push(perso.dni);
       emailPersonas.push(perso.email);
-      usersPersonas.push(perso.user);
     });
-    if ((!dniPersonas.includes(req.body.dni))&&(!usersPersonas.includes(req.body.user))){
+    if ((!dniPersonas.includes(req.body.dni))&&(!emailPersonas.includes(req.body.email))){
       
       const persona = await Persona.create(datosPersona);
-      const paciente = await Secretaria.create({
+      const secretaria = await Secretaria.create({
         idPersona: persona.id,
         titulo: req.body.titulo,
         fechaIngreso: req.body.fechaIngreso,
         estado:true
       });
-      res.redirect('/personal');
+      res.redirect('/personal/secretaria');
     }
 
 }
@@ -60,6 +58,8 @@ controllerSecretaria.alta = async (req, res, next)=>{
 controllerSecretaria.mostrarSecretarias = async (req, res, next)=>{
     const secretarias = await Secretaria.findAll({ where: { estado: true } });
     var idSecretarias = [];
+    var listaPersonal =[];
+    //recorremos la lista de Secretaria para obtener los idPersona para obtener los datos de la tabla Persona. 
     secretarias.forEach(function (secretaria) {
         idSecretarias.push(secretaria.idPersona);
     });
@@ -69,8 +69,26 @@ controllerSecretaria.mostrarSecretarias = async (req, res, next)=>{
         estado: true,
         },
     });
-    res.render("pages/secretaria/tablaSecretarias", { personas: personas, secretarias: secretarias });
-    next();
+    //recorremos las 2 listas de las entidades Secretaria y Persona para obtener los datos necesarios
+    //para enviar a la vista.
+    secretarias.forEach(function(secretaria){
+      personas.forEach(function(persona){
+        var datoPersonal = {
+          nombre: persona.nombre,
+          apellido: persona.apellido,
+          dni: persona.dni,
+          email: persona.email,
+          titulo: secretaria.titulo,
+          idSecretaria: secretaria.id,
+          idPersona: secretaria.idPersona
+        }
+        listaPersonal.push(datoPersonal);
+
+      });
+    });
+
+    
+    res.render("pages/personal/tablaPersonal", { listaPersonal : listaPersonal });
 }
 
 

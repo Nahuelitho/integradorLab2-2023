@@ -9,7 +9,6 @@ const expresiones = {
     obraSocial: /^[A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30})?$/, // formato de la A a la Z y pueden llevar acento.
     diagnostico: /^[A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30}\s*?)([A-Za-zÑñÁáÉéÍíÓóÚú]{1,30})?$/,   // formato de la A a la Z y pueden llevar acento.
     telefono: /^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/, // elimina todo lo que no sea numero opcionales el +54, 0 15 y 4.
-    usuario: /^[a-z0-9_-]{3,20}$/, // formato numeros letras y guiones 3 a 16 caracteres
     email: /^\w+([./\-_+/]*?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/, // formato example_ex09@example.com
     domicilio: /^([\w+\s+\w]{3,40})\w$/, //formato numeros, letras y de 3 a 40 caracteres
     numeroAfiliado: /[0-9]{3}[\-][0-9]{7,8}[\-][0-9]{2}/, //formato 123-37298256-01
@@ -27,7 +26,6 @@ const resultados = {
     obraSocial: false,
     diagnostico: false,
     numeroAfiliado: false,
-    user: false,
     password: false
 }
 const validarFormulario =(e)=>{
@@ -72,10 +70,6 @@ const validarFormulario =(e)=>{
         case "numeroAfiliado":
             validarCampo(expresiones.numeroAfiliado, e.target, 'numeroAfiliado');
         break;
-
-        case "user":
-            validarCampo(expresiones.usuario, e.target, 'user');
-        break; 
 
         case "password": 
             validarCampo(expresiones.contraseña, e.target, 'password');
@@ -169,7 +163,7 @@ formulario.addEventListener('submit', (e)=>{
     // 
     if(resultados.nombre && resultados.apellido && resultados.dni && resultados.telefono && resultados.email 
         && resultados.fechaNacimiento && resultados.domicilio && resultados.obraSocial && resultados.numeroAfiliado 
-        && resultados.user && resultados.password) {
+        && resultados.password) {
         document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo')
         setTimeout(() => {
             formulario.reset()

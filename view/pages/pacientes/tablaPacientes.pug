@@ -9,29 +9,29 @@ block contenido
               table(id="tablaPacientes", class="table table-striped")
                 thead
                     tr
-                      th(class="centered") Nombre
-                      th(class="centered") Apellido
-                      th(class="centered") DNI 
-                      th(class="centered") Email
-                      th(class="centered") Provincia 
-                      th(class="centered") Direccion
-                      th(class="centered") Actualizar
-                      th(class="centered") Eliminar
+                      th(class="text-center") Nombre
+                      th(class="text-center") Apellido
+                      th(class="text-center") DNI 
+                      th(class="text-center") Email
+                      th(class="text-center") Provincia 
+                      th(class="text-center") Direccion
+                      th(class="text-center") Actualizar
+                      th(class="text-center") Eliminar
                 tbody
                   each persona in personas 
                   
                     tr
-                      td(class="centered")= `${persona.nombre}`  
-                      td(class="centered")= `${persona.apellido}`  
-                      td(class="centered")= `${persona.dni}`  
-                      td(class="centered")= `${persona.email}`  
-                      td(class="centered")= `${persona.provincia}`  
-                      td(class="centered")= `${persona.domicilio}`
-                      td(class="centered")
+                      td(class="text-center")= `${persona.nombre}`  
+                      td(class="text-center")= `${persona.apellido}`  
+                      td(class="text-center")= `${persona.dni}`  
+                      td(class="text-center")= `${persona.email}`  
+                      td(class="text-center")= `${persona.provincia}`  
+                      td(class="text-center")= `${persona.domicilio}`
+                      td(class="text-center")
                         form( method="get", action=`/pacientes/actualizar/${persona.dni}`)
                           button(type="submit", value="editar" class="editar btn btn-primary") Editar
                           
-                      td(class="centered")
+                      td(class="text-center")
                         form(method="post", action=`/pacientes/borrar/${persona.dni}`)
                           button(type="submit", id="butonBorrar" class="borrar btn btn-danger") Borrar
             else
