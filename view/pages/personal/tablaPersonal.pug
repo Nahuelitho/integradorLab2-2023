@@ -3,13 +3,16 @@ block contenido
     link(rel="stylesheet", href="../css/TablaPacientes.css")
     script(src="../js/script.js")
     div(class="container", id="dttablaPersonal")
-      if listaPersonal[0].especialidad 
-        h3(style="text-align: center", id="titulo") Bioquimicos 
-      else 
-        if listaPersonal[0].matricula
-          h3(style="text-align: center", id="titulo") Tecnicos 
+      if listaPersonal.length == 0 
+        h3(style="text-align: center", id="titulo") Personal
+      else
+        if listaPersonal[0].especialidad 
+          h3(style="text-align: center", id="titulo") Bioquimicos 
         else 
-          h3(style="text-align: center", id="titulo") Secretarias
+          if listaPersonal[0].matricula
+            h3(style="text-align: center", id="titulo") Tecnicos 
+          else 
+            h3(style="text-align: center", id="titulo") Secretarias
       div(class="row")
         div(class="col")
             if listaPersonal.length  !== 0
@@ -47,8 +50,7 @@ block contenido
                       button.btn.btn-primary(type="button" onclick="enviarFormulario('personal/bioquimico')") Bioquimicos
                     div(class="col-2")
                       button.btn.btn-primary(type="button" onclick="enviarFormulario('personal/tecnico')") Tecnicos
-              br
-                  
+              br                 
             else
               h2(style="text-align: center") No se encontraron secretarias cargadas.
             div(class="container text-center")
@@ -57,13 +59,16 @@ block contenido
                       button.btn.btn-primary(disabled=true, id="agregar", data-toggle='modal', data-target='#myModal') Abrir Formulario
             //- este boton abre un formulario que esta en otro archivo.
             //-este es el formulario-//
-            if listaPersonal[0].especialidad 
-              include crearBioquimico.pug
+            if listaPersonal.length == 0
+
             else 
-              if listaPersonal[0].matricula
-                h3(style="text-align: center", id="titulo") Tecnicos 
+              if listaPersonal[0].especialidad 
+                include crearBioquimico.pug
               else 
-                include crearSecretaria.pug
+                if listaPersonal[0].matricula
+                  h3(style="text-align: center", id="titulo") Tecnicos 
+                else 
+                  include crearSecretaria.pug
             
              
            
