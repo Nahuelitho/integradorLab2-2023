@@ -33,7 +33,7 @@ block contenido
                           
                       td(class="text-center")
                         form(method="post", action=`/pacientes/borrar/${persona.dni}`)
-                          button(type="submit", id="butonBorrar" class="borrar btn btn-danger") Borrar
+                          button(type="submit", class="borrar btn btn-danger") Borrar
             else
               h2(style="text-align: center") No se encontraron pacientes cargados.
             button.btn.btn-primary(disabled=true, id="agregarPaciente", data-toggle='modal', data-target='#myModal') Abrir Formulario

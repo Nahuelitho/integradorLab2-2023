@@ -15,6 +15,7 @@ controllerPaciente.formPaciente = (req, res, next) => {
 controllerPaciente.alta = async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 5);
   const personas = await Persona.findAll();
+  const personaEncontrada = await Persona.findOne({where: {dni : req.body.dni}})
   var dniPersonas = [];
   var emailPersonas = [];
   let datosPersona = {
@@ -39,6 +40,7 @@ controllerPaciente.alta = async (req, res, next) => {
     dniPersonas.push(perso.dni);
     emailPersonas.push(perso.email);
   });
+  //no existe persona ni paciente.
   if ((!dniPersonas.includes(req.body.dni))&&(!emailPersonas.includes(req.body.email))){
     
     const persona = await Persona.create(datosPersona);
@@ -46,7 +48,7 @@ controllerPaciente.alta = async (req, res, next) => {
       idPersona: persona.id,
       embarazada: req.body.embarazada,
       diagnostico: req.body.diagnostico,
-      estDiagnostico: req.body.estDiag,
+      estDiagnostico: req.body.estDiagnostico,
       estado:true
     });
     res.redirect('/pacientes')
@@ -54,22 +56,50 @@ controllerPaciente.alta = async (req, res, next) => {
     
   } else {
     // !usuario igual y dni distinto no encuentra al usuario y devuelve persona.id null
-    const personaEncontrada = await Persona.findOne({where: {dni : req.body.dni}})
+    
     const pacienteEncontrado = await Paciente.findOne({where: {idPersona : personaEncontrada.id }})
-    if(personaEncontrada.estado == 0 || pacienteEncontrado.estado == 0){
-      await Persona.update(datosPersona, {where:{dni: personaEncontrada.dni}});
-      await Paciente.update({
-          embarazada: req.body.embarazada,
-          diagnostico: req.body.diagnostico,
-          estDiagnostico: req.body.estDiag,
-          estado:true
-        }, 
-        {where: {idPersona: personaEncontrada.id}
-      })
+    if(pacienteEncontrado != null){
+      if(personaEncontrada.estado == 0 || pacienteEncontrado.estado == 0){
+        await Persona.update(datosPersona, {where:{dni: personaEncontrada.dni}});
+        await Paciente.update({
+            embarazada: req.body.embarazada,
+            diagnostico: req.body.diagnostico,
+            estDiagnostico: req.body.estDiagnostico,
+            estado:true
+          }, 
+          {where: {idPersona: personaEncontrada.id}
+        })
+        res.redirect('/pacientes')
+      }
+      else{
+        res.send('<h1>Persona ya existente</h1>')
+      }
+    }else {
+      //caso de que persona si exista pero no sea un paciente, es decir es personal del laboratorio.
+      await Persona.update(  {nombre: req.body.nombre,
+        apellido: req.body.apellido,
+        dni: req.body.dni,
+        telefono: req.body.telefono,
+        email: req.body.email,
+        sexo: req.body.sexo,
+        fechaNacimiento: req.body.fechaNacimiento,
+        domicilio: req.body.domicilio,
+        provincia: req.body.provincia,
+        localidad: req.body.localidad,
+        obraSocial: req.body.obraSocial,
+        numeroAfiliado: req.body.numeroAfiliado,
+        estado: true,
+        password: hashedPassword},
+         {where:{dni: personaEncontrada.dni}});
+      const paciente = await Paciente.create({
+        idPersona: personaEncontrada.id,
+        embarazada: req.body.embarazada,
+        diagnostico: req.body.diagnostico,
+        estDiagnostico: req.body.estDiagnostico,
+        estado:true
+      });
       res.redirect('/pacientes')
-    }
-    else{
-      res.send('<h1>Persona ya existente</h1>')
+
     }
   }
 

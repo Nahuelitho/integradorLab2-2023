@@ -31,6 +31,7 @@ controllerBioquimico.alta = async (req, res, next)=>{
     localidad: req.body.localidad,
     obraSocial: req.body.obraSocial,
     numeroAfiliado: req.body.numeroAfiliado,
+    rol: 'bioquimico',
     estado: true,
     password: hashedPassword
   };
@@ -75,23 +76,27 @@ controllerBioquimico.mostrarBioquimicos = async (req, res, next)=>{
     //para enviar a la vista.
     bioquimicos.forEach(function(bioquimico){
       personas.forEach(function(persona){
-        var datoPersonal = {
-          nombre: persona.nombre,
-          apellido: persona.apellido,
-          dni: persona.dni,
-          email: persona.email,
-          titulo: bioquimico.titulo,
-          especialidad: bioquimico.especialidad,
-          idBioquimico: bioquimico.id,
-          idPersona: bioquimico.idPersona
+        if(bioquimico.idPersona == persona.id){
+          var datoPersonal = {
+            nombre: persona.nombre,
+            apellido: persona.apellido,
+            dni: persona.dni,
+            email: persona.email,
+            rol: "bioquimico",
+            titulo: bioquimico.titulo,
+            especialidad: bioquimico.especialidad,
+            idBioquimico: bioquimico.id,
+            idPersona: bioquimico.idPersona
+            
+          }
+          listaPersonal.push(datoPersonal);
         }
-        listaPersonal.push(datoPersonal);
 
       });
     });
 
     
-    res.render("pages/personal/tablaPersonal", { listaPersonal : listaPersonal });
+    res.render("pages/personal/tablaPersonal", { listaPersonal : listaPersonal, tipoLista : "bioquimico" });
     next();
 }
 

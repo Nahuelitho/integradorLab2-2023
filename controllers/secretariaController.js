@@ -73,22 +73,26 @@ controllerSecretaria.mostrarSecretarias = async (req, res, next)=>{
     //para enviar a la vista.
     secretarias.forEach(function(secretaria){
       personas.forEach(function(persona){
-        var datoPersonal = {
-          nombre: persona.nombre,
-          apellido: persona.apellido,
-          dni: persona.dni,
-          email: persona.email,
-          titulo: secretaria.titulo,
-          idSecretaria: secretaria.id,
-          idPersona: secretaria.idPersona
+        if(secretaria.idPersona == persona.id){
+          var datoPersonal = {
+            nombre: persona.nombre,
+            apellido: persona.apellido,
+            dni: persona.dni,
+            email: persona.email,
+            rol: "secretaria",
+            titulo: secretaria.titulo,
+            idSecretaria: secretaria.id,
+            idPersona: secretaria.idPersona
+            
+          }
+          listaPersonal.push(datoPersonal);
         }
-        listaPersonal.push(datoPersonal);
 
       });
     });
 
     
-    res.render("pages/personal/tablaPersonal", { listaPersonal : listaPersonal });
+    res.render("pages/personal/tablaPersonal", { listaPersonal : listaPersonal, tipoLista: "secretaria" });
     next();
 }
 

@@ -1,18 +1,25 @@
 extends ../../layout/plantilla
 block contenido
+
     link(rel="stylesheet", href="../css/TablaPacientes.css")
     script(src="../js/script.js")
     div(class="container", id="dttablaPersonal")
+    -let rutaBioquimico = '/personal/bioquimico';
+    -let rutaTecnico = '/personal/tecnico';
+    -let rutaSecretaria = '/personal/secretaria'; 
       if listaPersonal.length == 0 
         h3(style="text-align: center", id="titulo") Personal
       else
         if listaPersonal[0].especialidad 
-          h3(style="text-align: center", id="titulo") Bioquimicos 
+          h3(style="text-align: center", id="titulo") Bioquimicos
+         
         else 
           if listaPersonal[0].matricula
             h3(style="text-align: center", id="titulo") Tecnicos 
+            
           else 
             h3(style="text-align: center", id="titulo") Secretarias
+            
       div(class="row")
         div(class="col")
             if listaPersonal.length  !== 0
@@ -24,10 +31,18 @@ block contenido
                     th(class="text-center") DNI 
                     th(class="text-center") Email
                     th(class="text-center") Titulo
-                    if listaPersonal[0].especialidad
+                    if tipoLista == "bioquimico"
                       th(class="text-center") Especialidad
-                    if listaPersonal[0].matricula
+                      th(class="text-center") Actualizar
+                      th(class="text-center") Eliminar
+                    if tipoLista == "tecnico"
                       th(class="text-center") matricula
+                      th(class="text-center") Actualizar
+                      th(class="text-center") Eliminar
+                    if tipoLista == "secretaria" 
+                      th(class="text-center") Actualizar
+                      th(class="text-center") Eliminar
+                    
                 tbody
                   each persona in listaPersonal 
                   
@@ -37,44 +52,61 @@ block contenido
                       td(class="text-center")= `${persona.dni}`  
                       td(class="text-center")= `${persona.email}`  
                       td(class="text-center")= `${persona.titulo}`
-                      if persona.especialidad
+                      if tipoLista == "bioquimico"
                         td(class="text-center")= `${persona.especialidad}`
-                      if persona.matricula
+                        td(class="text-center")
+                          form( method="get", action=`${rutaBioquimico}/editar/${persona.dni}`)
+                            button(type="submit", value="editar" class="editar btn btn-primary") Editar
+                          
+                        td(class="text-center")
+                          form(method="post", action=`${rutaBioquimico}/borrar/${persona.dni}`)
+                            button(type="submit", class="borrar btn btn-danger") Borrar
+                      if tipoLista == "tecnico"
                         td(class="text-center")= `${persona.matricula}`
+                        td(class="text-center")
+                          form( method="get", action=`${rutaTecnico}/editar/${persona.dni}`)
+                            button(type="submit", value="editar" class="editar btn btn-primary") Editar
+                          
+                        td(class="text-center")
+                          form(method="post", action=`${rutaTecnico}/borrar/${persona.dni}`)
+                            button(type="submit", class="borrar btn btn-danger") Borrar
+                      if tipoLista == "secretaria"
+                        td(class="text-center")
+                          form( method="get", action=`${rutaSecretaria}/editar/${persona.dni}`)
+                            button(type="submit", value="editar" class="editar btn btn-primary") Editar
+                          
+                        td(class="text-center")
+                          form(method="post", action=`${rutaSecretaria}/borrar/${persona.dni}`)
+                            button(type="submit", class="borrar btn btn-danger") Borrar
+                     
               form#actualizarTabla(method='GET')
                 div(class="container text-center")
                   div(class="row")
                     div(class="col-2")
-                      button.btn.btn-primary(type="button" onclick="enviarFormulario('personal/secretaria')") Secretarias
+                      button.btn.btn-primary(type="button" onclick=`enviarFormulario('${rutaSecretaria}')`) Secretarias
                     div(class="col-2")
-                      button.btn.btn-primary(type="button" onclick="enviarFormulario('personal/bioquimico')") Bioquimicos
+                      button.btn.btn-primary(type="button" onclick=`enviarFormulario('${rutaBioquimico}')`) Bioquimicos
                     div(class="col-2")
-                      button.btn.btn-primary(type="button" onclick="enviarFormulario('personal/tecnico')") Tecnicos
-              br                 
+                      button.btn.btn-primary(type="button" onclick=`enviarFormulario('${rutaTecnico}')`) Tecnicos
+              br 
             else
-              h2(style="text-align: center") No se encontraron secretarias cargadas.
+              h2(style="text-align: center") No existen registros de #{tipoLista}. 
+              
             div(class="container text-center")
                   div(class="row")
                     div(class="col-2")
-                      button.btn.btn-primary(disabled=true, id="agregar", data-toggle='modal', data-target='#myModal') Abrir Formulario
+                      button.btn.btn-primary(disabled=true, id="agregar", data-toggle='modal', data-target='#myModal') Agregar #{tipoLista}
             //- este boton abre un formulario que esta en otro archivo.
             //-este es el formulario-//
-            if listaPersonal.length == 0
-
+            if tipoLista == "bioquimico"
+              include crearBioquimico.pug
             else 
-              if listaPersonal[0].especialidad 
-                include crearBioquimico.pug
+              if tipoLista == "secretaria"
+                include crearSecretaria.pug
               else 
-                if listaPersonal[0].matricula
-                  h3(style="text-align: center", id="titulo") Tecnicos 
-                else 
-                  include crearSecretaria.pug
-            
-             
+                  
            
-    
-        //- button(onclick="ocultar('ocultable')") ocultar tabla
-        //- Más filas aquí
+        
     script(src="https://code.jquery.com/jquery-3.7.0.js")
     script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
     script(src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js")

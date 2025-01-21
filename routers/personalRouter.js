@@ -9,15 +9,14 @@ const bioquimicoController = require("../controllers/bioquimicoController");
 //const tecnicoController = require("../controllers/tecnicoController");
 
 //lista de personal muestra por defecto las secretarias
-router.get("/", secretariaController.mostrarSecretarias );
 router.get("/secretaria", secretariaController.mostrarSecretarias);
 router.get("/bioquimico", bioquimicoController.mostrarBioquimicos);
 //router.get("/tecnico", tecnicoController.mostrarTecnicos);
 // alta de secretaria
-router.get("/crearSecretaria", secretariaController.formSecretaria);
-router.post("/crearSecretaria", secretariaController.alta);
+router.get("/secretaria/crearSecretaria", secretariaController.formSecretaria);
+router.post("/secretaria/crearSecretaria", secretariaController.alta);
 //alta de Bioquimico
-router.get("/crearBioquimico", bioquimicoController.formBioquimico);
-router.post("/crearBioquimico", bioquimicoController.alta);
+router.get("/bioquimico/crearBioquimico", bioquimicoController.formBioquimico);
+router.post("/bioquimico/crearBioquimico", bioquimicoController.alta);
 
 module.exports = router;

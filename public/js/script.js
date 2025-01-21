@@ -3,6 +3,6 @@
   function enviarFormulario(ruta) { 
     const formulario = document.getElementById('actualizarTabla');
      const parametros = new URLSearchParams(new FormData(formulario)).toString();
-      window.location.href = `/${ruta}?`;
+      window.location.href = `${ruta}?`;
   }
   // ${parametros}

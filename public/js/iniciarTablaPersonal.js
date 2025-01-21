@@ -31,9 +31,15 @@ const initDataTable = async()=>{
 }
 window.addEventListener("load", async()=>{
     await initDataTable();
-    
+        var cant = dataTable.rows().count();
+        var btnAgregar = document.getElementById('agregar');
+        if(dataTable.rows().count()==0){
+            btnAgregar.disabled = false;
+        }else {
+            btnAgregar.disabled = true;
+        }
         dataTable.on('search.dt', function () {
-            var btnAgregar = document.getElementById('agregar');
+           
             var data = dataTable.rows( {search: 'applied'} ).data().toArray();
             if(data[0]==null){
                 btnAgregar.disabled = false;
