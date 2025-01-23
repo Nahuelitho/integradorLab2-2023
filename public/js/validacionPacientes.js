@@ -171,7 +171,16 @@ formulario.addEventListener('submit', (e)=>{
         }, 5000);
     } else {
        // e.preventDefault();
-        console.log('fallo la carga..')
+       console.log(`nombre: ${resultados.nombre} 
+        apellido: ${resultados.apellido}  
+        dni: ${resultados.dni} 
+        telefono: ${resultados.telefono} 
+        email: ${resultados.email} 
+        fechaNaci:  ${resultados.fechaNacimiento} 
+        domicilio: ${resultados.domicilio} 
+        obra Social: ${resultados.obraSocial}
+        numAfiliado:  ${resultados.numeroAfiliado} 
+        password: ${resultados.password}`);
         
     }
 
