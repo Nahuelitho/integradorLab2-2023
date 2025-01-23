@@ -193,6 +193,7 @@ formulario.addEventListener('submit', (e)=>{
     } else {
        // e.preventDefault();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
        console.log(`nombre: ${resultados.nombre} 
         apellido: ${resultados.apellido}  
         dni: ${resultados.dni} 
@@ -204,6 +205,8 @@ formulario.addEventListener('submit', (e)=>{
         numAfiliado:  ${resultados.numeroAfiliado} 
         password: ${resultados.password}`);
 =======
+=======
+>>>>>>> Stashed changes
         console.log(`nombre: ${resultados.nombre} 
             apellido: ${resultados.apellido}  
             dni: ${resultados.dni} 
@@ -214,6 +217,9 @@ formulario.addEventListener('submit', (e)=>{
             obra Social: ${resultados.obraSocial}
             numAfiliado:  ${resultados.numeroAfiliado} 
             password: ${resultados.password}`)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         
     }
