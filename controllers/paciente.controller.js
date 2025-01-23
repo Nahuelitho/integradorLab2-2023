@@ -152,7 +152,6 @@ controllerPaciente.editarPaciente = async (req, res, next) => {
       obraSocial: data.obraSocial,
       numeroAfiliado: data.numeroAfiliado,
       estado: true,
-      user: data.user,
       password: data.password,
     },
     {
@@ -193,8 +192,8 @@ controllerPaciente.eliminarPaciente = async (req, res, next) => {
       localidad: data.localidad,
       obraSocial: data.obraSocial,
       numeroAfiliado: data.numeroAfiliado,
-      user: data.user,
       estado: false,
+      rol: 'paciente',
       password: data.password,
     },
     {

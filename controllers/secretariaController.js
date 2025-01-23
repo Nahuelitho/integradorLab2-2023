@@ -50,6 +50,7 @@ controllerSecretaria.alta = async (req, res, next)=>{
         estado:true
       });
       res.redirect('/personal/secretaria');
+      next();
     }
 
 }
@@ -95,6 +96,98 @@ controllerSecretaria.mostrarSecretarias = async (req, res, next)=>{
     res.render("pages/personal/tablaPersonal", { listaPersonal : listaPersonal, tipoLista: "secretaria" });
     next();
 }
+
+controllerSecretaria.editar = async (req, res, next)=>{
+  const dni = req.params.dni;
+  const data = req.body;
+  const persona = await Persona.findOne({ where: { dni: dni } });
+  await Persona.update(
+    {
+      nombre: data.nombre,
+      apellido: data.apellido,
+      dni: data.dni,
+      telefono: data.telefono,
+      email: data.email,
+      fechaNacimiento: data.fechaNacimiento,
+      sexo: data.sexo,
+      domicilio: data.domicilio,
+      provincia: data.provincia,
+      localidad: data.localidad,
+      obraSocial: data.obraSocial,
+      numeroAfiliado: data.numeroAfiliado,
+      estado: true,
+      password: data.password,
+      rol: 'secretaria',
+    },
+    {
+      where: { dni: dni },
+    }
+  );
+  await Secretaria.update(
+    {
+      idPersona: persona.id,
+      titulo: req.body.titulo,
+      fechaIngreso: req.body.fechaIngreso,
+      estado:true
+    },
+    {
+      where: { idPersona: persona.id },
+    }
+  );
+  res.redirect('/personal/secretaria');
+  next();
+}
+controllerSecretaria.mostrarSecretaria = async (req, res, next)=>{
+  const dni = req.params.dni;
+  const persona = await Persona.findOne({ where: { dni: dni } });
+  const secretaria = await Secretaria.findOne({ where: { idPersona: persona.id } });
+  res.render("pages/pacientes/editarSecretaria", {
+    persona: persona,
+    paciente: paciente,
+  });
+  next();
+}
+
+controllerSecretaria.eliminarSecretaria = async (req, res, next) => {
+  const dni = req.params.dni;
+  const data = req.body;
+  const persona = await Persona.findOne({ where: { dni: dni } });
+  await Persona.update(
+    {
+      nombre: data.nombre,
+      apellido: data.apellido,
+      dni: data.dni,
+      telefono: data.telefono,
+      email: data.email,
+      fechaNacimiento: data.fechaNacimiento,
+      sexo: data.sexo,
+      domicilio: data.domicilio,
+      provincia: data.provincia,
+      localidad: data.localidad,
+      obraSocial: data.obraSocial,
+      numeroAfiliado: data.numeroAfiliado,
+      estado: false,
+      rol: 'secretaria',
+      password: data.password,
+    },
+    {
+      where: { dni: dni },
+    }
+  );
+  await Secretaria.update(
+    {
+      estado: false
+    },
+    {
+      where: { idPersona: persona.id },
+    }
+  );
+
+  res.redirect("/personal/secretaria");
+  next();
+};
+
+
 
 
 module.exports = controllerSecretaria;
