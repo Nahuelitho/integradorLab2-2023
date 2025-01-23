@@ -1,107 +1,194 @@
 extends ../../layout/plantilla
 
 block contenido 
-    body()
-        div.container
-            
-            form(method="post", id="formulario", action="")
-                h1 Actualizar Paciente:
+    link(rel='stylesheet', href='../../css/personaFormulario.css')
 
-                label(for='nombre') Nombre:
-                input(type='text', id='nombre', name='nombre', value=persona.nombre)
-                
-                br
-                label(for='apellido') Apellido:
-                input(type='text', id='apellido', name='apellido', value=persona.apellido)
-                
-                br
-                label(for="dni") DNI:
-                input(type='text', id='dni', name='dni', value=persona.dni)
+    form(class="form" method="post", name= 'formulario' id="formulario" action=`pacientes/actualizar/${persona.dni}`)
 
-                br
-                label(for="telefono") Telefono:
-                input(type='text', id='telefono', name='telefono', value=persona.telefono)
-                
-                br
-                label(for='email') Mail:
-                input(type='email', id='email', name='email',  value=persona.email)
-                br
-                
-                label(for='selectorSexo', style="display: block") Sexo:
-                
-                    select(form = "formulario", name="sexo", id="selectorSexo", required)
-                        if `${persona.sexo}` == 'Masculino'
-                            option(value="Masculino", id="Masculino", selected) Masculino
-                            option(value="Femenino", id="Femenino")  Femenino
-                        else
-                            option(value="Femenino", id="Femenino", selected)  Femenino
-                            option(value="Masculino", id="Masculino") Masculino
-                br
-                label(for="embarazoSi", style="display: block") Embarazada:
-                    if `${paciente.embarazada}` == 'true'
-                        label(for="") Si
-                            input(type="radio",form="formulario", id="embarazada" name="embar", checked, value=1)
-                        label(for="") No 
-                            input(type="radio",form="formulario",  id="embarazada" name="embar", value=0)  
-                    else 
-                        label(for="") Si
-                            input(type="radio",form="formulario", id="embarazada" name="embar", value=1) 
-                        label(for="") No 
-                            input(type="radio",form="formulario", id="embarazada" name="embar",checked, value=0)
-                br
-
-                label(for='diagnostico') Diagnostico:
-                input(type='text', id='diagnostico', name='diagnostico', value=persona.diagnostico)
-
-                br
-                label(for="estDiagnosticoSi", style="display: block") Tipo de Diagnostico:
-                    if `${paciente.estDiagnostico}` == 'true'
-                        label(for="") Confirmado
-                            input(type="radio",form="formulario", id="estDiagnostico" name="estDiag", checked, value=1)
-                        label(for="") Presunto 
-                            input(type="radio",form="formulario",  id="estDiagnostico" name="estDiag", value=0)  
-                    else 
-                        label(for="") Confirmado
-                            input(type="radio",form="formulario", id="estDiagnostico" name="estDiag", value=1) 
-                        label(for="") Presunto 
-                            input(type="radio",form="formulario", id="estDiagnostico" name="estDiag",checked, value=0)
-                        
-                label(for='fechaNac') Fecha de Nacimiento:
-                input(type='date', form="formulario",  id='fechaNacimiento', name='fechaNacimiento', value=persona.fechaNacimiento)
-                
-                br
-                label(for='domicilio') Domicilio:
-                input(type='text', id='domicilio', name='domicilio', value=persona.domicilio)
-                
-                br
-                div
-                div(class="row")
-                        div(class="col")
-                            label(for="prov", style="display: block") Provincia:
-                            input(type='text', form="formulario",  id='prov', name='prov', value=persona.provincia, disabled)
-                            select(form = "formulario", name="provincia" id="selectorProvincia", required)
-                                option(value="San Luis") San Luis
-                                option(value="Mendoza") Mendoza
-                                option(value="Cordoba") Cordoba   
+        h2 Ingreso de Paciente
+        main    
+                .row
+                    .col
+                        //---------------- Grupo: Nombre ---------------
+                        div(class="formulario__grupo" id="grupo__nombre") 
+                            label(for='nombre' class="formulario__label") Nombre:
+                            div(class="formulario__grupo-input")
+                                input(type='text',class="formulario__input" id='nombre', name='nombre',placeholder="Juan Jose", value=persona.nombre)
+                                i(class="formulario__validacion-estado fa-solid fa-circle-xmark")
+                            p(class="formulario__input-error") * El nombre debe tener solo letras y no debe estar vacio.
+                        br
+                    .col
+                        //---------------- Grupo: Apellido ----------------
+                        div(class="formulario__grupo" id="grupo__apellido") 
+                            label(for='apellido' class="formulario__label") Apellido:
+                            div(class="formulario__grupo-input")
+                                input(type='text',class="formulario__input" id='apellido', name='apellido',placeholder="Rodriguez", value=persona.apellido)
+                                i(class="formulario__validacion-estado fa-solid fa-circle-xmark")
+                            p(class="formulario__input-error") * El apellido no debe estar vacio ni contener caracteres especiales.
+                        br
+                .row
+                    .col    
+                            //---------------- Grupo: DNI ----------------
+                            div(class=" formulario__grupo" id="grupo__dni") 
+                                label(for='dni' class="formulario__label") DNI:
+                                div(class="formulario__grupo-input")
+                                    input(type='text',class="formulario__input" name='dni',placeholder="37256988" id='dni', value=persona.dni)
+                                    i(class="formulario__validacion-estado fa-solid fa-circle-xmark")
+                                p(class="formulario__input-error") * El dni deben ser numeros (max. de 8) sin puntos ni caracteres especiales.
+                                p(class="formulario__input-error-2") * El dni ya esta registrado!!
                             br
-                        div(class="col")
-                            label(for="loc", style="display: block") Localidad:
-                            input(type='text', form="formulario",  id='loc', name='loc', value=persona.localidad, disabled)
-                            select(form = "formulario", name = "localidad", id="selectorLocalidad", required)
-                                option(value="San Luis") San Luis
-                                option(value="La Toma") La Toma  
-                            br
-                label(for='obraSocial') Obra social:
-                input(type='obraSocial', id='obraSocial', name='obraSocial',value=persona.obraSocial)
-                
+                    .col
+                        //---------------- Grupo: Telefono ----------------
+                        div(class="formulario__grupo" id="grupo__telefono") 
+                            label(for='telefono' class="formulario__label") Telefono:
+                            div(class="formulario__grupo-input")
+                                input(type='text',class="formulario__input" id='telefono', name='telefono',placeholder="ingrese un numero sin 0 ni 15", value=persona.telefono)
+                                i(class="formulario__validacion-estado fa-solid fa-circle-xmark")
+                            p(class="formulario__input-error") * El telefono debe ser sin 0 ni 15 y/o caracteres especiales.
+                        br
+                .row
+                    .col
+                        //---------------- Grupo: E-mail ----------------
+                        div(class="formulario__grupo " id="grupo__email") 
+                            label(for='email' class="formulario__label") E-mail:
+                            div(class="formulario__grupo-input")
+                                input(type='email',class="formulario__input" id='email', name='email',placeholder="example.example_@hotmail.com", value=persona.email)
+                                i(class="formulario__validacion-estado fa-solid fa-circle-xmark")
+                            p(class="formulario__input-error") * El correo solo puede contener letras, numeros, puntos y guion bajo.  
+                        br
+                    .col
+                        //---------------- Grupo: Sexo ----------------
+                        div(class="formulario__grupo" id="grupo__sexo") 
+                            label(for='sexo' class="formulario__label") Sexo:
+                            div(class="formulario__grupo-input")
+                                select(form='formulario',class="formulario__input" name="sexo" id='sexo')
+                                    if `${persona.sexo}` == 'Masculino'
+                                        option(value="Masculino", selected) Masculino
+                                        option(value="Femenino")  Femenino  
+                                    else 
+                                        option(value="Masculino") Masculino
+                                        option(value="Femenino" selected)  Femenino
+                        br
+                .row
+                    .col
+                        //---------------- Grupo: Embarazada ----------------
+                        div(class="formulario__grupo" id="grupo__embarazada")
+                            label(class="formulario__label") Esta embarazada?
+                            div(class="formulario__grupo-input")
+                                if `${paciente.embarazada}`
+                                    label(for="embarazada" class="formulario__label-radio") Si: 
+                                    input(type="radio" class="formulario__radio" form="formulario" name="embarazada" id="embarazada" checked value=1)
+                                
+                                    label(for="embarazadaNo" class="formulario__label-radio") No:
+                                    input(type="radio" class="formulario__radio" form="formulario" name="embarazada" id="embarazadaNo" value=0)
+                                else 
+                                    label(for="embarazada" class="formulario__label-radio") Si: 
+                                    input(type="radio" class="formulario__radio" form="formulario" name="embarazada" id="embarazada" value=1)
+                                
+                                    label(for="embarazadaNo" class="formulario__label-radio") No:
+                                    input(type="radio" class="formulario__radio" form="formulario" name="embarazada" id="embarazadaNo" checked value=0)
+                        br
+                    .col
+                        //---------------- Grupo: Fecha de Nacimiento ----------------
+                        div(class="formulario__grupo" id="grupo__fechaNacimiento")
+                            label(for='fechaNacimiento' class="formulario__label") Fecha de Nacimiento:
+                            input(type='date', class="formulario__input" form="formulario",  id='fechaNacimiento', name='fechaNacimiento', value=persona.fechaNacimiento required)
+                            p(class="formulario__input-error") * La fecha no es Valida.
+                        br
+                .row
+                    .col
+                        //---------------- Grupo: Diagnostico ---------------
+                        div(class="formulario__grupo" id="grupo__diagnostico") 
+                            label(for='diagnostico' class="formulario__label") Diagnostico:
+                            div(class="formulario__grupo-input")
+                                input(type='text',class="formulario__input" id='diagnostico', name='diagnostico',placeholder="enfermedad", value=paciente.diagnostico)
+                                i(class="formulario__validacion-estado fa-solid fa-circle-xmark")
+                            p(class="formulario__input-error") * El diagnostico debe tener solo letras y no debe estar vacio.
+                        br
+                    .col
+                        //---------------- Grupo: Estado de diagnostico ----------------
+                        div(class="formulario__grupo" id="grupo__estDiagnostico")
+                            label(class="formulario__label") Estado del Diagnostico: 
+                            div(class="formulario__grupo-input")
+                                if `${paciente.estDiagnostico}`
+                                    label(for="estDiagnostico" class="formulario__label-radio") Confirmado: 
+                                    input(type="radio" class="formulario__radio" form="formulario" name="estDiagnostico" id="estDiagnostico" checked value=1)
+                                
+                                    label(for="estDiagnosticoP" class="formulario__label-radio") Presuntivo:
+                                    input(type="radio" class="formulario__radio" form="formulario" name="estDiagnostico" id="estDiagnosticoP" value=0)
+                                else 
+                                    label(for="estDiagnostico" class="formulario__label-radio") Confirmado: 
+                                    input(type="radio" class="formulario__radio" form="formulario" name="estDiagnostico" id="estDiagnostico" value=1)
+                                
+                                    label(for="estDiagnosticoP" class="formulario__label-radio") Presuntivo:
+                                    input(type="radio" class="formulario__radio" form="formulario" name="estDiagnostico" id="estDiagnosticoP" checked value=0)
+                        br
+                .row
+                    .col
+                        //---------------- Grupo: Localidad ----------------
+                        div(class="formulario__grupo" id="formulario__localidad")
+                            label(for="selectorLocalidad" class="formulario__label") Localidad:
+                            div(class= "formulario__grupo-input")
+                                select(form = "formulario" class="formulario__input" name = "localidad", id="selectorLocalidad")
+                                    option(value="Ayacucho", selected=persona.localidad === "Ayacucho") Ayacucho
+                                    option(value="Belgrano", selected=persona.localidad === "Belgrano") Belgrano
+                                    option(value="Chacabuco", selected=persona.localidad === "Chacabuco") Chacabuco
+                                    option(value="Pringles", selected=persona.localidad === "Pringles") Pringles
+                                    option(value="Pedernera", selected=persona.localidad === "Pedernera") Pedernera
+                                    option(value="Dupuy", selected=persona.localidad === "Dupuy") Dupuy
+                                    option(value="Pueyrredon", selected=persona.localidad === "Pueyrredon") Pueyrredon
+                                    option(value="Junin", selected=persona.localidad === "Junin") Junin
+                                    option(value="San Martin", selected=persona.localidad === "San Martin") San Martin
+                                    option(value="Capital", selected=persona.localidad === "Capital" ) Capital
+                        br
+                    .col
+                        //---------------- Grupo: Provincia ----------------
+                        div(class="formulario__grupo" id="formulario__provincia")
+                            label(for="selectorProvincia" class="formulario__label") Provincia:
+                            div(class="formulario__grupo-input")
+                                select(form = "formulario",class="formulario__input" name="provincia" id="selectorProvincia", required)
+                                    option(value="Buenos Aires", selected=persona.provincia === "Buenos Aires") Buenos Aires
+                                    option(value="Catamarca", selected=persona.provincia === "Catamarca") Catamarca   
+                                    option(value="Chaco", selected=persona.provincia === "Chaco") Chaco   
+                                    option(value="Chubut", selected=persona.provincia === "Chubut") Chubut   
+                                    option(value="Cordoba", selected=persona.provincia === "Cordoba") Cordoba   
+                                    option(value="Corrientes", selected=persona.provincia === "Corrientes") Corrientes   
+                                    option(value="Entre Rios", selected=persona.provincia === "Entre Rios") Entre Rios
+                                    option(value="San Luis", selected=persona.provincia === "San Luis") San Luis
+                                    option(value="Mendoza", selected=persona.provincia === "Mendoza") Mendoza   
+                        br
+                .row
+                    .col
+                        //---------------- Grupo: Domicilio ----------------
+                        div(class="formulario__grupo" id="grupo__domicilio") 
+                            label(for='domicilio' class="formulario__label") Domicilio:
+                            div(class="formulario__grupo-input")
+                                input(type='text',class="formulario__input" id='domicilio', name='domicilio', placeholder="junin 702", value=persona.domicilio)
+                                i(class="formulario__validacion-estado fa-solid fa-circle-xmark")
+                            p(class="formulario__input-error") * No se permiten caracteres especiales.
+                        br
+                    .col
+                        //---------------- Grupo: Obra Social ----------------
+                        div(class="formulario__grupo" id="grupo__obraSocial") 
+                            label(for='obraSocial' class="formulario__label") Obra Social:
+                            div(class="formulario__grupo-input")
+                                input(type='text',class="formulario__input" id='obraSocial', name='obraSocial', value=persona.obraSocial)
+                                i(class="formulario__validacion-estado fa-solid fa-circle-xmark")
+                            p(class="formulario__input-error") * Debe ingresar una Obra Social.
+                        br
+                .row
+                    .col
+                        //---------------- Grupo: Numero de Afiliado ----------------
+                        div(class="formulario__grupo" id="grupo__numeroAfiliado") 
+                            label(for='numeroAfiliado' class="formulario__label") Numero de Afiliado:
+                            div(class="formulario__grupo-input")
+                                input(type='text',class="formulario__input" id='numeroAfiliado', name='numeroAfiliado', value=persona.numeroAfiliado)
+                                i(class="formulario__validacion-estado fa-solid fa-circle-xmark")
+                            p(class="formulario__input-error") * El Nro de Afiliado no debe estar vacio ejemplo: 123-12345678-01.
+                        br
+                button(type='submit' id='guardar'  class="formulario_btn-enviar") Guardar
+                    p(class="formulario__mensaje-exito" id="formulario__mensaje-exito") Paciente guardado con exito!
                 br
-                label(for='numeroAfiliado') Numero de Afiliado:
-                input(type='numeroAfiliado', id='numeroAfiliado', name='numeroAfiliado',value=persona.numeroAfiliado)
-                
-                br
-                label(for='user') Nombre de usuario:
-                input(type='text', id='user', name='user',  value=persona.user)
-                
-                button(type='submit', id="btGuardar") Guardar
-                br
-                br
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+    script(src="https://kit.fontawesome.com/7aad8207b8.js"  crossorigin="anonymous")
+    script(src="public/js/validacionPacientes.js")

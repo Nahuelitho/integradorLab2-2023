@@ -28,18 +28,20 @@ block contenido
                       td(class="text-center")= `${persona.provincia}`  
                       td(class="text-center")= `${persona.domicilio}`
                       td(class="text-center")
-                        form( method="get", action=`/pacientes/actualizar/${persona.dni}`)
-                          button(type="submit", value="editar" class="editar btn btn-primary") Editar
+                        form(method="get", action=`/pacientes/actualizar/${persona.dni}`)
+                          button(type="submit", class="borrar btn btn-primary") Editar
+
                           
                       td(class="text-center")
                         form(method="post", action=`/pacientes/borrar/${persona.dni}`)
                           button(type="submit", class="borrar btn btn-danger") Borrar
             else
               h2(style="text-align: center") No se encontraron pacientes cargados.
-            button.btn.btn-primary(disabled=true, id="agregarPaciente", data-toggle='modal', data-target='#myModal') Abrir Formulario
+            button.btn.btn-primary(disabled=true, id="agregarPaciente", data-toggle='modal', data-target='#crear') Abrir Formulario
             //- este boton abre un formulario que esta en otro archivo.
             //-este es el formulario-//
             include formPrueba.pug
+            //include editarPaciente.pug
              
            
     
