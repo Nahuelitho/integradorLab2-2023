@@ -1,23 +1,25 @@
 const router = require("express").Router();
-//ruteador para requerir tecnicos
-const Tecnico = require('../models/Tecnico');
+const { json } = require("express");
 
-//metodos de persona
-router.get("/", (req, res, next) => {
-  res.render("");
-  next();
-});
-//alta tecnico en bd con creacion de tabla de ser necesario
-router.post("/", async (req, res) => {
-  await Tecnico.sync();
-  const createTecnico = await Tecnico.create({
-    matricula: req.body.matricula,
-  });
-  res.status(201).json({
-    ok: true,
-    status: 201,
-    message: "Tecnico creado",
-  });
-});
+const Tecnico = require('../models/Tecnico');
+//ruteador para requerir a personas
+
+const bcrypt = require("bcryptjs");
+const Swal = require("sweetalert2");
+const tecnicoController = require('../controllers/tecnicoController');
+
+router.get("/", tecnicoController.mostrarTecnicos);
+
+router.get("/crear", tecnicoController.formTecnico);
+router.post("/crear", tecnicoController.alta);
+
+//obtiene y muestra el tecnico a actualizar
+router.get("/actualizar/:dni", tecnicoController.mostrarTecnico);
+
+//tecnico/actualizar url ejecuta la actualizacion por DNI
+router.post("/actualizar/:dni", tecnicoController.editarTecnico);
+
+// hace borrado logico~ pasa el estado de true a false./
+router.post("/borrar/:dni", tecnicoController.eliminarTecnico);
 
 module.exports = router;

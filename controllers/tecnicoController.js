@@ -52,6 +52,7 @@ controllerTecnico.alta = async (req, res, next)=>{
         matricula: req.body.matricula
       });
       res.redirect('/personal/tecnico');
+      next();
     }
 
 }
@@ -98,5 +99,95 @@ controllerTecnico.mostrarTecnicos = async (req, res, next)=>{
     next();
 }
 
+controllerTecnico.editarTecnico = async (req, res, next)=>{
+  const dni = req.params.dni;
+  const data = req.body;
+  const persona = await Persona.findOne({ where: { dni: dni } });
+  await Persona.update(
+    {
+      nombre: data.nombre,
+      apellido: data.apellido,
+      dni: data.dni,
+      telefono: data.telefono,
+      email: data.email,
+      fechaNacimiento: data.fechaNacimiento,
+      sexo: data.sexo,
+      domicilio: data.domicilio,
+      provincia: data.provincia,
+      localidad: data.localidad,
+      obraSocial: data.obraSocial,
+      numeroAfiliado: data.numeroAfiliado,
+      estado: true,
+      password: data.password,
+      rol: 'tecnico',
+    },
+    {
+      where: { dni: dni },
+    }
+  );
+  await Tecnico.update(
+    {
+      idPersona: persona.id,
+      titulo: req.body.titulo,
+      fechaIngreso: req.body.fechaIngreso,
+      matricula: req.body.matricula,
+      estado:true
+    },
+    {
+      where: { idPersona: persona.id },
+    }
+  );
+  res.redirect('/personal/tecnico');
+  next();
+}
+controllerTecnico.mostrarTecnico = async (req, res, next)=>{
+  const dni = req.params.dni;
+  const persona = await Persona.findOne({ where: { dni: dni } });
+  const tecnico = await Tecnico.findOne({ where: { idPersona: persona.id } });
+  res.render("pages/tecnico/editarTecnico", {
+    persona: persona,
+    tecnico: tecnico,
+  });
+  next();
+}
+
+controllerTecnico.eliminarTecnico = async (req, res, next) => {
+  const dni = req.params.dni;
+  const data = req.body;
+  const persona = await Persona.findOne({ where: { dni: dni } });
+  await Persona.update(
+    {
+      nombre: data.nombre,
+      apellido: data.apellido,
+      dni: data.dni,
+      telefono: data.telefono,
+      email: data.email,
+      fechaNacimiento: data.fechaNacimiento,
+      sexo: data.sexo,
+      domicilio: data.domicilio,
+      provincia: data.provincia,
+      localidad: data.localidad,
+      obraSocial: data.obraSocial,
+      numeroAfiliado: data.numeroAfiliado,
+      estado: false,
+      rol: 'tecnico',
+      password: data.password,
+    },
+    {
+      where: { dni: dni },
+    }
+  );
+  await Tecnico.update(
+    {
+      estado: false
+    },
+    {
+      where: { idPersona: persona.id },
+    }
+  );
+
+  res.redirect("/personal/tecnico");
+  next();
+};
 
 module.exports = controllerTecnico;

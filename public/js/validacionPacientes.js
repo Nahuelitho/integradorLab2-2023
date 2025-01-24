@@ -15,7 +15,7 @@ const expresiones = {
     contraseña: /^[a-z0-9]{6,20}$/ // 6 a 20 digitos entre numeros y letras.
 
 }
-const resultados = {
+let resultados = {
     nombre: false,
     apellido: false,
     dni: false,
@@ -160,40 +160,17 @@ const validarCampo = (expresion, input, campo)=>{
 
 
 formulario.addEventListener('submit', (e)=>{
-    // 
-    console.log(`nombre: ${resultados.nombre} 
-        apellido: ${resultados.apellido}  
-        dni: ${resultados.dni} 
-        telefono: ${resultados.telefono} 
-        email: ${resultados.email} 
-        fechaNaci:  ${resultados.fechaNacimiento} 
-        domicilio: ${resultados.domicilio} 
-        obra Social: ${resultados.obraSocial}
-        numAfiliado:  ${resultados.numeroAfiliado} 
-        password: ${resultados.password}`)
+    
     if(resultados.nombre && resultados.apellido && resultados.dni && resultados.telefono && resultados.email 
         && resultados.fechaNacimiento && resultados.domicilio && resultados.obraSocial && resultados.numeroAfiliado 
         && resultados.password) {
-            e.preventDefault();
         document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo')
         setTimeout(() => {
             formulario.reset()
             document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo')
         }, 5000);
-        console.log(`nombre: ${resultados.nombre} 
-            apellido: ${resultados.apellido}  
-            dni: ${resultados.dni} 
-            telefono: ${resultados.telefono} 
-            email: ${resultados.email} 
-            fechaNaci:  ${resultados.fechaNacimiento} 
-            domicilio: ${resultados.domicilio} 
-            obra Social: ${resultados.obraSocial}
-            numAfiliado:  ${resultados.numeroAfiliado} 
-            password: ${resultados.password}`)
     } else {
-       // e.preventDefault();
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+       
        console.log(`nombre: ${resultados.nombre} 
         apellido: ${resultados.apellido}  
         dni: ${resultados.dni} 
@@ -203,26 +180,7 @@ formulario.addEventListener('submit', (e)=>{
         domicilio: ${resultados.domicilio} 
         obra Social: ${resultados.obraSocial}
         numAfiliado:  ${resultados.numeroAfiliado} 
-        password: ${resultados.password}`);
-=======
-=======
->>>>>>> Stashed changes
-        console.log(`nombre: ${resultados.nombre} 
-            apellido: ${resultados.apellido}  
-            dni: ${resultados.dni} 
-            telefono: ${resultados.telefono} 
-            email: ${resultados.email} 
-            fechaNaci:  ${resultados.fechaNacimiento} 
-            domicilio: ${resultados.domicilio} 
-            obra Social: ${resultados.obraSocial}
-            numAfiliado:  ${resultados.numeroAfiliado} 
-            password: ${resultados.password}`)
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-        
-    }
+        password: ${resultados.password}`)       }
 
 })
 
