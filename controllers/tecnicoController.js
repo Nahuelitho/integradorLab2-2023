@@ -151,7 +151,7 @@ controllerTecnico.mostrarTecnico = async (req, res, next)=>{
   next();
 }
 
-controllerTecnico.eliminarTecnico = async (req, res, next) => {
+/*controllerTecnico.eliminarTecnico = async (req, res, next) => {
   const dni = req.params.dni;
   const data = req.body;
   const persona = await Persona.findOne({ where: { dni: dni } });
@@ -188,6 +188,6 @@ controllerTecnico.eliminarTecnico = async (req, res, next) => {
 
   res.redirect("/personal/tecnico");
   next();
-};
+}; */
 
 module.exports = controllerTecnico;
